@@ -190,3 +190,12 @@ body {
     position: absolute;
     bottom:5px;
   }
+
+  .close {
+    
+    float:right;
+    position: relative;
+    
+    padding:2px 5px;
+    background:#ccc;
+}
