@@ -1,0 +1,72 @@
+#admin-logo{
+    float: left;
+    clear: left;
+    padding: 5px;
+   margin-top: 7px;
+    height:77px;
+    width:77px;
+    border-radius:50px;
+}
+body{
+    background-color:rgb(209, 209, 209);
+    height:100%;
+}
+header{
+    background-color:black;
+}
+h1{
+    color:white;
+    margin: 0;
+    padding: 25px;
+    text-align: center;
+    font-size: 40px;
+}
+body{
+    height:100%;
+    margin: 0 auto;
+    padding: 0;
+}
+.navbar{
+    background-color:blue;
+    overflow:hidden;
+  
+}
+.navbar a{
+    float:left;
+    padding: 20px 25px;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+.navbar a:hover{
+    color: white;
+    background-color:rgb(230, 230, 25);
+}
+
+.col{
+    float: left;
+    width: 40%;
+    padding : 10px 30px;
+  
+}
+.row{
+    display:flex;
+    justify-content: center;
+    
+
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+    
+  }
+  .card-1 {
+    box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 15px 16px;
+    margin: 10px;
+    text-align: center;
+    background-color: rgb(51, 48, 48);
+  }
