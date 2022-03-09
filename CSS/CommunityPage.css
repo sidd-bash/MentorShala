@@ -4,6 +4,7 @@
 .card-custom{
     margin: 30px;
     border: 1px solid rgb(211, 201, 201);
+    box-shadow: 12px 12px 2px 1px rgba(2, 2, 2, 0.336);
 }
 .username-show{
     display: inline-block;
@@ -11,6 +12,7 @@
 }
 .card-text-custom{
     padding: 10px;
+    
 }
 .read-more-link{
     text-decoration: none;
@@ -36,4 +38,26 @@
 .dislikebt{
     background-color: white;
     border-style: none;
+}
+.askbtn{
+    position: fixed;
+    bottom: 1rem;
+    right: 2rem;
+    border-radius: 50%;
+}
+.askwindow{
+    margin: 3rem 2rem;
+    display: none;
+}
+#askSend img{
+    width: 3rem;
+}
+#askSend{
+    border-style: none;
+}
+body{
+    background: linear-gradient(to left,rgb(241, 82, 82),rgb(193, 104, 245));
+}
+.closeCross{
+    margin-left: 74rem;
 }
