@@ -1,8 +1,23 @@
 body {
-  background-image: url('/images/bg.jpg');
+  background-image: url("/images/bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position:center;
+}
+.about{
+  height:20vh;
+  width: auto;
+  font-family: 'Times New Roman', Times, serif;
+  color:black;
+  background-image:url("/images/about-background.webp");
+  background-size: cover;
+}
+.contact{
+  height:20vh;
+  width: auto;
+  color:silver;
+  font-family: 'Times New Roman', Times, serif;
+  background-color: black;
 }
   h1 {
     position: relative;
