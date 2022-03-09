@@ -1,6 +1,10 @@
 body {
-    background: #e0e5ec;
-  }
+  
+  background-image: url('/images/bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position:center;
+}
   h1 {
     position: relative;
     text-align: center;
