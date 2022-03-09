@@ -8,11 +8,11 @@
     border-radius:50px;
 }
 body{
-    background-color:rgb(209, 209, 209);
+    background-color:rgb(228, 225, 225);
     height:100%;
 }
 header{
-    background-color:black;
+    background-color:rgba(117, 55, 158, 0.432);
 }
 h1{
     color:white;
@@ -27,20 +27,20 @@ body{
     padding: 0;
 }
 .navbar{
-    background-color:blue;
+    background-color:rgb(0, 0, 0);
     overflow:hidden;
   
 }
 .navbar a{
-    float:left;
+    float:right;
     padding: 20px 25px;
-    color: black;
+    color: rgb(247, 247, 247);
     text-decoration: none;
     text-align: center;
 }
 .navbar a:hover{
     color: white;
-    background-color:rgb(230, 230, 25);
+    background-color:rgb(219, 100, 100);
 }
 
 .col{
@@ -60,13 +60,17 @@ body{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 16px;
     text-align: center;
-    background-color: #f1f1f1;
+    
+    border-radius: 30px;
+    background: linear-gradient(to right, #3c34b4, rgb(204, 183, 228));
     
   }
   .card-1 {
     box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 15px 16px;
-    margin: 10px;
+    margin: 15px;
     text-align: center;
-    background-color: rgb(51, 48, 48);
+    background-color: rgba(235, 130, 221, 0.459);
+    border-radius: 50px;
+    box-shadow:  8px 6px 2px 0px rgba(255,255,255,.5);
   }
