@@ -1,0 +1,20 @@
+.container{
+    border: 2px solid red;
+    margin: 10px;
+}
+#secform{
+    border: 2px solid blue ;
+    margin: 20px;
+}
+#title{
+    border: 2px solid black;
+    display: inline-block;
+    margin: 20px;
+}
+.form{
+    border: 2px solid green;
+    
+}
+.form div{
+    border: 2px solid;
+}

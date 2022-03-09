@@ -1,0 +1,39 @@
+.nav-li{
+    margin: 0px 25px;
+}
+.card-custom{
+    margin: 30px;
+    border: 1px solid rgb(211, 201, 201);
+}
+.username-show{
+    display: inline-block;
+    border: 1px solid red;
+}
+.card-text-custom{
+    padding: 10px;
+}
+.read-more-link{
+    text-decoration: none;
+    color: grey;
+    
+}
+.card-text a:hover{
+    color: rgb(58, 64, 82);
+}
+.card-header a{
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: black;
+}
+.card-header img{
+    margin: 0rem 1rem;
+    border-radius: 50%;
+}
+.likebt{
+    background-color: white;
+    border-style: none;
+}
+.dislikebt{
+    background-color: white;
+    border-style: none;
+}
