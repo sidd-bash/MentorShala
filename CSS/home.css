@@ -208,3 +208,8 @@ body {
     position: absolute;
     bottom:5px;
   }
+
+  .closeCross{
+    position: absolute;
+    right: 0.5rem;
+  }
