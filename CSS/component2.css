@@ -21,7 +21,7 @@ body {
 	position: absolute;
 	height: 13em;
 	width:26em;
-	background: rgba(0,0,0,0.05);
+	/* background: rgb(255, 254, 254); */
 	font-family: 'Lato', Arial, sans-serif;
 	left:-7%;
 	bottom:20%;

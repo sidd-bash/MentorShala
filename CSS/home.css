@@ -173,7 +173,7 @@ img{
 }
 /* Chat Box */
 .chatbot{
-    position:absolute;
+    position:fixed;
     border-radius:100%;
     right:10px;
     bottom:10px;
