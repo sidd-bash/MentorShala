@@ -1,3 +1,37 @@
+.navbar {
+    background-image: linear-gradient(to right, rgb(165, 23, 186), rgb(71, 4, 104));
+    padding: 0px !important;
+}
+.navbar-custom {
+    position: sticky;
+    top: 0rem;
+    color: white;
+    padding: 1.5rem 1rem;
+}
+.searchQ {
+    margin: 2rem 1rem;
+}
+.navbar-custom ul {
+    position: absolute;
+    right: 2rem;
+    top: 0rem;
+    margin: 0rem 2rem;
+}
+.navbar-custom ul li {
+    margin: 0rem 1rem;
+}
+.navbar-custom ul li a {
+    width: 5rem;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 50%;
+}
+.navbar-custom ul li a:hover{
+    background: linear-gradient(-45deg,rgb(224, 125, 125),rgb(38, 177, 212));
+}
+#navbarImg{
+    width: 35rem;
+}
 .nav-li{
     margin: 0px 25px;
 }
@@ -59,5 +93,10 @@ body{
     background: linear-gradient(to left,rgb(241, 82, 82),rgb(193, 104, 245));
 }
 .closeCross{
-    margin-left: 74rem;
+    /* margin-left: 74rem; */
+    position: absolute;
+    right: 3rem;
+}
+#writeAns{
+    margin: 1rem 0.7rem;
 }
