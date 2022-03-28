@@ -4,12 +4,19 @@
     box-sizing: border-box;
     font-family: "poppins", sans-serif;
   }
+  #head{
+    font-size: 2.2em;
+    font-weight: bold;
+  }
   body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background: #ebf5fc;
+    background-image: url('/images/card1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   .container {
     display: flex;
@@ -21,11 +28,9 @@
   }
   .container .card {
     position: relative;
-    width: 300px;
-    height: 400px;
-    box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.05),
-      inset -5px -5px 5px rgba(255, 255, 255, 0.5),
-      5px 5px 5px rgba(0, 0, 0, 0.05), -5px -5px 5px rgba(255, 255, 255, 0.5);
+    width:800px;
+    height: 600px;
+  
     border-radius: 15px;
     margin: 30px;
   }
@@ -47,10 +52,6 @@
   .container .card .box .content {
     padding: 20px;
     text-align: center;
-  }
-  .image {
-    height: 100px;
-    width: 100px;
   }
   .container .card .box .content h2 {
     font-size: 1em;

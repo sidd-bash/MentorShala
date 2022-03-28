@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/home.css">
+    <script src="js/home.js"></script>
+    
+    
+        <style>
+          html {
+          margin: 0;
+          padding: 0;
+      }
+      
+      html,
+      body {
+          width: 100%;
+          height: 100%;
+          margin: 0px;
+          padding: 0px;
+          font-family: 'Lato', sans-serif;
+          font-size: 16px;
+      }
+      
+      #canvas-container-1{
+        height: 100%;
+        width: 100%;
+        background: black;
+      }
+      
+      #canvas-1{
+        display: block;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+        </style>
+       
+</head>
+<body>
+    <div id="canvas-container-1" class="canvas-container">
+        <canvas id="canvas-1"></canvas>
+      </div>
+      
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ABOUT</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">CONTACT</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">SUPPORT</a>
+        </li>
+      </ul>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <div class="frame">
+        <a href="HTML/login-mentor.html"><button class="custom-btn btn-12"><span>Mentor</span><span>Mentor</span></button></a>
+        <a href="HTML/login-mentee.html">
+        <button class="custom-btn btn-12"><span>Learner</span><span>Learner</span></button>
+      </a>
+        <div class="about"><bold id="footer-head"> ABOUT</bold><br>
+            The scope of the project is a web based system which will provide call,
+            video call and chat facility to the users for interactive learning and
+            guidance or career counselling and it will also help mentors to earn
+            some sort of pocket money if their rating is high to a certain value and
+            thus encourage mentors to put their heart and soul into the teaching
+            process for effective results from the mentees. A lot of students from
+            college or schools want to earn some pocket money by doing some part
+            time jobs(online or offline) so Mentor Matching website is a wonderful
+            platform for them to start earning money</div>
+            <button>
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+            <div class="contact"><bold id="footer-head1">CONTACT</bold><br>
+                Saurabh Kumar (S20200010190)<br>
+                Abhishek Singh (S20200010006)<br>
+                Anant Chaturvedi (S20200010017)<br>
+                Abhay Pratap
+                Singh (S20200010003),<br>
+                Siddharth Bhardwaj (S20200010198).</div>
+    </div>
+   
+    <div class="chatbot">
+        <div id="chatbox">
+            <div class="chatheader">MentorShala <button type="button" class="btn-close closeCross" onclick="closeChatWindow()"></button></div>
+            <div class="chat bot">
+                Hello there! How can I help u?
+            </div>
+            <div id="input">
+                <input type="text" id="chatinput">
+                <img class="subinput" onclick="showinput()" src="images/send.png">
+            </div>
+        </div>
+        <div class="chaticon" onclick="chatbox()"><img src="images/chat_icon.png"></div>
+    </div> 
+
+      <script src="http://threejs.org/build/three.min.js"></script>
+      <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+      <script src="js/three.js"></script> 
+</body>
+</html>

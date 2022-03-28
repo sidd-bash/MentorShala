@@ -30,6 +30,10 @@ function chatbox(){
     document.getElementById("chatbox").style.display="flex";
     document.getElementsByClassName("chaticon")[0].style.display="none";
 }
+function closeChatWindow() {
+    document.getElementById("chatbox").style.display="none";
+    document.getElementsByClassName("chaticon")[0].style.display="flex";
+}
 var input=document.getElementById("chatinput");
 input.addEventListener("keyup", function(event) {
     if (event.key === "Enter") {
