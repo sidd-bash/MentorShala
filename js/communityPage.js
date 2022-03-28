@@ -1,3 +1,25 @@
+
+const mongoose = require('mongoose');
+const bodyparser=require('body-parser')
+main().catch(err => console.log(err));
+
+
+async function main() {
+    await mongoose.connect('mongodb://localhost:27017/Community_Data');    //mentor_info is my database name
+}
+
+var db=mongoose.connection;
+db.on('error',console.error.bind(console,'connection error:'));
+db.once('open',function(){
+    console.log("we are connected");
+})
+const { Schema } = mongoose;
+
+const Ans_que = new Schema({
+    Question : String,
+    Answer : String,
+  });
+  const ansInData = mongoose.model('Answers_to_Questions',Ans_que ); 
 function likepost() {
     let imglike=document.getElementById('likebtn');
     let imgcomp=document.getElementById('dislikebtn');
@@ -26,4 +48,22 @@ function openAskwindow() {
 
 function closeAskWindow() {
     document.getElementById("popAskWindow").style.display = "none";
+}
+function AnswerSend() {
+    let ans=document.getElementById('writeAns');
+    let ansTodb=ans.value;
+    ans.value="";
+    let QuestionAsked=document.getElementById('QuestionInCard').innerText;
+    var mybody={
+        Question: QuestionAsked,
+        Answer: ansTodb
+    }
+    var mydata=new ansInData(mybody);
+    mydata.save().then(()=>{
+        res.send("This item has been saved")
+    }).catch(()=>{
+        res.status(400).send("Error")
+
+    })  
+    // console.log(mybody);
 }

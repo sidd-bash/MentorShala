@@ -90,7 +90,9 @@
     border-style: none;
 }
 body{
-    background: linear-gradient(to left,rgb(241, 82, 82),rgb(193, 104, 245));
+    background: linear-gradient(-45deg,rgb(224, 155, 233),rgb(198, 90, 223));
+
+    /* background: linear-gradient(to left,rgb(241, 82, 82),rgb(193, 104, 245)); */
 }
 .closeCross{
     /* margin-left: 74rem; */
@@ -99,4 +101,13 @@ body{
 }
 #writeAns{
     margin: 1rem 0.7rem;
+}
+#sendAns{
+    width: 5rem;
+    border-radius: 100%;
+    /* border: 1px solid red; */
+    border-style: none;
+}
+#sendAns img{
+    width: 100%
 }

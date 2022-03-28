@@ -34,9 +34,6 @@
             <div style="font-size: 3rem; margin: 1rem 0rem;font-family: 'Rubik', sans-serif;"><b>MENTORS AND MENTEES</b></div>
           </div>
         </div>
-        <div class="d-flex col-md-6 text-center">
-          <img id="navbarImg" src="/images/home2.png" alt="">
-        </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -53,7 +50,7 @@
                     <div class="col">HOME</div>
                   </div>
                 </div> 
-                </a>
+              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
@@ -96,6 +93,9 @@
             </li>
           </ul>
         </div>
+        <div class="d-flex col-md-6 text-center">
+          <img id="navbarImg" src="/images/home2.png" alt="">
+        </div>
         <div class="searchQ">
           <div style="font-size: 2rem; margin: 1rem 0rem;font-family: 'Rubik', sans-serif;"><b>ASK YOUR QUESTION:</b></div>
           <form class="d-flex">
@@ -108,11 +108,11 @@
     <div class="card card-custom">
       <div class="card-header">
         <img src="/images/photo.jpg" alt="profile picture"  width="44rem">
-          <a href="#">Abhishek Singh</a>
+          <a id="nameuser" href="#">Abhishek Singh</a>
           
       </div>
       <div class="card-body">
-        <h5 class="card-title">What is Mentor Shala?</h5>
+        <h5 class="card-title" id="QuestionInCard">What is Mentor Shala?</h5>
         <p class="card-text card-text-custom">This is new web based mentoring
           system that is to be developed for mentoring students from all domains,
           mainly for students that are having lack of guidance in career and need
@@ -129,8 +129,8 @@
               
               <button class="dislikebt" onclick="dislikepost()"><img src="/images/dislike2.png" alt="dislike" srcset="" width="20rem" style="margin: 0rem 1rem;" id="dislikebtn"></button>
               <div class="row">
-                <div class="col-8"><input class="form-control me-2" id="writeAns" type="search" placeholder="Write Your Answer" aria-label="Search"></div>
-                <div class="col-4"><button id="reply_" style="border-radius: 100%; border:1px solid red; margin-top:0.5rem" width="3rem"><img src="/images/send2.png" alt="send" srcset="" style="border-radius: 100%;"></button></div>
+                <div class="col-8"><input class="form-control me-2" id="writeAns" type="text" placeholder="Write Your Answer" aria-label="Search"></div>
+                <div class="col-4"><button id="sendAns" onclick="AnswerSend()"><img src="/images/send.png" alt="send" srcset="" style="border-radius: 100%;"></button></div>
               </div>
           
           
