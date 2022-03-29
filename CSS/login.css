@@ -1,4 +1,4 @@
-body {font-family:Verdana, Geneva, Tahoma, sans-serif}
+/* body {font-family:Verdana, Geneva, Tahoma, sans-serif}
 * {box-sizing: border-box;}
 .SignIn{
   background-color: #f2f2f2;
@@ -8,19 +8,19 @@ body {font-family:Verdana, Geneva, Tahoma, sans-serif}
   text-align: center;
   height:80vh;
   width: 40vw;
-}
+} */
 /* Button used to open the contact form - fixed at the bottom of the page */
-.open-button {
+/* .open-button {
   background-color: #555;
   color: white;
   padding: 16px 20px;
   border: none;
   cursor: pointer;
   opacity: 0.8;
-}
+} */
 
 /* The popup form - hidden by default */
-.form-popup {
+/* .form-popup {
   display: none;
   position: relative;
   bottom: 15px;
@@ -29,32 +29,32 @@ body {font-family:Verdana, Geneva, Tahoma, sans-serif}
   z-index: 0;
   max-width: 100%;
   height: max-content;
-}
+} */
 
 /* Add styles to the form container */
-.form-container {
+/* .form-container {
   max-width: 100%;
   padding: 10px;
   background-color: white;
-}
+} */
 
 /* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
+/* .form-container input[type=text], .form-container input[type=password] {
   width: 30%;
   padding: 15px;
   margin: 5px 0 22px 0;
   border: none;
   background: #f1f1f1;
-}
+} */
 
 /* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+/* .form-container input[type=text]:focus, .form-container input[type=password]:focus {
   background-color: #ddd;
   outline: none;
-}
+} */
 
 /* Set a style for the submit/login button */
-.form-container .btn {
+/* .form-container .btn {
   background-color: #04AA6D;
   color: white;
   padding: 16px 20px;
@@ -63,14 +63,150 @@ body {font-family:Verdana, Geneva, Tahoma, sans-serif}
   width: 15%;
   margin-bottom:10px;
   opacity: 0.8;
-}
+} */
 
 /* Add a red background color to the cancel button */
-.form-container .cancel {
+/* .form-container .cancel {
   background-color: red;
-}
+} */
 
 /* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
+/* .form-container .btn:hover, .open-button:hover {
   opacity: 1;
+} */
+
+
+
+body{
+  height: 100vh;
+  background: #cce1f7 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+.card{
+  overflow: hidden;
+  border: 0 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.img-left{
+  width: 45%;
+  background: url('/images/28210870.jpg') center;
+  background-size:contain;
+  background-repeat: no-repeat;
+  margin-left: 10px;
+}
+
+.card-body{
+  padding: 2rem;
+}
+
+.title{
+  margin-bottom: 2rem;
+}
+
+.form-input{
+  position: relative;
+}
+
+.form-input input{
+  width: 100%;
+  height: 45px;
+  padding-left: 40px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  box-shadow: none;
+  border: 1px solid #00000020;
+  border-radius: 50px;
+  outline: none;
+  background: transparent;
+}
+
+.form-input span{
+  position: absolute;
+  top: 10px;
+  padding-left: 15px;
+  color: #007bff;
+}
+
+.form-input input::placeholder{
+  color: black;
+  padding-left: 0px;
+}
+
+.form-input input:focus, .form-input input:valid{
+  border: 2px solid #007bff;
+}
+
+.form-input input:focus::placeholder{
+  color: #454b69;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before{
+  background-color: #007bff !important;
+  border: 0px;
+}
+
+.form-box button[type="submit"]{
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  background: #007bff;
+  color: #fff;
+  font-size: 90%;
+  font-weight: bold;
+  letter-spacing: .1rem;
+  transition: 0.5s;
+  padding: 12px;
+}
+
+.form-box button[type="submit"]:hover{
+  background: #0069d9;
+}
+
+.forget-link, .register-link{
+  color: #007bff;
+  font-weight: bold;
+}
+
+.forget-link:hover, .register-link:hover{
+  color: #0069d9;
+  text-decoration: none;
+}
+
+.form-box .btn-social{
+  color: white !important;
+  border: 0;
+  font-weight: bold;
+}
+
+.form-box .btn-facebook{
+  background: #4866a8;
+}
+
+.form-box .btn-google{
+  background: #da3f34;
+}
+
+.form-box .btn-twitter{
+  background: #33ccff;
+}
+
+.form-box .btn-facebook:hover{
+  background: #3d578f;
+}
+
+.form-box .btn-google:hover{
+  background: #bf3b31;
+}
+
+.form-box .btn-twitter:hover{
+  background: #2eb7e5;
+}
+
+

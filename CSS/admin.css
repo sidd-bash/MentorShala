@@ -11,49 +11,55 @@ body{
     background-color:rgb(228, 225, 225);
     height:100%;
 }
-header{
-    background-color:rgba(117, 55, 158, 0.432);
+.navbar-brand{
+    padding: 1.005rem;
 }
-h1{
-    color:white;
-    margin: 0;
-    padding: 25px;
-    text-align: center;
-    font-size: 40px;
+.navbar-custom{
+    border-radius: 0rem 0rem 1rem 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+.navbar-adminportal{
+    margin: 1rem;
+}
+nav a{
+    border-radius: 1rem;
+}
+nav a:hover{
+    background-color: rgb(80, 76, 85);
+    border-radius: 1rem;
+}
+
+#adminportalbrand{
+    color: white;
+    margin: 1rem;
 }
 body{
     height:100%;
     margin: 0 auto;
     padding: 0;
 }
-.navbar{
-    background-color:rgb(0, 0, 0);
-    overflow:hidden;
-  
-}
-.navbar a{
-    float:right;
-    padding: 20px 25px;
-    color: rgb(247, 247, 247);
-    text-decoration: none;
-    text-align: center;
-}
-.navbar a:hover{
-    color: white;
-    background-color:rgb(219, 100, 100);
+nav li{
+    padding: 1rem;
+
 }
 
+.row{
+    display:flex;
+    justify-content: center;
+   
+    
+
+}
 .col{
     float: left;
     width: 40%;
     padding : 10px 30px;
-  
-}
-.row{
-    display:flex;
-    justify-content: center;
+    margin-left: 50px;
+    margin-right: 50px;
     
-
+    
+  
 }
 
 .card {

@@ -13,10 +13,10 @@
   <body class="p-3 mb-2 bg-dark text-light">
     <h1 class="lh-lg">Personal_Information (Mentee)</h1>
 
-    <form class="row g-3 needs-validation" novalidate>
+    <form class="row g-3 needs-validation" novalidate action="/mentee_regis" method="post">
         <div class="col-md-4">
           <label for="validationCustom01" class="form-label">First name</label>
-          <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+          <input type="text" class="form-control" name="firstName" id="validationCustom01" placeholder="Mark" required>
           <div class="valid-feedback">
             Looks good!
           </div>
@@ -24,7 +24,7 @@
         </div>
         <div class="col-md-4">
           <label for="validationCustom02" class="form-label">Last name</label>
-          <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+          <input type="text" class="form-control" name="lastName" id="validationCustom02" placeholder="Otto" required>
           <div class="valid-feedback">
             Looks good!
           </div>
@@ -32,8 +32,8 @@
         <div class="col-md-4">
           <label for="validationCustomUsername" class="form-label">Username</label>
           <div class="input-group has-validation">
-            <span class="input-group-text" id="inputGroupPrepend">@</span>
-            <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+            <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
+            <input type="text" class="form-control" name="userName" placeholder="Mark_Otto" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
             <div class="invalid-feedback">
               Please choose a username.
             </div>
@@ -41,7 +41,7 @@
         </div>
         <div class="col-md-4">
           <label for="validationCustom03" class="form-label">City</label>
-          <input type="text" class="form-control" id="validationCustom03" required>
+          <input type="text" class="form-control" name="city" id="validationCustom03" required>
           <div class="invalid-feedback">
             Please provide a valid city.
           </div>
@@ -49,7 +49,7 @@
 
         <div class="col-md-4">
           <label for="validationCustom04" class="form-label">Education</label>
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" name="educationInfo" aria-label="Default select example">
             <option selected>Open this select menu</option>
             <option value="0">below 10th</option>
             <option value="1">Class 10th passed</option>
@@ -63,12 +63,17 @@
         </div>
         
         <div class="col-md-4">
-            <label for="validationCustom03" class="form-label">Prefered Language</label>
-            <input type="text" class="form-control" id="validationCustom03" required>
-            <div class="invalid-feedback">
-              Please provide a valid Prefered Language.
-            </div>
+          <label for="validationCustom03" class="form-label">Prefered Language</label>
+          <!-- <input type="text" class="form-control" id="validationCustom03" required> -->
+          <select class="form-select" id="validationCustom03" aria-label="Default select example" required>
+            <option selected>Open this select menu</option>
+            <option value="0">English</option>
+            <option value="1">Hindi</option>
+            </select>
+          <div class="invalid-feedback">
+            Please provide a valid Prefered Language.
           </div>
+        </div>
 
           <div class="col-md-4">
             <label for="validationCustom05" class="form-label">Interest(Mentee)</label>
@@ -80,7 +85,7 @@
 
           <div class="col-md-4">
             <label for="validationCustom05" class="form-label">Short Description</label>
-            <textarea name="Interest" id="" cols="30" rows="5" class="form-control" id="validationCustom05" required></textarea>
+            <textarea name="shortDescription" id="" cols="30" rows="5" class="form-control" id="validationCustom05" required></textarea>
             <div class="invalid-feedback">
               Please provide a valid Description.
             </div>
@@ -98,7 +103,7 @@
           </div>
         </div>
         <div class="col-12">
-          <button class="btn btn-primary" type="submit">Submit form</button>
+        <button class="btn btn-primary" type="submit" onclick="window.location.href='card.html';">Submit form</button>
         </div>
       </form>
     
