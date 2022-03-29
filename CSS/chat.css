@@ -36,6 +36,10 @@ body{
 }
 .callbutton{
     border-radius: 15px;
+    background:none;
+    border:none;
+    padding-left: 3px;
+    padding-right: 3px;
 }
 @media(max-width:1000px){
     .container{

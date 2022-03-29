@@ -3,7 +3,7 @@
 var tinderContainer = document.querySelector('.tinder');
 var allCards = document.querySelectorAll('.tinder--card');
 var nope = document.getElementById('nope');
-var love = document.getElementById('love');
+var tick = document.getElementById('tick');
 
 function initCards(card, index) {
   var newCards = document.querySelectorAll('.tinder--card:not(.removed)');
@@ -30,7 +30,7 @@ allCards.forEach(function (el) {
     if (event.deltaX === 0) return;
     if (event.center.x === 0 && event.center.y === 0) return;
 
-    tinderContainer.classList.toggle('tinder_love', event.deltaX > 0);
+    tinderContainer.classList.toggle('tinder_tick', event.deltaX > 0);
     tinderContainer.classList.toggle('tinder_nope', event.deltaX < 0);
 
     var xMulti = event.deltaX * 0.03;
@@ -42,7 +42,7 @@ allCards.forEach(function (el) {
 
   hammertime.on('panend', function (event) {
     el.classList.remove('moving');
-    tinderContainer.classList.remove('tinder_love');
+    tinderContainer.classList.remove('tinder_tick');
     tinderContainer.classList.remove('tinder_nope');
 
     var moveOutWidth = document.body.clientWidth;
@@ -67,7 +67,7 @@ allCards.forEach(function (el) {
   });
 });
 
-function createButtonListener(love) {
+function createButtonListener(tick) {
   return function (event) {
     var cards = document.querySelectorAll('.tinder--card:not(.removed)');
     var moveOutWidth = document.body.clientWidth * 1.5;
@@ -78,7 +78,7 @@ function createButtonListener(love) {
 
     card.classList.add('removed');
 
-    if (love) {
+    if (tick) {
       card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
     } else {
       card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
@@ -91,7 +91,7 @@ function createButtonListener(love) {
 }
 
 var nopeListener = createButtonListener(false);
-var loveListener = createButtonListener(true);
+var tickListener = createButtonListener(true);
 
 nope.addEventListener('click', nopeListener);
-love.addEventListener('click', loveListener);
+tick.addEventListener('click', tickListener);
