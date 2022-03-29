@@ -43,17 +43,23 @@ nav li{
     padding: 1rem;
 
 }
+
+.row{
+    display:flex;
+    justify-content: center;
+   
+    
+
+}
 .col{
     float: left;
     width: 40%;
     padding : 10px 30px;
-  
-}
-.row{
-    display:flex;
-    justify-content: center;
+    margin-left: 50px;
+    margin-right: 50px;
     
-
+    
+  
 }
 
 .card {
