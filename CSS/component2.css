@@ -23,8 +23,8 @@ body {
 	width:26em;
 
 	font-family: 'Lato', Arial, sans-serif;
-	left:-7%;
-	bottom:20%;
+	left:-6.5%;
+	bottom:35%;
 	
 }
 
@@ -49,8 +49,8 @@ body {
 	border: none;
 	border-radius: 50%;
 	background: none;
-	background-color: #fff;
-	color: #52be7f;
+	background-color: rgba(247, 235, 247, 0.767);
+	color: #b12daa;
 	text-align: center;
 	font-weight: 700;
 	font-size: 1.5em;
@@ -146,11 +146,11 @@ body {
 	width: 14.5em;
 	height: 14.5em;
 	border-radius: 50%;
-	background: #429a67;
-	background: -webkit-radial-gradient(transparent 35%, #429a67 35%);
-	background: -moz-radial-gradient(transparent 35%, #429a67 35%);
-	background: radial-gradient(transparent 35%, #429a67 35%);
-	color: #fff;
+	background: rgba(247, 235, 247, 0.767);
+	background: -webkit-radial-gradient(transparent 35%, rgba(247, 235, 247, 0.767) 35%);
+	background: -moz-radial-gradient(transparent 35%, rgba(247, 235, 247, 0.767) 35%);
+	background: radial-gradient(transparent 35%, rgba(247, 235, 247, 0.767) 35%);
+	color: #b12daa;
 	text-align: center;
 	text-decoration: none;
 	font-size: 1.2em;

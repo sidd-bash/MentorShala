@@ -1,0 +1,17 @@
+.row-custom{
+    /* border: 1px solid red; */
+    margin: 1rem;
+    padding: 1rem;
+}
+/* .col-custom{
+    border: 1px solid blue;
+} */
+.col-custom img{
+    width: 36rem;
+}
+.head-bar{
+    color: white;
+    background-image: linear-gradient(to right, rgb(165, 23, 186), rgb(71, 4, 104));
+    /* padding: 0px !important;    */
+    padding: 1.25rem 0rem;
+}

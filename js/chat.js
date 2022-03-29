@@ -59,3 +59,31 @@ chatwin.addEventListener('keydown', function(event){
     }
 }
 );
+
+let contact1_messages={
+    'sent':{
+        'sequence':1,
+        'message':'hello'
+    },
+    'recieved':{
+        'sequence':2,
+        'message':'hello back'
+    }
+}
+let contact_container_map=[
+    {
+        'contact':document.querySelector('.contact')[i],
+        'container':document.querySelector('.chatcontainer')[j]
+    }
+]
+function create_chatcontainer(index){
+
+}
+function load_chatcontainer(index){
+    let contacts = document.querySelector('.contact');
+    for(let i=0;i<contacts.size;i++){
+            if (i!=index){
+                chatcontainer[i].style.visibility='hidden';
+            }
+    }
+}
