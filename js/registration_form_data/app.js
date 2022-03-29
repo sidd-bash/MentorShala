@@ -62,10 +62,10 @@ app.set('view engine','pug');
 app.set('views',path.join(__dirname,'views'));
 
 app.get('/HTML/mentor-registration.html',(req,res)=>{ 
-    // const mentor_registration_file=fs.readFileSync('../../HTML/mentor-registration.html');
-    // res.writeHead(200,{'Content-Type':'text/html'});
-    // res.end(mentor_registration_file)
-    res.status(200).render('mentor_registration.pug');
+    const mentor_registration_file=fs.readFileSync('../../HTML/mentor-registration.html');
+    res.writeHead(200,{'Content-Type':'text/html'});
+    res.end(mentor_registration_file)
+    // res.status(200).render('mentor_registration.pug');
 })
 app.get('/HTML/mentee-registration.html',(req,res)=>{ 
     const mentee_registration_file=fs.readFileSync('../../HTML/mentee-registration.html');
