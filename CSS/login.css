@@ -1,81 +1,3 @@
-/* body {font-family:Verdana, Geneva, Tahoma, sans-serif}
-* {box-sizing: border-box;}
-.SignIn{
-  background-color: #f2f2f2;
-  border: 2px solid #ddd;
-  padding: 5px;
-  margin:5vw 10vw 15vw 10vw;
-  text-align: center;
-  height:80vh;
-  width: 40vw;
-} */
-/* Button used to open the contact form - fixed at the bottom of the page */
-/* .open-button {
-  background-color: #555;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-} */
-
-/* The popup form - hidden by default */
-/* .form-popup {
-  display: none;
-  position: relative;
-  bottom: 15px;
-  padding: 15px,15px,15px,15px;
-  border: 3px solid #f1f1f1;
-  z-index: 0;
-  max-width: 100%;
-  height: max-content;
-} */
-
-/* Add styles to the form container */
-/* .form-container {
-  max-width: 100%;
-  padding: 10px;
-  background-color: white;
-} */
-
-/* Full-width input fields */
-/* .form-container input[type=text], .form-container input[type=password] {
-  width: 30%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-} */
-
-/* When the inputs get focus, do something */
-/* .form-container input[type=text]:focus, .form-container input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-} */
-
-/* Set a style for the submit/login button */
-/* .form-container .btn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 15%;
-  margin-bottom:10px;
-  opacity: 0.8;
-} */
-
-/* Add a red background color to the cancel button */
-/* .form-container .cancel {
-  background-color: red;
-} */
-
-/* Add some hover effects to buttons */
-/* .form-container .btn:hover, .open-button:hover {
-  opacity: 1;
-} */
-
-
 
 body{
   height: 100vh;
@@ -179,34 +101,24 @@ body{
   text-decoration: none;
 }
 
-.form-box .btn-social{
-  color: white !important;
+ .btn-social{
+  color: grey !important;
   border: 0;
   font-weight: bold;
 }
 
-.form-box .btn-facebook{
-  background: #4866a8;
+.form-box .google{
+  background: white;
+  border: solid 2px #0069d9;
 }
 
-.form-box .btn-google{
-  background: #da3f34;
+.btn img{
+  width: 30px;
 }
 
-.form-box .btn-twitter{
-  background: #33ccff;
+.form-box .google:hover{
+  background: #f2f2f2;
 }
 
-.form-box .btn-facebook:hover{
-  background: #3d578f;
-}
-
-.form-box .btn-google:hover{
-  background: #bf3b31;
-}
-
-.form-box .btn-twitter:hover{
-  background: #2eb7e5;
-}
 
 
