@@ -11,6 +11,20 @@ body{
   top:0;
   z-index: 10;
 }
+#chatbt{
+  position: fixed;
+  right: 2%;
+  bottom: 4%;
+  transform: scale(2.5);
+  border-radius: 25%;
+  border:none;
+  border-width: 0;
+  background: none;
+}
+#chatbt:hover{
+  background-color: #fff;
+  transform: scale(2.7);
+}
 .navbar .navbar-nav .nav-link {
 color: aliceblue;
 font-weight: 600;
