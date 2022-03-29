@@ -68,8 +68,9 @@
       </div>
     </div>
   </section>
-<button id="chatbt"><i class="fas fa-robot" style="color: rgb(31, 161, 221);"></i></button>
-  <iframe src="HTML/chatbot.html" frameborder="0"></iframe>
+<button id="chatbt" onclick="showchatf()"><i class="fas fa-robot" style="color: rgb(31, 161, 221);"></i></button>
+  <iframe src="HTML/chatbot.html" frameborder="0" id="chatf"></iframe>
+
 
   
 
@@ -210,6 +211,27 @@
       </div>
     </div>
   </section>
+  <script>
+    function showchatf() {
+      if(document.getElementById("chatf").style.display == "block"){
+        document.getElementById("chatf").style.display = "none";
+      }
+      else{
+        document.getElementById("chatf").style.display = "block";
+      }
+    }
+  </script>
+  <style>
+    #chatf {
+      display: none;
+      height: 50%;
+      width: 25%;
+      position: fixed;
+  right: 4%;
+  bottom: 6%;
+  border-radius:10px;
+    }
+  </style>
 </body>
 
 </html>
