@@ -71,7 +71,9 @@ app.post('/mentor_regis',(req,res)=>{
     }).catch(()=>{
         res.status(400).send("Error")
     })
-    res.end("Welcome")
+    const mentee_registration_file=fs.readFileSync('../../HTML/card.html');
+    res.writeHead(200,{'Content-Type':'text/html'});
+    res.end(mentee_registration_file)
 })
 app.post('/mentee_regis',(req,res)=>{
     console.log(req.body);
@@ -81,7 +83,9 @@ app.post('/mentee_regis',(req,res)=>{
     }).catch(()=>{
         res.status(400).send("Error")
     })
-    res.end("Welcome")
+    const mentee_registration_file=fs.readFileSync('../../HTML/card.html');
+    res.writeHead(200,{'Content-Type':'text/html'});
+    res.end(mentee_registration_file)
 })
 app.listen(port,'127.0.0.1',()=>{
     console.log(`The application started successfully on port ${port}`);
