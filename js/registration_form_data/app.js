@@ -10,8 +10,11 @@ const { Script } = require('vm');
 // const path_file=path.join(__dirname,"../")
 
 // console.log(path.join(__dirname,"../../HTML"));
-staticpath=path.join(__dirname,"../../HTML")
-app.use(express.static(staticpath))
+// staticpath=path.join(__dirname,"../../HTML")
+// app.use(express.static(staticpath))
+app.set('view engine','pug');//Set the template Engine as pug
+app.set('views',path.join(__dirname,'views'));//Set the views directory
+
 // app.use('/static',express.static('static'));//for serving static files
 const mongoose = require('mongoose');
 const bodyparser=require('body-parser')
@@ -59,9 +62,10 @@ app.set('view engine','pug');
 app.set('views',path.join(__dirname,'views'));
 
 app.get('/HTML/mentor-registration.html',(req,res)=>{ 
-    const mentor_registration_file=fs.readFileSync('../../HTML/mentor-registration.html');
-    res.writeHead(200,{'Content-Type':'text/html'});
-    res.end(mentor_registration_file)
+    // const mentor_registration_file=fs.readFileSync('../../HTML/mentor-registration.html');
+    // res.writeHead(200,{'Content-Type':'text/html'});
+    // res.end(mentor_registration_file)
+    res.status(200).render('mentor_registration.pug');
 })
 app.get('/HTML/mentee-registration.html',(req,res)=>{ 
     const mentee_registration_file=fs.readFileSync('../../HTML/mentee-registration.html');
@@ -69,7 +73,7 @@ app.get('/HTML/mentee-registration.html',(req,res)=>{
     res.end(mentee_registration_file)
 })
 app.get('/index.html',(req,res)=>{ 
-    const Home=fs.readFileSync('../../HTML/index.html');
+    const Home=fs.readFileSync('../../index.html');
     res.writeHead(200,{'Content-Type':'text/html'});
     res.end(Home)
 })
