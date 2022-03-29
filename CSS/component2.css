@@ -18,7 +18,7 @@ body {
 }
 
 .component {
-	position: absolute;
+	position: fixed;
 	height: 13em;
 	width:26em;
 	/* background: rgb(255, 254, 254); */
