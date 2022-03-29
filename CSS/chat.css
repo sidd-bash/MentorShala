@@ -1,5 +1,6 @@
 .container{
-    margin-top: 20px;
+    margin-top: ;
+    border-radius:20vw;
 }
 .contacts{
     min-height:90vh;
@@ -104,16 +105,21 @@ body{
 .input{
     display: flex;
     margin-top: auto;
-    margin-left: 20px;
-    margin-bottom: 20px;
     border:2px solid black;
     border-radius: 10px;
     position: fixed;
-    bottom:10px;
+    bottom:4vh;
     width: 60vw;
     background: white;
     font: 300;
+    clear:both;
+
     
+}
+.inputblock{
+    height: 20vh;
+    background: blue;
+    border:2px solid pink; 
 }
 input[type="text"]{
     background:transparent;
