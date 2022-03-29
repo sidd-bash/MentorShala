@@ -20,7 +20,7 @@
     <button class="cn-button" id="cn-button" >Menu</button>
     <div class="cn-wrapper" id="cn-wrapper">
       <ul>
-        <li><a href="#"><span class='bi bi-bell-fill' style='transform:scale(2.5)'></span></a></li>
+        <li onclick="notification()"><a ><span class='bi bi-bell-fill'  style='transform:scale(2.5)'></span></a></li>
         <li><a href="/HTML/CommunityPage.html"><span class='bi bi-people-fill' style='transform:scale(2.5)'></span></a></li>
         <li><a href="/HTML/card.html"><span class='bi bi-house' style='transform:scale(2.5)'></span></a></li>
         <li><a href="/HTML/chat.html"><span class='bi bi-chat' style='transform:scale(2.5)'></span></a></li>
@@ -41,13 +41,13 @@
 
   <div class="tinder--status">
     <i class="fa fa-remove"></i>
-    <i class="fa fa-check" aria-hidden="true" style="color: blue"></i>
+    <i class="fa fa-heart"></i>
   </div>
 
   <div class="tinder--cards">
-    <div class="tinder--card" style="background-image: url('https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/s960x960/71324845_2332778396833627_5019653047635148800_o.jpg?_nc_cat=107&_nc_ohc=7qy0EiW449AAX9c_rNq&_nc_ht=scontent-bru2-1.xx&oh=154bcf6f71c6a0265738ed089769c7fd&oe=5EBBF7E0">
+    <div class="tinder--card" style="background-image: url(/images/photo.jpg)">
       <div class="book-info">
-        <div>
+        <div style="position: relative">
           <span>Benjamin Kailie</span>
           0 km uit de buurt
         </div>
@@ -93,11 +93,73 @@
 
   <div class="tinder--buttons">
     <button id="nope"><i class="fa fa-remove" ></i></button>
-    <button id="love"><i class="fa fa-check" aria-hidden="true" style="color: blue"></i></button>
+    <button id="tick"><i class="fa fa-check" aria-hidden="true" style="color: blue"></i></button>
   </div>
 </div> 
 
 
+
+
+
+<div class="notification-panel" id="notification-panel">
+  <h2>NOTIFICATIONS</h2>
+  <div class="n"> Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
+  <div class="n"> Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
+  <div class="n"> Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
+  <div class="n"> Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
+</div>
+
+
+
+<button class="filter" onclick="filter()"><i class="fa fa-filter" aria-hidden="true" style="color: white"></i></button>
+
+<div class="filters" id="filters">
+      Language:
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">English</button>
+    <div id="myDropdown" class="dropdown-content">
+      <a href="#Hindi">Hindi</a>
+      <a href="#Tamil">Tamil</a>
+      <a href="#Telugu">Telugu</a>
+    </div>
+  </div>
+ Skills:
+  </div>
+  <div class="skillfilter">
+<input type="text" id="skillfilter" placeholder="ex : HTML,CSS,REACT">
+  </div>
+</div>
+<script>
+  function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+  
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+  </script>
+
+<script>
+  function filter(){
+    if(document.getElementById("filters").style.display == "none"){
+      document.getElementById("filters").style.display = "block";
+      document.getElementById("skillfilter").style.display = "block";
+    }
+    else{
+      document.getElementById("filters").style.display = "none";
+      document.getElementById("skillfilter").style.display = "none";
+    }
+  }
+</script>
 
 
 <script src="/js/polyfills.js"></script>
@@ -107,6 +169,17 @@
 
 
   <script src='https://hammerjs.github.io/dist/hammer.min.js'></script><script  src="/js/card.js"></script>
+  <script>
+    function notification(){
+      if(document.getElementById("notification-panel").style.display == "none"){
+        document.getElementById("notification-panel").style.display = "block";
+       
+      }
+      else{
+        document.getElementById("notification-panel").style.display = "none";
+      }
+    }
+  </script>
 
 </body>
 </html>
