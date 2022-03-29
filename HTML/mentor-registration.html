@@ -16,14 +16,14 @@
     <form class="row g-3 needs-validation" novalidate action="/mentor_regis" method="post">
         <div class="col-md-4">
           <label for="validationCustom01" class="form-label">First name</label>
-          <input type="text" class="form-control" id="validationCustom01" placeholder="Mark" required>
+          <input type="text" class="form-control" name="firstName" id="validationCustom01" placeholder="Mark" required>
           <div class="valid-feedback">
             Looks good!
           </div>
         </div>
         <div class="col-md-4">
           <label for="validationCustom02" class="form-label">Last name</label>
-          <input type="text" class="form-control" id="validationCustom02" placeholder="Otto" required>
+          <input type="text" class="form-control" name="lastName" id="validationCustom02" placeholder="Otto" required>
           <div class="valid-feedback">
             Looks good!
           </div>
@@ -32,7 +32,7 @@
           <label for="validationCustomUsername" class="form-label">Username</label>
           <div class="input-group has-validation">
             <!-- <span class="input-group-text" id="inputGroupPrepend"></span> -->
-            <input type="text" class="form-control" placeholder="Mark_Otto" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+            <input type="text" class="form-control" name="userName" placeholder="Mark_Otto" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
             <div class="invalid-feedback">
               Please choose a username.
             </div>

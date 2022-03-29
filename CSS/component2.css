@@ -5,14 +5,14 @@
 	margin: 0;
 	padding: 0;
 	list-style: none;
-}
+} 
 
-html,
+ html,
 body {
 	height: 100%;
-}
+} 
 
-body {
+ body {
 	background: #52be7f;
 	color: #fff;
 }
@@ -21,7 +21,7 @@ body {
 	position: fixed;
 	height: 13em;
 	width:26em;
-	/* background: rgb(255, 254, 254); */
+
 	font-family: 'Lato', Arial, sans-serif;
 	left:-7%;
 	bottom:20%;
@@ -181,7 +181,7 @@ body {
 	background: radial-gradient(transparent 35%, #449e6a 35%);
 }
 .csstransforms .cn-wrapper li a:focus {
-    position: fixed; /* fix the displacement bug in webkit browsers when using tab key */
+    position: fixed; 
 }
 
 .csstransforms .opened-nav li {
@@ -224,20 +224,6 @@ body {
 	-ms-transform: rotate(150deg) skew(60deg);
 	transform: rotate(150deg) skew(60deg);
 }
-
-/* .csstransforms .opened-nav li:nth-child(6) {
-	-webkit-transform: rotate(140deg) skew(60deg);
-	-moz-transform: rotate(140deg) skew(60deg);
-	-ms-transform: rotate(140deg) skew(60deg);
-	transform: rotate(140deg) skew(60deg);
-}
-
-.csstransforms .opened-nav li:nth-child(7) {
-	-webkit-transform: rotate(172deg) skew(60deg);
-	-moz-transform: rotate(172deg) skew(60deg);
-	-ms-transform: rotate(172deg) skew(60deg);
-	transform: rotate(172deg) skew(60deg);
-} */
 
 .no-csstransforms .cn-wrapper {
 	overflow: hidden;
