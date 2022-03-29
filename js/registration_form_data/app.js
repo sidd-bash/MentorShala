@@ -7,7 +7,12 @@ const fs=require('fs');
 const { send } = require('process');
 const { Script } = require('vm');
 // const { hostname } = require('os');
+// const path_file=path.join(__dirname,"../")
 
+// console.log(path.join(__dirname,"../../HTML"));
+staticpath=path.join(__dirname,"../../HTML")
+app.use(express.static(staticpath))
+// app.use('/static',express.static('static'));//for serving static files
 const mongoose = require('mongoose');
 const bodyparser=require('body-parser')
 main().catch(err => console.log(err));
@@ -62,6 +67,11 @@ app.get('/HTML/mentee-registration.html',(req,res)=>{
     const mentee_registration_file=fs.readFileSync('../../HTML/mentee-registration.html');
     res.writeHead(200,{'Content-Type':'text/html'});
     res.end(mentee_registration_file)
+})
+app.get('/index.html',(req,res)=>{ 
+    const Home=fs.readFileSync('../../HTML/index.html');
+    res.writeHead(200,{'Content-Type':'text/html'});
+    res.end(Home)
 })
 app.post('/mentor_regis',(req,res)=>{
     console.log(req.body);
