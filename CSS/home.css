@@ -316,10 +316,10 @@ img:hover{
     background: #f8f9fa;
     padding-bottom: 50px;
     padding-top: auto;
-    background: linear-gradient(to right, #b192b6, #81b988);
+    background: linear-gradient(to right, #db94e5, #df22d5);
 }
 #about-us .title{
-  color:rgb(216, 34, 65);
+  color:rgb(17, 17, 17);
 }
 /* Contact Us */
 #social-media{
@@ -331,6 +331,10 @@ img:hover{
   font-weight: 600;
   margin-bottom: 30px;
 }
+.icons{
+  margin: 0rem 10rem;
+  align-items: center;
+}
 .icons img{
   width: 75px;
   transition: 0.5s;
@@ -338,6 +342,7 @@ img:hover{
 .icons a:hover img{
   transform: translateY(-10px);
 }
+
 
 /* Footer image */
 #footer{
