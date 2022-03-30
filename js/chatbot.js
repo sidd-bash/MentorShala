@@ -40,18 +40,18 @@ $('.q-one .confirm-button').one('click', function(e) {
     if($(this).parents($('.question')).hasClass('q-one')) {
         $('.intro').slideUp(500).fadeOut(500);
         if($(this).hasClass('confirm-yes')) {
-            $('.q-one .response').addClass('complete').text('Great! I\'m glad you did! You should probably like more of my things.');
+            $('.q-one .response').addClass('complete').text('Great! Its a good thing to ask questions.');
             $('.q-one .confirm-no, .q-one .confirm-not-sure').fadeOut(250);
             if($('.q-one p:first-child').hasClass('locations')) {
                 confirmedLocations = true;
             }
         }
         else if($(this).hasClass('confirm-no')) {
-            $('.q-one .response').addClass('complete').text('What?! Why not? You really should. I need the internet points, man!');
+            $('.q-one .response').addClass('complete').text('So would you like to know more about the platform?');
             $('.q-one .confirm-yes, .q-one .confirm-not-sure').fadeOut(250);
         }
         else if($(this).hasClass('confirm-not-sure')) {
-            $('.q-one .response').addClass('complete').text('That\'s okay, I can just assume that this is your first ever codepen visit.');
+            $('.q-one .response').addClass('complete').text('I am a bot not you.');
             $('.q-one .confirm-no, .q-one .confirm-yes').fadeOut(250);
         }
     }
@@ -68,14 +68,14 @@ $('.q-two .confirm-button').one('click', function(e) {
     if($(this).parents($('.question')).hasClass('q-two')) {
         $('.q-one').slideUp(500).fadeOut(500);
         if($(this).hasClass('confirm-yes')) {
-            $('.q-two .response').addClass('complete').text('Isn\'t that game awesome! It had the best soundtrack!');
+            $('.q-two .response').addClass('complete').text('Register --> Fill personal Details --> Start Matching');
             $('.q-two .confirm-no, .q-two .confirm-not-sure').fadeOut(250);
             if($('.q-two p:first-child').hasClass('relative')) {
                 confirmedRelatives = true;
             }
         }
         else if($(this).hasClass('confirm-no')) {
-            $('.q-two .response').addClass('complete').text('You haven\'t? Well, I\'m not sure we can be best friends, but we can sit at the same lunch table.');
+            $('.q-two .response').addClass('complete').text('Right Swipe all the mentors according to your need --> Mentor will connect with you soon');
             $('.q-two .confirm-yes, .q-two .confirm-not-sure').fadeOut(250);
         }
         else if($(this).hasClass('confirm-not-sure')) {
@@ -96,18 +96,18 @@ $('.q-three .confirm-button').one('click', function(e) {
     if($(this).parents($('.question')).hasClass('q-three')) {
         $('.q-two').slideUp(500).fadeOut(500);
         if($(this).hasClass('confirm-yes')) {
-            $('.q-three .response').addClass('complete').text('Me Too!!!! I knew I liked you.');
+            $('.q-three .response').addClass('complete').text('Thank you have a nice day!');
             $('.q-three .confirm-no, .q-three .confirm-not-sure').fadeOut(250);
             if($('.q-three p:first-child').hasClass('over-thirty')) {
                 confirmedOver30 = true;
             }
         }
         else if($(this).hasClass('confirm-no')) {
-            $('.q-three .response').addClass('complete').text('We can\'t be friends.');
+            $('.q-three .response').addClass('complete').text('Please share your detailed query on this email Id :- mentorShala@gmail.com');
             $('.q-three .confirm-yes, .q-three .confirm-not-sure').fadeOut(250);
         }
         else if($(this).hasClass('confirm-not-sure')) {
-            $('.q-three .response').addClass('complete').text('I don\'t know?! I mean, you either do or you don\'t. Sorry, Sorry. You can be unsure.');
+            $('.q-three .response').addClass('complete').text('Please share your detailed query on this email Id :- mentorShala@gmail.com');
             $('.q-three .confirm-no, .q-three .confirm-yes').fadeOut(250);
         }
     }

@@ -23,6 +23,7 @@
       rel="stylesheet"
     />
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="/js/login_admin.js"></script>
   </head>
   <body>
     <div class="container">
@@ -37,7 +38,8 @@
                 <span><i class="fa fa-envelope-o"></i></span>
                 <input
                   type="email"
-                  name=""
+                  name="Username"
+                  id="Username"
                   placeholder="Email Address"
                   tabindex="10"
                   required
@@ -47,7 +49,8 @@
                 <span><i class="fa fa-key"></i></span>
                 <input
                   type="password"
-                  name=""
+                  name="Pass"
+                  id="Pass"
                   placeholder="Password"
                   required
                 />
@@ -68,37 +71,13 @@
               </div>
 
               <div class="mb-3">
-                <button type="submit" class="btn btn-block text-uppercase">
+                <button type="submit" onclick="CheckDetails()" class="btn btn-block text-uppercase">
                   Login
                 </button>
               </div>
 
               <div class="text-left">
                 <a href="#" class="forget-link"> Forget Password? </a>
-              </div>
-
-              <div class="mb-3 text-lg-center">or</div>
-
-              <div class="row mb-3">
-                <div class="col-2">
-                  
-                </div>
-                
-
-                <div class="col-8">
-                  <a href="#" class="btn btn-block btn-social">
-                    <div class="google">
-                      <img src="/images/39216d73519bca962bd4a01f3e8f4a4b.png" alt="/"
-                    </div> 
-                    Sign in with Google
-                  </a>
-                </div>
-               
-                <hr class="my-4" />
-
-              <div class="text-center mb-2">
-                Don't have an account?
-                <a href="/HTML/register.html" class="register-link">Register here</a>
               </div>
             </form>
           </div>
