@@ -64,9 +64,9 @@ nav li{
 tr{
     justify-content: center;
 }
-table,tr,th{
-    border:2px solid black;
-}
+table, th, td {
+    border: 1px solid;
+  }
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -93,7 +93,7 @@ i:hover{
 #reportpanel{
     display: none;
     height:100%;
-    width:50%;
+    width:70%;
     min-height: 80vh;
     margin:auto;
     
@@ -107,7 +107,12 @@ i:hover{
   border-bottom:2px solid black;
 }
 .decidebtns{
-    float:right;
+    padding-right: 10px;
+    padding-left: 0px;
+    margin-right: 20px;
+}
+.btns{
+    padding-right: 30px;
 }
 .reportbtn{
     margin-top: 30px;
