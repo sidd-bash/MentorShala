@@ -7,54 +7,51 @@ const fs=require('fs');
 const { send } = require('process');
 const { Script } = require('vm');
 const bodyParser=require('body-parser')
-// const { hostname } = require('os');
 
-
-
-// app.use(express.static(staticpath))
-// app.set('view engine','pug');
-// app.set('views',path.join(__dirname,'views'));
-// app.use(express.static(__dirname + "/../../CSS"));
-
-// app.use('/static',express.static('static'));//for serving static files
-const mongoose = require('mongoose');
-main().catch(err => console.log(err));
-
-async function main() {
-    await mongoose.connect('mongodb://localhost:27017/registered_User_info');    //mentor_info is my database name
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb+srv://saurabhkumar1432001:Saurabh%40mongodb@mentorshala.3gffj.mongodb.net/test";
+function insertion(myobj) {
+    MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("mydb");
+        dbo.collection("personalInfo_Mentor").insertOne(myobj, function(err, res) {
+          if (err) throw err;
+          console.log("1 document inserted");
+          db.close();
+        });
+      });
 }
+// var db=mongoose.connection;
+// db.on('error',console.error.bind(console,'connection error:'));
+// db.once('open',function(){
+//     console.log("we are connected");
+// })
+// const { Schema } = mongoose;
 
-var db=mongoose.connection;
-db.on('error',console.error.bind(console,'connection error:'));
-db.once('open',function(){
-    console.log("we are connected");
-})
-const { Schema } = mongoose;
+// const mentor_registrator = new Schema({
+//     firstName:  String, 
+//     lastName: String,
+//     userName:   String,
+//     city: String,
+//     educationInfo: String,
+//     preferdlang: String,
+//     skills: String,
+//     shortDescription: String,
+// });
 
-const mentor_registrator = new Schema({
-    firstName:  String, 
-    lastName: String,
-    userName:   String,
-    city: String,
-    educationInfo: String,
-    preferdlang: String,
-    skills: String,
-    shortDescription: String,
-});
+// const mentor_register = mongoose.model('mentor_registration',mentor_registrator );     //mentor_registration is collection name
+// const mentee_registrator = new Schema({
+//     firstName:  String, 
+//     lastName: String,
+//     userName:   String,
+//     city: String,
+//     educationInfo: String,
+//     preferedLanguage: String,
+//     Interest: String,
+//     shortDescription: String,
+// });
 
-const mentor_register = mongoose.model('mentor_registration',mentor_registrator );     //mentor_registration is collection name
-const mentee_registrator = new Schema({
-    firstName:  String, 
-    lastName: String,
-    userName:   String,
-    city: String,
-    educationInfo: String,
-    preferedLanguage: String,
-    Interest: String,
-    shortDescription: String,
-});
-
-const mentee_register = mongoose.model('mentee_registration',mentee_registrator );     //mentor_registration is collection name
+// const mentee_register = mongoose.model('mentee_registration',mentee_registrator );     //mentor_registration is collection name
 // app.use('/static',express.static('static'));
 app.use(express.urlencoded());
 // app.set('view engine','pug');
@@ -98,27 +95,20 @@ app.get('HTML/login-admin.html',(req,res)=>{
     res.writeHead(200,{'Content-Type':'text/html'});
     res.end(loginAdmin)
 })
-app.post('/HTML/card.html',(req,res)=>{
-    console.log(req.body);
-    const CardPage=fs.readFileSync('../../HTML/card.html');
-    res.writeHead(200,{'Content-Type':'text/html'});
-    res.end(CardPage)
-    // var mydata=new mentor_register(req.body)
-    // mydata.save().then(()=>{
-    //     res.send("This item has been saved")
-    // }).catch(()=>{
-    //     res.status(400).send("Error")
-    // })
-    // const mentee_registration_file=fs.readFileSync('../../HTML/card.html');
-    // res.writeHead(200,{'Content-Type':'text/html'});
-    // res.end(mentee_registration_file)
-})
+// app.post('/HTML/card.html',(req,res)=>{
+//     console.log(req.body);
+//     const CardPage=fs.readFileSync('../../HTML/card.html');
+//     res.writeHead(200,{'Content-Type':'text/html'});
+//     res.end(CardPage)
+    
+// })
 
 app.post('/HTML/card.html',(req,res)=>{
     console.log(req.body);
     const CardPage=fs.readFileSync('../../HTML/card.html');
     res.writeHead(200,{'Content-Type':'text/html'});
     res.end(CardPage)
+    insertion(req.body);
     // var mydata=new mentee_register(req.body)
     // mydata.save().then(()=>{
     //     res.send("This item has been saved")
