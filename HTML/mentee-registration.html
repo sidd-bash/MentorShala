@@ -38,6 +38,15 @@
         <div class="col-sm col-custom">
           <form class="row g-3 needs-validation" novalidate action="/HTML/card.html" method="post">
             <div>
+              <label for="educationInfo" class="form-label">Education</label>
+              <select class="form-select" name="educationInfo" id="educationInfo" aria-label="Default select example">
+                <option selected>Mentee</option>
+              </select>
+              <div class="invalid-feedback">
+                select a valid answer from the given option.
+              </div>
+            </div>
+            <div>
               <label for="firstName" class="form-label">First name</label>
               <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Mark" required>
               <div class="valid-feedback">
