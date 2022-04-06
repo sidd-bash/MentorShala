@@ -6,6 +6,7 @@ const path = require('path');
 const fs=require('fs');
 const { send } = require('process');
 const { Script } = require('vm');
+const bodyParser=require('body-parser')
 // const { hostname } = require('os');
 
 
@@ -17,7 +18,6 @@ const { Script } = require('vm');
 
 // app.use('/static',express.static('static'));//for serving static files
 const mongoose = require('mongoose');
-const bodyparser=require('body-parser')
 main().catch(err => console.log(err));
 
 async function main() {
@@ -56,7 +56,7 @@ const mentee_registrator = new Schema({
 
 const mentee_register = mongoose.model('mentee_registration',mentee_registrator );     //mentor_registration is collection name
 // app.use('/static',express.static('static'));
-// app.use(express.urlencoded());
+app.use(express.urlencoded());
 // app.set('view engine','pug');
 
 
@@ -84,22 +84,25 @@ app.get('/index.html',(req,res)=>{
     res.end(Home)
 })
 app.get('/HTML/login-mentor.html',(req,res)=>{ 
-    const Home=fs.readFileSync('../../HTML/login-mentor.html');
+    const loginMentor=fs.readFileSync('../../HTML/login-mentor.html');
     res.writeHead(200,{'Content-Type':'text/html'});
-    res.end(Home)
+    res.end(loginMentor)
 })
 app.get('HTML/login-mentee.html',(req,res)=>{ 
-    const Home=fs.readFileSync('../../HTML/login-mentee.html');
+    const loginMentee=fs.readFileSync('../../HTML/login-mentee.html');
     res.writeHead(200,{'Content-Type':'text/html'});
-    res.end(Home)
+    res.end(loginMentee)
 })
 app.get('HTML/login-admin.html',(req,res)=>{ 
-    const Home=fs.readFileSync('../../HTML/login-admin.html');
+    const loginAdmin=fs.readFileSync('../../HTML/login-admin.html');
     res.writeHead(200,{'Content-Type':'text/html'});
-    res.end(Home)
+    res.end(loginAdmin)
 })
-app.post('/mentor_regis',(req,res)=>{
+app.post('/HTML/card.html',(req,res)=>{
     console.log(req.body);
+    const CardPage=fs.readFileSync('../../HTML/card.html');
+    res.writeHead(200,{'Content-Type':'text/html'});
+    res.end(CardPage)
     // var mydata=new mentor_register(req.body)
     // mydata.save().then(()=>{
     //     res.send("This item has been saved")
@@ -110,8 +113,12 @@ app.post('/mentor_regis',(req,res)=>{
     // res.writeHead(200,{'Content-Type':'text/html'});
     // res.end(mentee_registration_file)
 })
-app.post('/mentee_regis',(req,res)=>{
+
+app.post('/HTML/card.html',(req,res)=>{
     console.log(req.body);
+    const CardPage=fs.readFileSync('../../HTML/card.html');
+    res.writeHead(200,{'Content-Type':'text/html'});
+    res.end(CardPage)
     // var mydata=new mentee_register(req.body)
     // mydata.save().then(()=>{
     //     res.send("This item has been saved")

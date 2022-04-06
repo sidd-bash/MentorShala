@@ -36,42 +36,42 @@
           
         </div>
         <div class="col-sm col-custom">
-          <form class="row g-3 needs-validation" novalidate action="/mentee_regis" method="post">
+          <form class="row g-3 needs-validation" novalidate action="/HTML/card.html" method="post">
             <div>
-              <label for="validationCustom01" class="form-label">First name</label>
-              <input type="text" class="form-control" name="firstName" id="validationCustom01" placeholder="Mark" required>
+              <label for="firstName" class="form-label">First name</label>
+              <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Mark" required>
               <div class="valid-feedback">
                 Looks good!
               </div>
             </div>
             <div>
-              <label for="validationCustom02" class="form-label">Last name</label>
-              <input type="text" class="form-control" name="lastName" id="validationCustom02" placeholder="Otto" required>
+              <label for="lastName" class="form-label">Last name</label>
+              <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Otto" required>
               <div class="valid-feedback">
                 Looks good!
               </div>
             </div>
             <div>
-              <label for="validationCustomUsername" class="form-label">Username</label>
+              <label for="userName" class="form-label">Username</label>
               <div class="input-group has-validation">
                 <!-- <span class="input-group-text" id="inputGroupPrepend"></span> -->
-                <input type="text" class="form-control" name="userName" placeholder="Mark_Otto" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                <input type="text" class="form-control" name="userName" placeholder="Mark_Otto" id="userName" aria-describedby="inputGroupPrepend" required>
                 <div class="invalid-feedback">
                   Please choose a username.
                 </div>
               </div>
             </div>
             <div>
-              <label for="validationCustom03" class="form-label">City</label>
-              <input type="text" class="form-control" name="city" id="validationCustom03" required>
+              <label for="city" class="form-label">City</label>
+              <input type="text" class="form-control" name="city" id="city" required>
               <div class="invalid-feedback">
                 Please provide a valid city.
               </div>
             </div>
             
             <div>
-              <label for="validationCustom04" class="form-label">Education</label>
-              <select class="form-select" name="educationInfo" aria-label="Default select example">
+              <label for="educationInfo" class="form-label">Education</label>
+              <select class="form-select" name="educationInfo" id="educationInfo" aria-label="Default select example">
                 <option selected>Open this select menu</option>
                 <option value="0">below 10th</option>
                 <option value="1">Class 10th passed</option>
@@ -85,9 +85,9 @@
             </div>
             
             <div>
-                <label for="validationCustom03" class="form-label">Prefered Language</label>
+                <label for="preferedLanguage" class="form-label">Prefered Language</label>
                 <!-- <input type="text" class="form-control" id="validationCustom03" required> -->
-                <select class="form-select" id="validationCustom03" aria-label="Default select example" required>
+                <select class="form-select" id="preferedLanguage" name="preferedLanguage" aria-label="Default select example" required>
                   <option selected>Open this select menu</option>
                   <option value="0">English</option>
                   <option value="1">Hindi</option>
@@ -98,16 +98,16 @@
               </div>
     
               <div>
-                <label for="validationCustom05" class="form-label">Skills(Mentor)</label>
-                <textarea  id="" cols="30" rows="2" class="form-control" name="skills" id="validationCustom05" required></textarea>
+                <label for="Interest" class="form-label">Skills(Mentor)</label>
+                <textarea  id="" cols="30" rows="2" class="form-control" name="Interest" id="Interest" required></textarea>
                 <div class="invalid-feedback">
                   Please provide a valid Interest.
                 </div>
               </div>
     
               <div>
-                <label for="validationCustom05" class="form-label">Short Description</label>
-                <textarea  id="" cols="30" rows="2" class="form-control" name="shortDescription" id="validationCustom05" required></textarea>
+                <label for="shortDescription" class="form-label">Short Description</label>
+                <textarea  id="" cols="30" rows="2" class="form-control" name="shortDescription" id="shortDescription" required></textarea>
                 <div class="invalid-feedback">
                   Please provide a valid Description.
                 </div>
@@ -126,7 +126,7 @@
             </div>
             <div>
               <button class="btn btn-primary" type="submit">Submit form</button>
-              </div>
+            </div>
           </form>
         </div>
       </div>
