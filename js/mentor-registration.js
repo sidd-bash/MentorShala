@@ -18,3 +18,6 @@
         }, false)
       })
   })()
+
+  var ele = document.getElementById("PersonType");
+  ele.readOnly=true;

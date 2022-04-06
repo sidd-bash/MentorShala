@@ -51,10 +51,9 @@ function insertion(myobj) {
 //     shortDescription: String,
 // });
 
-// const mentee_register = mongoose.model('mentee_registration',mentee_registrator );     //mentor_registration is collection name
-// app.use('/static',express.static('static'));
+
 app.use(express.urlencoded());
-// app.set('view engine','pug');
+
 
 
 app.use(express.static(path.join(__dirname,"../../")));
@@ -62,13 +61,6 @@ app.get('/HTML/mentor-registration.html',(req,res)=>{
     const mentor_registration_file=fs.readFileSync('../../HTML/mentor-registration.html');
     res.writeHead(200,{'Content-Type':'text/html'});
     res.end(mentor_registration_file)
-    // res.sendFile(path.join(__dirname,"public","mentor-registration.html"));
-
-    // res.set({
-    //     'Access-control-Allow-Origin': '*'
-    // });
-    // res.redirect('rgistration.html');
-    // res.status(200).render('mentor_registration.pug');
 })
 app.get('/HTML/mentee-registration.html',(req,res)=>{ 
     const mentee_registration_file=fs.readFileSync('../../HTML/mentee-registration.html');
@@ -95,29 +87,13 @@ app.get('HTML/login-admin.html',(req,res)=>{
     res.writeHead(200,{'Content-Type':'text/html'});
     res.end(loginAdmin)
 })
-// app.post('/HTML/card.html',(req,res)=>{
-//     console.log(req.body);
-//     const CardPage=fs.readFileSync('../../HTML/card.html');
-//     res.writeHead(200,{'Content-Type':'text/html'});
-//     res.end(CardPage)
-    
-// })
-
 app.post('/HTML/card.html',(req,res)=>{
     console.log(req.body);
     const CardPage=fs.readFileSync('../../HTML/card.html');
     res.writeHead(200,{'Content-Type':'text/html'});
     res.end(CardPage)
     insertion(req.body);
-    // var mydata=new mentee_register(req.body)
-    // mydata.save().then(()=>{
-    //     res.send("This item has been saved")
-    // }).catch(()=>{
-    //     res.status(400).send("Error")
-    // })
-    // const mentee_registration_file=fs.readFileSync('../../HTML/card.html');
-    // res.writeHead(200,{'Content-Type':'text/html'});
-    // res.end(mentee_registration_file)
+    
 })
 app.listen(port,'127.0.0.1',()=>{
     console.log(`The application started successfully on port ${port}`);
