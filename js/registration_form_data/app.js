@@ -10,11 +10,11 @@ const bodyParser=require('body-parser')
 
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://saurabhkumar1432001:Saurabh%40mongodb@mentorshala.3gffj.mongodb.net/test";
-function insertion(myobj) {
+function insertion_in_personalInfo(myobj) {
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         var dbo = db.db("mydb");
-        dbo.collection("personalInfo_Mentor").insertOne(myobj, function(err, res) {
+        dbo.collection("personalInfo").insertOne(myobj, function(err, res) {
           if (err) throw err;
           console.log("1 document inserted");
           db.close();
@@ -53,9 +53,6 @@ function insertion(myobj) {
 
 
 app.use(express.urlencoded());
-
-
-
 app.use(express.static(path.join(__dirname,"../../")));
 app.get('/HTML/mentor-registration.html',(req,res)=>{ 
     const mentor_registration_file=fs.readFileSync('../../HTML/mentor-registration.html');
@@ -92,7 +89,7 @@ app.post('/HTML/card.html',(req,res)=>{
     const CardPage=fs.readFileSync('../../HTML/card.html');
     res.writeHead(200,{'Content-Type':'text/html'});
     res.end(CardPage)
-    insertion(req.body);
+    insertion_in_personalInfo(req.body);
     
 })
 app.listen(port,'127.0.0.1',()=>{
