@@ -190,16 +190,19 @@ body{
 .notification-panel{
   position: absolute;
   right: 0;
-  height: 100%;
+  top:20%;
+  padding:3vh;
+  height: 50%;
   width: 25%;
-  background-color: #fff;
+  background-color: rgba(255,255,255,0.6);
   display: none;
+  border-radius: 2vh;
   
 
 }
 .n{
-  margin-top: 10px;
-  border-top: 1px solid #ccc;
+  margin-top: 2vh;
+  border-top: 1px solid #bd41bd;
 }
 
 .filter{
