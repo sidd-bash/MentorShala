@@ -102,13 +102,25 @@ body{
 #writeAns{
     margin: 1rem 0.7rem;
 }
-#sendAns{
-    width: 5rem;
+
+#sendAns2 button{
+    margin: 0.8rem 0rem;
+    width: 3rem;
     border-radius: 100%;
     /* border: 1px solid red; */
     border-style: none;
 }
-#sendAns img{
+#sendAns2 button img{
+    width: 100%
+}
+#sendAns1 button{
+    margin-top: 4rem;
+    width: 3rem;
+    border-radius: 100%;
+    /* border: 1px solid red; */
+    border-style: none;
+}
+#sendAns1 button img{
     width: 100%
 }
 @media screen and (max-width:600px) {
@@ -121,4 +133,34 @@ body{
     width: 2rem;
     height: 2rem;
     
+}
+#askdiv{
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    z-index: 2;
+}
+#askdiv button{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border-style: none;
+    background-color: rgb(198, 90, 223);
+}
+#QuestionAskWindow{
+    display: none;
+}
+#QuestionWindowClosebtn{
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+}
+#QuestionWindowClosebtn button{
+    width: 3rem;
+    height: 3rem;
+    border-style: none;
+    background-color: aliceblue;
+}
+#QuestionWindowClosebtn button i{
+    width: 100%;
 }

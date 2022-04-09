@@ -24,36 +24,6 @@ function insertion_in_personalInfo(myobj) {
 }
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname,"../../")));
-// app.get('/HTML/mentor-registration.html',(req,res)=>{ 
-//     const mentor_registration_file=fs.readFileSync('../../HTML/mentor-registration.html');
-//     res.writeHead(200,{'Content-Type':'text/html'});
-//     res.end(mentor_registration_file)
-// })
-// app.get('/HTML/mentee-registration.html',(req,res)=>{ 
-//     const mentee_registration_file=fs.readFileSync('../../HTML/mentee-registration.html');
-//     res.writeHead(200,{'Content-Type':'text/html'});
-//     res.end(mentee_registration_file)
-// })   
-// app.get('/index.html',(req,res)=>{ 
-//     const Home=fs.readFileSync('index.html');
-//     res.writeHead(200,{'Content-Type':'text/html'});
-//     res.end(Home)
-// })
-// app.get('/HTML/login-mentor.html',(req,res)=>{ 
-//     const loginMentor=fs.readFileSync('../../HTML/login-mentor.html');
-//     res.writeHead(200,{'Content-Type':'text/html'});
-//     res.end(loginMentor)
-// })
-// app.get('HTML/login-mentee.html',(req,res)=>{ 
-//     const loginMentee=fs.readFileSync('../../HTML/login-mentee.html');
-//     res.writeHead(200,{'Content-Type':'text/html'});
-//     res.end(loginMentee)
-// })
-// app.get('HTML/login-admin.html',(req,res)=>{ 
-//     const loginAdmin=fs.readFileSync('../../HTML/login-admin.html');
-//     res.writeHead(200,{'Content-Type':'text/html'});
-//     res.end(loginAdmin)
-// })
 app.post('/HTML/card.html',(req,res)=>{
     console.log(req.body);
     const CardPage=fs.readFileSync('../../HTML/card.html');

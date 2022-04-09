@@ -20,12 +20,12 @@ function dislikepost() {
     }
 }
 
-function openAskwindow() {
-    document.getElementById("popAskWindow").style.display = "block";
+function question_card_open() {
+    document.getElementById("QuestionAskWindow").style.display = "block";
 }
 
-function closeAskWindow() {
-    document.getElementById("popAskWindow").style.display = "none";
+function question_card_close() {
+    document.getElementById("QuestionAskWindow").style.display = "none";
 }
 function AnswerSend() {
     let ans=document.getElementById('writeAns');
