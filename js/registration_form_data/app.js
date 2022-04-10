@@ -22,14 +22,28 @@ function insertion_in_personalInfo(myobj) {
         });
       });
 }
+function insertion_in_CommunityCollection(myobj) {
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    dbo.collection("CommunityCollection").insertOne(myobj, function(err, res) {
+      if (err) throw err;
+      console.log("1 document inserted");
+      db.close();
+    });
+  });
+}
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname,"../../")));
 app.post('/HTML/card.html',(req,res)=>{
     console.log(req.body);
-    const CardPage=fs.readFileSync('../../HTML/card.html');
-    res.writeHead(200,{'Content-Type':'text/html'});
-    res.end(CardPage)
+    res.redirect('../../HTML/card.html')
     insertion_in_personalInfo(req.body);
+})
+app.post('/HTML/CommunityPage.html',(req,res)=>{
+  res.redirect('../../HTML/CommunityPage.html')
+  console.log(req.body);
+  insertion_in_CommunityCollection(req.body);
 })
 app.listen(port,'127.0.0.1',()=>{
     console.log(`The application started successfully on port ${port}`);
