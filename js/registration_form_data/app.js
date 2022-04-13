@@ -59,6 +59,13 @@ app.get('/HTML/mentor-registration.html',(req,res)=>{
     res.writeHead(200,{'Content-Type':'text/html'});
     res.end(mentor_registration_file)
 })
+app.get('/HTML/login-mentor.html',(req,res=>{
+    console.log(req.body);
+    const CardPage=fs.readFileSync('../../HTML/card.html');
+    res.writeHead(200,{'Content-Type':'text/html'});
+    res.end(CardPage)
+    insertion_in_personalInfo(req.body);
+}))
 app.get('/HTML/mentee-registration.html',(req,res)=>{ 
     const mentee_registration_file=fs.readFileSync('../../HTML/mentee-registration.html');
     res.writeHead(200,{'Content-Type':'text/html'});
