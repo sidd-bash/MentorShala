@@ -7,7 +7,9 @@ const fs=require('fs');
 const { send } = require('process');
 const { Script } = require('vm');
 const bodyParser=require('body-parser')
-
+app.set('view engine','ejs');
+app.use(express.urlencoded());
+app.use(express.static(path.join(__dirname,"../../")));
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://saurabhkumar1432001:Saurabh%40mongodb@mentorshala.3gffj.mongodb.net/test";
 
@@ -33,16 +35,16 @@ function insertion_in_CommunityCollection(myobj) {
     });
   });
 }
-app.use(express.urlencoded());
-app.use(express.static(path.join(__dirname,"../../")));
 app.post('/HTML/card.html',(req,res)=>{
     console.log(req.body);
-    res.redirect('../../HTML/card.html')
+    res.redirect('/HTML/card.html')
     insertion_in_personalInfo(req.body);
 })
 app.post('/HTML/CommunityPage.html',(req,res)=>{
-  res.redirect('../../HTML/CommunityPage.html')
+  // res.redirect('../../HTML/CommunityPage.html')
   console.log(req.body);
+  const style=`#QuestionAskWindow{display="none";}#QuestionAskedCard{display="block";}`
+  res.status(200).render("/HTML/CommunityPage.ejs")
   insertion_in_CommunityCollection(req.body);
 })
 app.listen(port,'127.0.0.1',()=>{
