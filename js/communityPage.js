@@ -20,14 +20,21 @@ function dislikepost() {
     }
 }
 
-function openAskwindow() {
-    document.getElementById("popAskWindow").style.display = "block";
+function question_card_open() {
+    document.getElementById("QuestionAskWindow").style.display = "block";
 }
 
-function closeAskWindow() {
-    document.getElementById("popAskWindow").style.display = "none";
+function question_card_close() {
+    document.getElementById("QuestionAskWindow").style.display = "none";
 }
 function AnswerSend() {
     let ans=document.getElementById('writeAns');
     ans.value="";
+}
+
+function insertion_in_mongo() {
+    const ques=document.getElementById("Question-Asked").value;
+    document.getElementById("QuestionAskWindow").style.display = "none";
+    document.getElementById("QuestionAskedCard").style.display = "block";
+    document.getElementById("QuestionAskedShow").innerHTML=ques;
 }

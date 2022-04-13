@@ -60,6 +60,23 @@ chatwin.addEventListener('keydown', function(event){
 }
 );
 
+document.querySelector(".chat").style.display='none'
+$(document).scroll(function() {
+    
+    myID = document.getElementById("chat");
+    let chatcontainer = document.getElementsByClassName("chatwindow")[1];
+    var myScrollFunc = function () {
+        var y = chatcontainer.scrollY;
+        if (y = 0) {
+            myID.style.opacity='0';
+        }
+    };
+
+    window.addEventListener("scroll", myScrollFunc);
+});
+
+
+
 let contact1_messages={
     'sent':{
         'sequence':1,
