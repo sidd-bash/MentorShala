@@ -41,6 +41,19 @@ app.get('/card', (req, res) => {
   res.render('mentor-registration');
  });
 
+ app.get('/login-admin', (req, res) => {
+  res.render('login-admin');
+
+ });
+
+ app.get('/admin', (req, res) => {
+   const count_mentor=admin();
+  const params={"mentorCount": count_mentor}
+  res.render('admin',params);
+
+ });
+
+
 
 
 
@@ -57,6 +70,19 @@ function insertion_in_personalInfo(myobj) {
       db.close();
     });
   });
+}
+
+function admin(){
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    const mentor_count=dbo.collection("personalInfo").find({PersonType:"Mentor"}).count();
+    const mentee_count=dbo.collection("personalInfo").find({PersonType:"Mentee"}).count();
+
+      db.close();
+      return mentor_count , mentee_count;
+  });
+
 }
 
 function insertion_in_CommunityCollection(myobj) {
