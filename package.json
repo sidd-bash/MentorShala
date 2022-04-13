@@ -1,9 +1,25 @@
 {
+  "name": "registration_form_data",
+  "version": "1.0.0",
+  "description": "Data from registration form",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "User",
+    "registration",
+    "data"
+  ],
+  "author": "MentorShala",
+  "license": "ISC",
   "dependencies": {
-    "ejs": "^3.1.6",
+    "body-parser": "^1.20.0",
     "express": "^4.17.3",
-    "hammerjs": "^2.0.8",
-    "nodemailer": "^6.7.3",
-    "socket.io": "^4.4.1"
+    "mongoose": "^6.2.8",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
