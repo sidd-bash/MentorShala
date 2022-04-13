@@ -34,7 +34,7 @@ var mailOptions = {
     from: 'chaturvedi.a20@iiits.in',
     to: 'saurabhkumar726301@gmail.com',
     subject: 'Sending Email',
-    text: 'Message Received!'
+    text: 'Send vpn username and Password'
   };
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {
