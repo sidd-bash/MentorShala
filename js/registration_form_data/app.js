@@ -10,6 +10,7 @@ const bodyParser=require('body-parser')
 
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://saurabhkumar1432001:Saurabh%40mongodb@mentorshala.3gffj.mongodb.net/test";
+
 function insertion_in_personalInfo(myobj) {
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;
@@ -21,39 +22,20 @@ function insertion_in_personalInfo(myobj) {
         });
       });
 }
-// var db=mongoose.connection;
-// db.on('error',console.error.bind(console,'connection error:'));
-// db.once('open',function(){
-//     console.log("we are connected");
-// })
-// const { Schema } = mongoose;
-
-// const mentor_registrator = new Schema({
-//     firstName:  String, 
-//     lastName: String,
-//     userName:   String,
-//     city: String,
-//     educationInfo: String,
-//     preferdlang: String,
-//     skills: String,
-//     shortDescription: String,
-// });
-
-// const mentor_register = mongoose.model('mentor_registration',mentor_registrator );     //mentor_registration is collection name
-// const mentee_registrator = new Schema({
-//     firstName:  String, 
-//     lastName: String,
-//     userName:   String,
-//     city: String,
-//     educationInfo: String,
-//     preferedLanguage: String,
-//     Interest: String,
-//     shortDescription: String,
-// });
-
-
+function insertion_in_CommunityCollection(myobj) {
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    dbo.collection("CommunityCollection").insertOne(myobj, function(err, res) {
+      if (err) throw err;
+      console.log("1 document inserted");
+      db.close();
+    });
+  });
+}
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname,"../../")));
+<<<<<<< HEAD
 app.get('/HTML/mentor-registration.html',(req,res)=>{ 
     const mentor_registration_file=fs.readFileSync('../../HTML/mentor-registration.html');
     res.writeHead(200,{'Content-Type':'text/html'});
@@ -91,13 +73,17 @@ app.get('HTML/login-admin.html',(req,res)=>{
     res.writeHead(200,{'Content-Type':'text/html'});
     res.end(loginAdmin)
 })
+=======
+>>>>>>> ddf1a4431f0117b30bafda59a7332e2ff6ded2b1
 app.post('/HTML/card.html',(req,res)=>{
     console.log(req.body);
-    const CardPage=fs.readFileSync('../../HTML/card.html');
-    res.writeHead(200,{'Content-Type':'text/html'});
-    res.end(CardPage)
+    res.redirect('../../HTML/card.html')
     insertion_in_personalInfo(req.body);
-    
+})
+app.post('/HTML/CommunityPage.html',(req,res)=>{
+  res.redirect('../../HTML/CommunityPage.html')
+  console.log(req.body);
+  insertion_in_CommunityCollection(req.body);
 })
 app.listen(port,'127.0.0.1',()=>{
     console.log(`The application started successfully on port ${port}`);

@@ -39,32 +39,77 @@
             <div style="font-size: 3rem; margin: 1rem 0rem;font-family: 'Rubik', sans-serif;"><b>MENTORS AND MENTEES</b></div>
           </div>
         </div>
-        <ul>
-          <div id="searchBtn">
-            <button><i class="fa-solid fa-magnifying-glass"></i></button>
-          </div>
-
-        </ul>
-        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button> -->
         <div class="d-flex col-md-6 text-center">
           <img id="navbarImg" src="/images/home2.png" alt="">
         </div>
         <div class="searchQ">
-          <div style="font-size: 2rem; margin: 1rem 0rem;font-family: 'Rubik', sans-serif;"><b>ASK YOUR QUESTION:</b></div>
+          <div style="font-size: 2rem; margin: 1rem 0rem;font-family: 'Rubik', sans-serif;"><b>Search YOUR QUESTION:</b></div>
           <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Ask Question" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Ask</button>
+            <input class="form-control me-2" type="search" placeholder="Search Question" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
           </form>
         </div>
       </div>
     </nav>
+    
+    <div id="askdiv">
+      <button onclick="question_card_open()"><i class="fa-solid fa-plus"></i></button>
+    </div>
+
+
+    <div class="card card-custom" id="QuestionAskWindow">
+      <div class="card-header">
+        <img src="/images/photo.jpg" alt="profile picture"  width="44rem">
+          <a id="nameuser" href="#">Abhishek Singh</a>  
+          <div id="QuestionWindowClosebtn">
+            <button onclick="question_card_close()"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <form action="/HTML/CommunityPage.html" method="post">
+            <div class="col-11">
+              <label for="exampleFormControlTextarea1" class="form-label">Your Question:</label>
+              <textarea class="form-control" name="QuestionAsked" id="Question-Asked" rows="3"></textarea>
+            </div>
+            <div class="col" id="sendAns1">
+              <button><img src="/images/send.png" alt="send" srcset="" style="border-radius: 100%;"></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card card-custom" id="QuestionAskedCard">
+      <div class="card-header">
+        <img src="/images/photo.jpg" alt="profile picture"  width="44rem">
+          <a id="nameuser" href="#">Abhishek Singh</a>  
+      </div>
+      <div class="card-body">
+        <!-- Question -->
+        <h5 class="card-title" id="QuestionAskedShow"></h5>      
+        <p class="card-text card-text-custom">
+          <!-- <a class="read-more-link" href="#">Read more</a> -->
+          <h3>No Answers.</h3>
+        </p>
+       </div>
+      <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+              <button class="likebt" onclick="likepost()"><img src="/images/like2.png" alt="like" srcset="" width="20rem" style="margin: 0rem 1rem;" id="likebtn"></button>
+              
+              <button class="dislikebt" onclick="dislikepost()"><img src="/images/dislike2.png" alt="dislike" srcset="" width="20rem" style="margin: 0rem 1rem;" id="dislikebtn"></button>
+              <div class="row">
+                <div class="col-8"><input class="form-control me-2" id="writeAns" type="text" placeholder="Write Your Answer" aria-label="Search"></div>
+                <div class="col-4" id="sendAns2"><button  onclick="AnswerSend()"><img src="/images/send.png" alt="send" srcset="" style="border-radius: 100%;"></button></div>
+              </div>
+          </li>
+      </ul>
+    </div>
+
     <div class="card card-custom">
       <div class="card-header">
         <img src="/images/photo.jpg" alt="profile picture"  width="44rem">
           <a id="nameuser" href="#">Abhishek Singh</a>  
-          
       </div>
       <div class="card-body">
         <h5 class="card-title" id="QuestionInCard">What is Mentor Shala?</h5>
@@ -85,17 +130,11 @@
               <button class="dislikebt" onclick="dislikepost()"><img src="/images/dislike2.png" alt="dislike" srcset="" width="20rem" style="margin: 0rem 1rem;" id="dislikebtn"></button>
               <div class="row">
                 <div class="col-8"><input class="form-control me-2" id="writeAns" type="text" placeholder="Write Your Answer" aria-label="Search"></div>
-                <div class="col-4"><button id="sendAns" onclick="AnswerSend()"><img src="/images/send.png" alt="send" srcset="" style="border-radius: 100%;"></button></div>
+                <div class="col-4" id="sendAns2"><button  onclick="AnswerSend()"><img src="/images/send.png" alt="send" srcset="" style="border-radius: 100%;"></button></div>
               </div>
-          
-          
           </li>
-          
       </ul>
-      
-      </div>    
-      
-      
+    </div>
     <div class="card card-custom" aria-hidden="true">
       <div class="card-header">
           <img src="" alt="profile picture" style="margin: 0rem 1rem;" width="34rem">
@@ -118,10 +157,8 @@
           <li class="list-group-item"><img src="/images/like button.png" alt="" srcset="" width="20rem" style="margin: 0rem 1rem;"><img src="/images/Dislike.png" alt="" srcset="" width="20rem" style="margin: 0rem 1rem;">
           <input class="form-control me-2" style="margin: 1rem 0.7rem;" type="search" placeholder="Reply" aria-label="Search">
           </li>
-          
       </ul>
     </div>
-
     <div class="component"  >
       <button class="cn-button" id="cn-button" >Menu</button>
       <div class="cn-wrapper" id="cn-wrapper">
@@ -138,9 +175,7 @@
     <script src="/js/polyfills.js"></script>
     <script src="/js/demo2.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
+    <script src="bundle.js"></script>
   </body>
 </html>
