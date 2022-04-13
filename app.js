@@ -9,7 +9,7 @@ const { Script } = require('vm');
 const bodyParser=require('body-parser')
 app.set('view engine','ejs');
 app.use(express.urlencoded());
-app.use(express.static(path.join(__dirname,"../../")));
+app.use(express.static(path.join(__dirname)));
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://saurabhkumar1432001:Saurabh%40mongodb@mentorshala.3gffj.mongodb.net/test";
 
@@ -36,7 +36,7 @@ function insertion_in_CommunityCollection(myobj) {
   });
 }
 app.get('/HTML/CommunityPage.ejs',(req,res)=>{
-  res.status(200).render("/HTML/CommunityPage.ejs");
+  res.status(200).render("CommunityPage.ejs");
 })
 app.post('/HTML/card.html',(req,res)=>{
     console.log(req.body);
