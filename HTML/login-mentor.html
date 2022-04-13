@@ -123,7 +123,9 @@
       <label for="psw-repeat"><b>OTP(sent to email)</b></label>
       <input type="password" placeholder="OTP" name="psw-repeat" id="psw-repeat" required>
       <hr>
-  
+      <div>
+        <button class="btn btn-primary" type="submit" onclick="document.getElementById('form-container').value=generateid()">Send OTP</button>
+      </div>
       <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
       <button type="submit" class="btn registerbtn" onclick='window.location.href="mentor-registration.html";'>Register</button>
       <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
