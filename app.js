@@ -3,6 +3,8 @@ const express = require('express');
 const app = express();
 const port = 5500; //port number 5500
 const path = require('path');
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 const bodyParser = require('body-parser')
 const ejs = require('ejs');
 app.set('view engine', 'ejs');
@@ -105,11 +107,23 @@ app.post('/card', (req, res) => {
   insertion_in_personalInfo(req.body);
 })
 app.post('/CommunityPage', (req, res) => {
- 
   console.log(req.body);
   res.status(200).render("CommunityPage");
-  insertion_in_CommunityCollection(req.body);
+  const dom = new JSDOM(``,{
+    url: "http://localhost:5500/CommunityPage",
+    referrer: "http://localhost:5500/CommunityPage",
+    contentType: "text/html",
+    includeNodeLocations: true,
+    storageQuota: 10000000
+  });
+  const ele1=dom.window.document.getElementById("QuestionAskWindow");
+  ele1.style.display="none";
+  dom.window.document.getElementById("QuestionAskedCard").style.display="block";
+  // insertion_in_CommunityCollection(req.body);
 })
 app.listen(port, '127.0.0.1', () => {
   console.log(`The application started successfully on port ${port}`);
 })
+// function searchQuestion() {
+
+// }
