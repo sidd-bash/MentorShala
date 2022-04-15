@@ -107,11 +107,7 @@ app.post('/card', (req, res) => {
 app.post('/CommunityPage', (req, res) => {
  
   console.log(req.body);
-  const style = `<style>#QuestionAskWindow{display="none";}#QuestionAskedCard{display="block";}</style>`
-  const params = {
-    'style': style
-  };
-  res.status(200).render("CommunityPage", params);
+  res.status(200).render("CommunityPage");
   insertion_in_CommunityCollection(req.body);
 })
 app.listen(port, '127.0.0.1', () => {
