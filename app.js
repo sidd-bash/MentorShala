@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const port = 5500; //port number 5500
 const path = require('path');
-
+let alert=require('alert')
 const bodyParser = require('body-parser')
 const ejs = require('ejs');
 app.set('view engine', 'ejs');
@@ -44,7 +44,7 @@ app.get('/card', (req, res) => {
 
  app.get('/login-admin', (req, res) => {
   res.render('login-admin');
-
+  
  });
 
  app.get('/admin', (req, res) => {
@@ -127,7 +127,16 @@ app.post('/registration_mentor',(req,res)=>{
   console.log(req.body);
   const email=req.body.email;
   const password=req.body.password;
-  res.render("mentor-registration");
+  console.log(password);
+  const passwordRepeat=req.body.passwordRepeat;
+  console.log(passwordRepeat);
+  if (passwordRepeat==password) {
+
+    res.render("mentor-registration");
+  }
+  else{
+    alert("Password is not matching to Repeat Password")
+  }
 })
 app.listen(port, '127.0.0.1', () => {
   console.log(`The application started successfully on port ${port}`);
