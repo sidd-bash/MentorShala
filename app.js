@@ -6,6 +6,7 @@ const path = require('path');
 let alert=require('alert')
 const bodyParser = require('body-parser')
 const ejs = require('ejs');
+const { log } = require('console');
 app.set('view engine', 'ejs');
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname)));
@@ -38,6 +39,8 @@ app.get('/card', (req, res) => {
   res.render('mentee-registration');
  });
 
+
+
  app.get('/mentor-registration', (req, res) => {
   res.render('mentor-registration');
  });
@@ -47,14 +50,27 @@ app.get('/card', (req, res) => {
 
  });
 
- app.get('/admin', (req, res) => {
-   const count_mentor=admin();
-  const params={"mentorCount": count_mentor}
-  res.render('admin',params);
 
- });
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://saurabhkumar1432001:Saurabh%40mongodb@mentorshala.3gffj.mongodb.net/test";
+
+
+app.get('/admin', async (req, res) => {
+  MongoClient.connect(url,async function  (err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    const mentor_coun=await dbo.collection("personalInfo").find({PersonType:"Mentor"}).count();
+    const mentee_coun=await dbo.collection("personalInfo").find({PersonType:"Mentee"}).count();
+    console.log(mentor_coun);
+    db.close();
+      
+ 
+
+res.render('admin',{"mentor_count":mentor_coun,"mentee_count":mentee_coun});
+});
+     
+});
+
 
 function insertion_in_personalInfo(myobj) {
   MongoClient.connect(url, function (err, db) {
@@ -66,20 +82,6 @@ function insertion_in_personalInfo(myobj) {
       db.close();
     });
   });
-}
-
-function admin(){
-  MongoClient.connect(url, function (err, db) {
-    if (err) throw err;
-    var dbo = db.db("mydb");
-    const mentor_count=dbo.collection("personalInfo").find({PersonType:"Mentor"}).count();
-    const mentee_count=dbo.collection("personalInfo").find({PersonType:"Mentee"}).count();
-
-      db.close();
-      // console.log(mentor_count)
-      return mentor_count;
-  });
-
 }
 
 function insertion_in_CommunityCollection(myobj) {
