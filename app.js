@@ -44,7 +44,7 @@ app.get('/card', (req, res) => {
 
  app.get('/login-admin', (req, res) => {
   res.render('login-admin');
-  
+
  });
 
  app.get('/admin', (req, res) => {
@@ -76,7 +76,8 @@ function admin(){
     const mentee_count=dbo.collection("personalInfo").find({PersonType:"Mentee"}).count();
 
       db.close();
-      return mentor_count , mentee_count;
+      // console.log(mentor_count)
+      return mentor_count;
   });
 
 }
@@ -118,26 +119,35 @@ app.post('/CommunityPage', (req, res) => {
   req.body.answers=[];
   insertion_in_CommunityCollection(req.body);
 })
+let emailGlobal;
+let passwordGlobal;
 app.post('/card', (req, res) => {
   console.log(req.body);
   res.redirect('/card')
+  // console.log(emailGlobal);
+  // console.log(passwordGlobal);
+  req.body.email=emailGlobal;
+  req.body.password=passwordGlobal;
+  console.log(req.body);
   insertion_in_personalInfo(req.body);
 })
 app.post('/registration_mentor',(req,res)=>{
   console.log(req.body);
   const email=req.body.email;
+  emailGlobal=email;
   const password=req.body.password;
+  passwordGlobal=password;
   console.log(password);
   const passwordRepeat=req.body.passwordRepeat;
   console.log(passwordRepeat);
   if (passwordRepeat==password) {
-
     res.render("mentor-registration");
   }
   else{
     alert("Password is not matching to Repeat Password")
   }
 })
+
 app.listen(port, '127.0.0.1', () => {
   console.log(`The application started successfully on port ${port}`);
 })
