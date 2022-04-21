@@ -6,6 +6,7 @@ const path = require('path');
 let alert=require('alert')
 const bodyParser = require('body-parser')
 const ejs = require('ejs');
+const res = require('express/lib/response');
 app.set('view engine', 'ejs');
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname)));
@@ -131,7 +132,7 @@ app.post('/card', (req, res) => {
   console.log(req.body);
   insertion_in_personalInfo(req.body);
 })
-app.post('/registration_mentor',(req,res)=>{
+app.post('/registration',(req,res)=>{
   console.log(req.body);
   const email=req.body.email;
   emailGlobal=email;
@@ -148,6 +149,29 @@ app.post('/registration_mentor',(req,res)=>{
   }
 })
 
+function loginChecker(em,pass) {
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    dbo.collection("personalInfo").findOne({email:em ,password:pass},function(err,result){
+      if (err) throw err;
+      if (result==null) {
+        alert("no registeration");
+      }
+      else{
+        console.log(result);
+      }
+      db.close();
+    })
+  });
+}
+
+app.post('/loginToCard',(req,res)=>{
+  console.log(req.body);
+  const emailLogin=req.body.email;
+  const passwordLogin=req.body.password;
+  loginChecker(emailLogin,passwordLogin);
+})
 app.listen(port, '127.0.0.1', () => {
   console.log(`The application started successfully on port ${port}`);
 })
