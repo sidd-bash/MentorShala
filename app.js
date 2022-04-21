@@ -3,8 +3,7 @@ const express = require('express');
 const app = express();
 const port = 5500; //port number 5500
 const path = require('path');
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
+
 const bodyParser = require('body-parser')
 const ejs = require('ejs');
 app.set('view engine', 'ejs');
@@ -54,11 +53,6 @@ app.get('/card', (req, res) => {
   res.render('admin',params);
 
  });
-
-
-
-
-
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://saurabhkumar1432001:Saurabh%40mongodb@mentorshala.3gffj.mongodb.net/test";
 
@@ -88,6 +82,7 @@ function admin(){
 }
 
 function insertion_in_CommunityCollection(myobj) {
+  
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
@@ -98,7 +93,23 @@ function insertion_in_CommunityCollection(myobj) {
     });
   });
 }
+function Questions_in_CommunityCollection() {
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    const query={QuestionAsked : "What is mentor shala?"};
+    dbo.collection("CommunityCollection").find(query).toArray(function(err, result) {
+      if (err) throw err;
+      console.log(result);
+      db.close();
+    });
+  });
+}
+
 app.get('/CommunityPage', (req, res) => {
+  
+ Questions_in_CommunityCollection()
+  // const params={result};
   res.status(200).render("CommunityPage");
 })
 app.post('/card', (req, res) => {
@@ -109,17 +120,8 @@ app.post('/card', (req, res) => {
 app.post('/CommunityPage', (req, res) => {
   console.log(req.body);
   res.status(200).render("CommunityPage");
-  const dom = new JSDOM(``,{
-    url: "http://localhost:5500/CommunityPage",
-    referrer: "http://localhost:5500/CommunityPage",
-    contentType: "text/html",
-    includeNodeLocations: true,
-    storageQuota: 10000000
-  });
-  const ele1=dom.window.document.getElementById("QuestionAskWindow");
-  ele1.style.display="none";
-  dom.window.document.getElementById("QuestionAskedCard").style.display="block";
-  // insertion_in_CommunityCollection(req.body);
+  req.body.answers=[];
+  insertion_in_CommunityCollection(req.body);
 })
 app.listen(port, '127.0.0.1', () => {
   console.log(`The application started successfully on port ${port}`);

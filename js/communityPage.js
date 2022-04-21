@@ -42,10 +42,8 @@ function AnswerSend() {
 //       });
 //     });
 // }
-  
-console.log(window.location);
 function insertion_in_mongo() {
-    const ques=document.getElementById("Question-Asked").value;
+    const ques=document.getElementById("QuestionAsked").value;
     document.getElementById("QuestionAskWindow").style.display = "none";
     document.getElementById("QuestionAskedCard").style.display = "block";
     document.getElementById("QuestionAskedShow").innerHTML=ques;
