@@ -112,16 +112,22 @@ app.get('/CommunityPage', (req, res) => {
   // const params={result};
   res.status(200).render("CommunityPage");
 })
-app.post('/card', (req, res) => {
-  console.log(req.body);
-  res.redirect('/card')
-  insertion_in_personalInfo(req.body);
-})
 app.post('/CommunityPage', (req, res) => {
   console.log(req.body);
   res.status(200).render("CommunityPage");
   req.body.answers=[];
   insertion_in_CommunityCollection(req.body);
+})
+app.post('/card', (req, res) => {
+  console.log(req.body);
+  res.redirect('/card')
+  insertion_in_personalInfo(req.body);
+})
+app.post('/registration_mentor',(req,res)=>{
+  console.log(req.body);
+  const email=req.body.email;
+  const password=req.body.password;
+  res.render("mentor-registration");
 })
 app.listen(port, '127.0.0.1', () => {
   console.log(`The application started successfully on port ${port}`);
