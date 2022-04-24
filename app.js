@@ -10,7 +10,8 @@ const res = require('express/lib/response');
 app.set('view engine', 'ejs');
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname)));
-
+const multer  = require('multer')
+const upload = multer({ dest: 'imgUpload/' })
 let usernameLogedIn;
 let typeLogedIn;
 let firstNameLogedIn;
@@ -53,7 +54,9 @@ app.get('/card', (req, res) => {
   res.render('mentee-registration');
  });
 
-
+app.get('/chat',(req,res)=>{
+  res.render('chat');
+})
 
  app.get('/mentor-registration', (req, res) => {
   res.render('mentor-registration');
@@ -191,10 +194,11 @@ app.post('/loginToCard',async (req,res)=>{
   });
 })
 
-app.post('/setting',(req,res)=>{
+app.post('/setting',upload.single('imgUrl'),(req,res)=>{
   console.log(req.body);
+  console.log(req.file);
   usernameLogedIn=req.body.userName;
-  imgUrlLogedIn=req.body.imgUrl;
+  imgUrlLogedIn=req.file.path;
   firstNameLogedIn=req.body.fname;
   lastNameLogedIn=req.body.lname;
   MongoClient.connect(url, function (err, db) {
