@@ -76,8 +76,8 @@ app.get('/admin', async (req, res) => {
   MongoClient.connect(url,async function  (err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
-    const mentor_coun=await dbo.collection("personalInfo").find({PersonType:"Mentor"}).count();
-    const mentee_coun=await dbo.collection("personalInfo").find({PersonType:"Mentee"}).count();
+    const mentor_coun=await dbo.collection("personalInfoMentor").find().count();
+    const mentee_coun=await dbo.collection("personalInfoMentee").find().count();
     console.log(mentor_coun);
     db.close();
       
@@ -214,19 +214,45 @@ app.post('/registrationMentee',(req,res)=>{
   }
 })
 
-app.post('/loginToCard',async (req,res)=>{
+app.post('/loginToCardMentor',async (req,res)=>{
   console.log(req.body);
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
-    dbo.collection("personalInfo").findOne({email:req.body.email ,password:req.body.password},function(err,result){
+    dbo.collection("personalInfoMentor").findOne({email:req.body.email ,password:req.body.password},function(err,result){
       if (err) throw err;
       if (result==null) {
         res.redirect("index")
       }
       else{
         usernameLogedIn=result.userName;
-        typeLogedIn=result.PersonType;
+        typeLogedIn="Mentor";
+        firstNameLogedIn=result.firstName;
+        lastNameLogedIn=result.lastName;
+        emailLogedIn=result.email;
+        imgUrlLogedIn=result.image;
+        console.log(usernameLogedIn);
+        console.log(result);
+        res.render("card");
+      }
+      db.close();
+    })
+  });
+})
+
+app.post('/loginToCardMentee',async (req,res)=>{
+  console.log(req.body);
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    dbo.collection("personalInfoMentee").findOne({email:req.body.email ,password:req.body.password},function(err,result){
+      if (err) throw err;
+      if (result==null) {
+        res.redirect("index")
+      }
+      else{
+        usernameLogedIn=result.userName;
+        typeLogedIn="Mentee";
         firstNameLogedIn=result.firstName;
         lastNameLogedIn=result.lastName;
         emailLogedIn=result.email;
@@ -252,8 +278,15 @@ app.post('/setting',upload.single('imgUrl'),(req,res)=>{
     var dbo = db.db("mydb");
     var myquery = { email: emailLogedIn };
     var newvalues = { $set: {userName: usernameLogedIn, firstName: firstNameLogedIn,lastName: lastNameLogedIn,image: imgUrlLogedIn}};
-    // const query={{"email":emailLogedIn},{"$set":{"userName":req.body.userName},{"firstName":req.body.fname},{"lastName":req.body.lname},{"image":req.body.imgUrl}}};
-    dbo.collection("personalInfo").updateOne(myquery,newvalues,function (err,res){
+    // const query={{"email":emailLogedIn},{"$set":{"userName":req.body.userName},{"firstName":req.body.fname},{"lastName":req.body.lname},{"image":req.body.imgUrl}}}
+    var collName;
+    if(typeLogedIn=="Mentor"){
+      collName="personalInfoMentor"
+    }
+    else{
+      collName="personalInfoMentee"
+    }
+    dbo.collection(collName).updateOne(myquery,newvalues,function (err,res){
       if (err) throw err;
       console.log(res);
       db.close();
