@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
-    <!-- Bootstrap Font Icon CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/CSS/Report-Button.css">
-</head>
-<body>
+<div class="button-form">
     <div>
         <button class="open-button" onmouseover="showText()" onmouseout="hideText()" onclick="openForm()">
             <i class="bi bi-flag"></i>     
@@ -29,21 +17,29 @@
         </form>
     </div>
     
+</div>
     <script>
         function showText(){
-            document.querySelector('.reportext').style.display="block";    
+            document.querySelector('.reportext').style.visibility = 'visible';    
         }
         function hideText(){
-            document.querySelector('.reportext').style.display="none";   
+            document.querySelector('.reportext').style.visibility='hidden';   
         }
-            
+        let b=0;
+
         function openForm() {
-        document.getElementById("myForm").style.display = "block";
+            if(b==0){
+                b=1;
+                document.getElementById("myForm").style.display = "block";
+            }
+            else{
+                b=0;
+                document.getElementById("myForm").style.display = "none";
+            }
+        
         }
       
         function closeForm() {
         document.getElementById("myForm").style.display = "none";
         }
     </script>
-</body>
-</html>
