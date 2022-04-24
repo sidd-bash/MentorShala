@@ -2,139 +2,186 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>MentorShala</title>
+  <title>CodePen - Swipe through Recipe Cards</title>
+  
   <link rel="shortcut icon" href="/images/m4.jpg" type="image/x-icon">
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="/CSS/cardstyle.css">
-  <link rel="stylesheet" type="text/css" href="/CSS/component2.css" />
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script src="/js/modernizr-2.6.2.min.js"></script>
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'>  
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="/CSS/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="/js/modernizr-2.6.2.min.js"></script>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'> 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
-    
+<link rel="shortcut icon" href="/images/m4.jpg" type="image/x-icon">
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="/CSS/cardstyle.css">
+<link rel="stylesheet" type="text/css" href="/CSS/component2.css" />
 
-
-   
 </head>
+
+
 <header>
-  <div class="component"  >
-    <button class="cn-button" id="cn-button" >Menu</button>
-    <div class="cn-wrapper" id="cn-wrapper">
-      <ul>
-        <li><a onclick=notification() href="#"><span class='bi bi-bell-fill' style='transform:scale(2.5)'></span></a></li>
-        <li><a href="/CommunityPage"><span class='bi bi-people-fill' style='transform:scale(2.5)'></span></a></li>
-        <li><a href="/card"><span class='bi bi-house' style='transform:scale(2.5)'></span></a></li>
-        <li><a href="/chat"><span class='bi bi-chat' style='transform:scale(2.5)'></span></a></li>
-        <li><a href="/settings"><span class='bi bi-gear' style='transform:scale(2.5)'></span></a></li>
-       </ul>
-    </div>
-    </div>
-  </header>
-<body style="background-image: url(/images/cbg.jpg); background-size: cover;">
-  
+	<div class="component"  >
+	  <button class="cn-button" id="cn-button" >Menu</button>
+	  <div class="cn-wrapper" id="cn-wrapper">
+		<ul>
+		  <li><a onclick=notification() href="#"><span class='bi bi-bell-fill' style='transform:scale(2.5)'></span></a></li>
+		  <li><a href="/CommunityPage"><span class='bi bi-people-fill' style='transform:scale(2.5)'></span></a></li>
+		  <li><a href="/card"><span class='bi bi-house' style='transform:scale(2.5)'></span></a></li>
+		  <li><a href="/chat"><span class='bi bi-chat' style='transform:scale(2.5)'></span></a></li>
+		  <li><a href="/settings"><span class='bi bi-gear' style='transform:scale(2.5)'></span></a></li>
+		 </ul>
+	  </div>
+	  </div>
+	</header>
 
- 
-
+	<body style="background-image: url(/images/cbg.jpg); background-size: cover;">
+<!-- partial:index.partial.html -->
 <div class="tinder">
+	<div class="tinder--status">
+		<i class="fa fa-remove"></i>
+		<i class="bi-check-lg"></i>
+	  </div>
 
-  
+	<div class="tinder--cards">
+		<div class="tinder--card cover">
+			<img class="limitImg" src="https://assets.codepen.io/652/shania-pinnata-7E-vKgzahd8-unsplash.jpg" alt="spaghetti with pesto sauce and cherry tomatoes." title="Photo by Shania Pinnata">
+			<h3>Pasta with Pesto and Tomatoes</h3>
+			<div class="deets">
+				<div class="servings">
+					<i class="fbr fas fa-utensils"></i> <i class="fas fa-user"></i> <i class="fas fa-user"></i> <i class="fas fa-user"></i> <i class="fas fa-user"></i> <i class="fbr fas fa-utensils"></i>
+				</div>
+				<br />
+				<div class="cookTime">
+					<i class="fbr fas fa-hourglass-half"></i> 25 min <i class="fbr fas fa-hourglass-half"></i>
+				</div>
+			</div>
+		</div>
+		<div class="tinder--card about">
+			<h2>About</h2>
+			<p class="whyCook">This quick and delicious pasta dish is the perfect way to use up a summer bounty of basil and tomatoes!</p>
+			<br />
+			<br />
+			<img class="tomatos" src="https://assets.codepen.io/652/tamanna-rumee-nswz6tIpgZk-unsplash.jpg" alt="tomato halves surrounded by basil leaves and peppercorns." title="Photo by Tamanna Rume">
+			<p class="whyCook">Don't have a green thumb? Never fear! You can knock out this classic pasta dish in no time with a jar of prepared pesto sauce.</p>
+		</div>
 
+		<div class="tinder--card ingredients">
+			<h2>Ingredients</h2>
+			<ul class="fa-ul ingredients">
+				<li><span class="fa-li"><i class="fas fa-seedling"></i></span>8 oz. spaghetti or linguine pasta</li>
+				<li><span class="fa-li"><i class="fas fa-seedling"></i></span>2 cups fresh basil leaves, plus 4-8 reserved leaves for garnish</li>
+				<li><span class="fa-li"><i class="fas fa-seedling"></i></span>2 cloves garlic</li>
+				<li><span class="fa-li"><i class="fas fa-seedling"></i></span>2 tbsp. pine nuts or blanched almonds</li>
+				<li><span class="fa-li"><i class="fas fa-seedling"></i></span>1/2 cup olive oil</li>
+				<li><span class="fa-li"><i class="fas fa-seedling"></i></span>1/2 cup grated Parmesan cheese, plus 2 tbsp. for garnish.</li>
+				<li><span class="fa-li"><i class="fas fa-seedling"></i></span>1/8 tsp salt</li>
+				<li><span class="fa-li"><i class="fas fa-seedling"></i></span>1 pint cherry tomatoes</li>
+				<li><span class="fa-li"><i class="fas fa-seedling"></i></span>1 tsp olive oil</li>
+			</ul>
+			<br />
+			<div class="variation">
+				Variation: Got no time, or no fresh basil? Use a 6 ounce jar of prepared pesto instead.
+				<!-- 				<br />
+				<i class="ingInfo fas fa-info-circle fa-spin"></i>
+				<br />
+				<i class="ingInfoArr fas fa-arrow-down"></i> -->
+			</div>
+		</div>
 
-  <div class="tinder--status">
-    <i class="fa fa-remove"></i>
-    <i class="fa fa-heart"></i>
-  </div>
+		<div class="tinder--card process">
+			<h2>Process</h2>
+			<ul class="fa-ul process">
+				<li><span class="fa-li"><i class="fas fa-thermometer-three-quarters"></i></span>Bring 4 quarts of water to a rolling boil in a large pot. Salt the water generously and add the pasta.</li>
+			
+				<li><span class="fa-li"><i class="fas fa-thermometer-quarter"></i></span>Heat a large skillet over medium heat.</li>
+				<li><span class="fa-li"><i class="fas fa-plus"></i></span>Add the 1/2 tsp. olive oil to the heated skillet.</li>
+				
+				<li><span class="fa-li"><i class="fas fa-plus"></i></span>Add the reserved cooking water and pesto to the pasta and stir to mix</li>
+				<li><span class="fa-li"><i class="fas fa-circle"></i></span>Plate the pasta and add 6-8 tomatoes to each plate</li>
+				<li><span class="fa-li"><i class="fas fa-leaf"></i></span>Garnish with reserved basil leaves and Parmesean and serve. Buon Appetito!</li>
+			</ul>
+		</div>
 
-  <div class="tinder--cards">
-    <div class="tinder--card" style="background-image: url(/images/photo.jpg)">
-      <div class="book-info">
-        <div style="position: relative">
-          <span>abhishek singh</span>
-          <span>Position : Student</span>
-          <span>Branch : CSE</span>
-          <span>Year : 2nd</span>
-          <span>college : IIIT Sricity</span>
-         
-        </div>
-      </div>
-    </div>
-    <div class="tinder--card" style="background-image: url('https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/28168351_1270989919700078_304581833184196648_n.jpg?_nc_cat=110&_nc_ohc=PbA3IMg7n20AX9N8Eh2&_nc_ht=scontent-bru2-1.xx&oh=991a53ee85e51661e5b8eca3f2bfcf0e&oe=5EBBEBC3')">
-      <div class="book-info">
-        <div>
-          <span>Seth Vdm</span>
-         
-        </div>
-      </div>
-    </div>
-    <div class="tinder--card" style="background-image: url('https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/s960x960/74632515_144686213578294_1427642318827028480_o.jpg?_nc_cat=111&_nc_ohc=6J-A8j6TvFAAX8-l_Yr&_nc_ht=scontent-bru2-1.xx&oh=7e0c1e6559d442c704e70e82df95fe63&oe=5ED88C45')">
-      <div class="book-info">
-        <div>
-          <span>Muslim stinkt</span>
-          Gwn een loser geen afstand nodig
-        </div>
-      </div>
-    </div>
-    <div class="tinder--card" style="background-image: url('https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/s960x960/84046856_2585696158336760_2741180911516123136_o.jpg?_nc_cat=111&_nc_ohc=gNIazrd5ga4AX-YRm4a&_nc_ht=scontent-bru2-1.xx&oh=70ed3d8b6215017fc300f75f75673d22&oe=5ED493FC');">
-      <div class="book-info">
-        <div>
-          <span>Niels De Huilebak</span>
-          Waarschijnlijk aan het masturberen lol
-        </div>
-      </div>
-    </div>
-    <div class="tinder--card" style="background-image: url('https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/83561603_572748416642993_5605507692278841344_o.jpg?_nc_cat=103&_nc_ohc=W_dpvAoiOVIAX_w2B8d&_nc_ht=scontent-bru2-1.xx&oh=f7ce3a0b08fc88924260c4cafe4c4558&oe=5ED6179E');">
-      <div class="book-info">
-        
-        <div>
-          <span>Anna Karenina</span>
-        
-        </div>
-      </div>
-    </div>
-  </div>
+	</div>
 
- 
+	<div class="tinder--buttons">
+		<button id="nope"><i class="fa fa-remove"></i></button>
+		
+		<button id="love"><i class="bi-check-lg"></i></button>
+	</div>
 
+	
 
-  <div class="tinder--buttons">
-    <button id="nope"><i class="fa fa-remove" ></i></button>
-    <button id="tick"><i class="fa fa-check" aria-hidden="true" style="color: blue"></i></button>
-  </div>
-</div> 
+</div>
 
-
-
-
+<!-- <div class="promptBox">
+	<div class="tapperoo"></div>
+	<svg version="1.1" id="tap-gesture" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="140.2 0 293.8 500" enable-background="new 140.2 0 293.8 500" xml:space="preserve">
+		<g>
+			<path class="hand" fill="rgba(0,0,0,0.8)" d="M173.2,170.2l1.8,86.2c-3.3,1.8-8.3,5.1-14.7,10.9c-22.1,20-29.3,68.7-4.3,106.3
+		c27.8,41.9,60.4,59.8,109,59.8c51.5,0,68.7-25.8,81.9-52.3c12.7-25.5,12.9-122.9,12.9-127.1c0-13-12.3-24.5-26.4-24.5
+		c-1.7,0-5.9,0.6-10.2,1.9c-1.1-14.7-13.4-26.4-28.5-26.4c-6.8,0-13,2.4-17.9,6.3c-3.6-11-13.2-18.5-25-18.5
+		c-7.8,0-14.8,3.2-19.8,8.5l-1.3-35.1l-0.6-15.9l-0.9-24.8c0-17.4-12.3-30.6-28.6-30.6S172,108,172,125.6l0.6,29.7L173.2,170.2z" />
+		</g>
+	</svg> 
+</div> -->
+<!-- partial -->
 
 <div class="notification-panel" id="notification-panel">
-  <h2>NOTIFICATIONS</h2>
-  <div class="n"> Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
-  <div class="n"> Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
-  <div class="n"> Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
-  <div class="n"> Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
-</div>
+	<h2>NOTIFICATIONS</h2>
+	<div class="n"> Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
+	<div class="n"> Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
+	<div class="n"> Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
+	<div class="n"> Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
+  </div>
 
-
-
-<button class="filter" onclick="filter()"><i class="fa fa-filter" aria-hidden="true" style="color: white"></i></button>
-
+  <button class="filter" onclick="filter()"><i class="fa fa-filter" aria-hidden="true" style="color: white"></i></button>
+  
 <div class="filters" id="filters">
-      Language:
-  <div class="dropdown">
-    <button onclick="myFunction()" class="dropbtn">English</button>
-    <div id="myDropdown" class="dropdown-content">
-      <a href="#Hindi">Hindi</a>
-      <a href="#Tamil">Tamil</a>
-      <a href="#Telugu">Telugu</a>
-    </div>
-  </div>
- Skills:
-  </div>
-  <div class="skillfilter">
-<input type="text" id="skillfilter" placeholder="ex : HTML,CSS,REACT">
+	Language:
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">English</button>
+  <div id="myDropdown" class="dropdown-content">
+	<a href="#Hindi">Hindi</a>
+	<a href="#Tamil">Tamil</a>
+	<a href="#Telugu">Telugu</a>
   </div>
 </div>
-<script>
+Skills:
+</div>
+<div class="skillfilter">
+<input type="text" id="skillfilter" placeholder="ex : HTML,CSS,REACT">
+</div>
+</div>
+
+
+<script src="/js/polyfills.js"></script>
+<script src="/js/demo2.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+  <script src='https://hammerjs.github.io/dist/hammer.min.js'></script><script  src="/js/script.js"></script>
+  <script>
+    function notification(){
+      if(document.getElementById("notification-panel").style.display == "none"){
+        document.getElementById("notification-panel").style.display = "block";
+       
+      }
+      else{
+        document.getElementById("notification-panel").style.display = "none";
+      }
+    }
+ 
+  
+
+  function filter(){
+    if(document.getElementById("filters").style.display == "none"){
+      document.getElementById("filters").style.display = "block";
+      document.getElementById("skillfilter").style.display = "block";
+    }
+    else{
+      document.getElementById("filters").style.display = "none";
+      document.getElementById("skillfilter").style.display = "none";
+    }
+  }
   function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
   }
@@ -151,40 +198,9 @@
       }
     }
   }
-  </script>
 
-<script>
-  function filter(){
-    if(document.getElementById("filters").style.display == "none"){
-      document.getElementById("filters").style.display = "block";
-      document.getElementById("skillfilter").style.display = "block";
-    }
-    else{
-      document.getElementById("filters").style.display = "none";
-      document.getElementById("skillfilter").style.display = "none";
-    }
-  }
+
 </script>
-
-
-<script src="/js/polyfills.js"></script>
-<script src="/js/demo2.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-
-
-  <script src='https://hammerjs.github.io/dist/hammer.min.js'></script><script  src="/js/card.js"></script>
-  <script>
-    function notification(){
-      if(document.getElementById("notification-panel").style.display == "none"){
-        document.getElementById("notification-panel").style.display = "block";
-       
-      }
-      else{
-        document.getElementById("notification-panel").style.display = "none";
-      }
-    }
-  </script>
 
 </body>
 </html>
