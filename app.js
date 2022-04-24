@@ -89,7 +89,7 @@ res.render('admin',{"mentor_count":mentor_coun,"mentee_count":mentee_coun});
 });
 
 
-function insertion_in_personalInfo(myobj) {
+function insertion_in_personalInfoMentor(myobj) {
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
@@ -113,6 +113,7 @@ function insertion_in_CommunityCollection(myobj) {
     });
   });
 }
+
 function Questions_in_CommunityCollection() {
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
@@ -132,15 +133,18 @@ app.get('/CommunityPage', (req, res) => {
   // const params={result};
   res.status(200).render("CommunityPage");
 })
+
 app.post('/CommunityPage', (req, res) => {
   console.log(req.body);
   res.status(200).render("CommunityPage");
   req.body.answers=[];
   insertion_in_CommunityCollection(req.body);
 })
+
 let emailGlobal;
 let passwordGlobal;
-app.post('/card', (req, res) => {
+
+app.post('/cardMentor', (req, res) => {
   console.log(req.body);
   res.redirect('/card')
   // console.log(emailGlobal);
@@ -149,9 +153,22 @@ app.post('/card', (req, res) => {
   req.body.password=passwordGlobal;
   req.body.image="https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
   console.log(req.body);
-  insertion_in_personalInfo(req.body);
+  insertion_in_personalInfoMentee(req.body);
 })
-app.post('/registration',(req,res)=>{
+
+app.post('/cardMentee', (req, res) => {
+  console.log(req.body);
+  res.redirect('/card')
+  // console.log(emailGlobal);
+  // console.log(passwordGlobal);
+  req.body.email=emailGlobal;
+  req.body.password=passwordGlobal;
+  req.body.image="https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
+  console.log(req.body);
+  insertion_in_personalInfoMentor(req.body);
+})
+
+app.post('/registrationMentor',(req,res)=>{
   console.log(req.body);
   const email=req.body.email;
   emailGlobal=email;
@@ -162,6 +179,23 @@ app.post('/registration',(req,res)=>{
   console.log(passwordRepeat);
   if (passwordRepeat==password) {
     res.render("mentor-registration");
+  }
+  else{
+    res.redirect("index")
+  }
+})
+
+app.post('/registrationMentee',(req,res)=>{
+  console.log(req.body);
+  const email=req.body.email;
+  emailGlobal=email;
+  const password=req.body.password;
+  passwordGlobal=password;
+  console.log(password);
+  const passwordRepeat=req.body.passwordRepeat;
+  console.log(passwordRepeat);
+  if (passwordRepeat==password) {
+    res.render("mentee-registration");
   }
   else{
     res.redirect("index")
