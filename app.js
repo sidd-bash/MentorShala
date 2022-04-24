@@ -23,9 +23,6 @@ app.get('/', (req, res) => {
   res.render('index');
  });
 
-app.get('/card', (req, res) => {
-  res.render('card');
- });
 
  app.get('/login-mentor', (req, res) => {
   res.render('login-mentor');
@@ -80,13 +77,28 @@ app.get('/admin', async (req, res) => {
     const mentee_coun=await dbo.collection("personalInfoMentee").find().count();
     console.log(mentor_coun);
     db.close();
-      
- 
-
 res.render('admin',{"mentor_count":mentor_coun,"mentee_count":mentee_coun});
 });
      
 });
+
+
+app.get('/card', async (req, res) => {
+  MongoClient.connect(url,async function  (err, db) {
+    if (err) throw err;
+    let dbo = db.db("mydb");
+      const mentors= dbo.collection("personalInfoMentee").find({}).toArray(function(err, result) {
+        if (err) throw err;
+        
+        res.render('card',{"mentee":result,"k":0});
+        db.close();
+      });
+      
+
+});
+     
+});
+
 
 
 function insertion_in_personalInfoMentor(myobj) {

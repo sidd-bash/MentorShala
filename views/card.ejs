@@ -47,48 +47,15 @@
 	  </div>
 
 	<div class="tinder--cards">
-		<div class="tinder--card" style="background-image: url(/images/photo.jpg)">
+		<% mentee.forEach(element=>{%>
+		<div class="tinder--card" >
 			
-				<p>abhishek singh</p>
-				<p>Position : Student</p>
-				<p>Branch : CSE</p>
-				<p>Year : 2nd</p>
-				<p>college : IIIT Sricity</p>
-			   
-			  
+				<p><%= element.firstName %></p>
+				  
 		  </div>
-		  <div class="tinder--card">
-			
-			<p>siddharth bhardwaj</p>
-			<p>Position : Student</p>
-			<p>Branch : CSE</p>
-			<p>Year : 2nd</p>
-			<p>college : IIIT Sricity</p>
-		   
-		  
-	  </div>
-	  <div class="tinder--card" >
-			
-		<p>saurabh kumar</p>
-		<p>Position : Student</p>
-		<p>Branch : CSE</p>
-		<p>Year : 2nd</p>
-		<p>college : IIIT Sricity</p>
-	   
-	  
-  </div>
-  <div class="tinder--card" >
-			
-	<p>peaky blinder</p>
-	<p>Position : Student</p>
-	<p>Branch : CSE</p>
-	<p>Year : 2nd</p>
-	<p>college : IIIT Sricity</p>
-   
-  
-</div>
 		
-
+		
+<% }) %> 
 	</div>
 
 	<div class="tinder--buttons">
@@ -178,6 +145,7 @@ Skills:
 
 
 </script>
+
 
 </body>
 </html>
