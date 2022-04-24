@@ -93,7 +93,19 @@ function insertion_in_personalInfoMentor(myobj) {
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
-    dbo.collection("personalInfo").insertOne(myobj, function (err, res) {
+    dbo.collection("personalInfoMentor").insertOne(myobj, function (err, res) {
+      if (err) throw err;
+      console.log("1 document inserted");
+      db.close();
+    });
+  });
+}
+
+function insertion_in_personalInfoMentee(myobj) {
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    dbo.collection("personalInfoMentee").insertOne(myobj, function (err, res) {
       if (err) throw err;
       console.log("1 document inserted");
       db.close();
@@ -153,7 +165,7 @@ app.post('/cardMentor', (req, res) => {
   req.body.password=passwordGlobal;
   req.body.image="https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
   console.log(req.body);
-  insertion_in_personalInfoMentee(req.body);
+  insertion_in_personalInfoMentor(req.body);
 })
 
 app.post('/cardMentee', (req, res) => {
@@ -165,7 +177,7 @@ app.post('/cardMentee', (req, res) => {
   req.body.password=passwordGlobal;
   req.body.image="https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
   console.log(req.body);
-  insertion_in_personalInfoMentor(req.body);
+  insertion_in_personalInfoMentee(req.body);
 })
 
 app.post('/registrationMentor',(req,res)=>{
