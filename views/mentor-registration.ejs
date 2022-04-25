@@ -67,6 +67,20 @@
               </div>
             </div>
             <div>
+              <label for="dob" class="form-label">DOB</label>
+              <input type="date" class="form-control" name="dob" id="dob" placeholder="YYYY-MM-DD" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div>
+              <label for="phoneNumber" class="form-label">Phone</label>
+              <input type="text" class="form-control" name="phoneNumber" id="phoneNumber" placeholder="+91 xxxxxxxxxx" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div>
               <label for="city" class="form-label">City</label>
               <input type="text" class="form-control" name="city" id="city" required>
               <div class="invalid-feedback">
@@ -78,10 +92,10 @@
               <label for="educationInfo" class="form-label">Education</label>
               <select class="form-select" name="educationInfo" id="educationInfo" aria-label="Default select example">
                 <option selected>Open this select menu</option>
-                <option value="0">below 10th</option>
-                <option value="1">Class 10th passed</option>
-                <option value="2">Class 12th passed</option>
-                <option value="3">Undergraduate</option>
+                <option value="School">School</option>
+                <option value="Bachelor">Bachelor</option>
+                <option value="Masters">Masters</option>
+                <option value="Post graduate">Post graduate</option>
     
               </select>
               <div class="invalid-feedback">
@@ -90,12 +104,20 @@
             </div>
             
             <div>
+              <label for="college" class="form-label">College</label>
+              <input type="text" class="form-control" name="college" id="college" required>
+              <div class="invalid-feedback">
+                Please provide a valid city.
+              </div>
+            </div>
+
+            <div>
                 <label for="preferdlang" class="form-label">Prefered Language</label>
                 <!-- <input type="text" class="form-control" id="validationCustom03" required> -->
                 <select class="form-select" id="preferdlang" name="preferdlang" aria-label="Default select example" required>
                   <option selected>Open this select menu</option>
-                  <option value="0">English</option>
-                  <option value="1">Hindi</option>
+                  <option value="English">English</option>
+                  <option value="Hindi">Hindi</option>
                   </select>
                 <div class="invalid-feedback">
                   Please provide a valid Prefered Language.
@@ -103,16 +125,24 @@
               </div>
     
               <div>
-                <label for="skills" class="form-label">Skills(Mentor)</label>
-                <textarea  id="" cols="30" rows="2" class="form-control" name="skills" id="skills" required></textarea>
+                <label for="skills" class="form-label">Skills</label>
+                <textarea   cols="30" rows="2" class="form-control" name="skills" id="skills" required></textarea>
                 <div class="invalid-feedback">
                   Please provide a valid Interest.
                 </div>
               </div>
-    
+              
+              <div>
+                <label for="interest" class="form-label">Experience</label>
+                <textarea  cols="30" rows="2" class="form-control" name="interest" id="interest" required></textarea>
+                <div class="invalid-feedback">
+                  Please provide a valid Interest.
+                </div>
+              </div>
+
               <div>
                 <label for="shortDescription" class="form-label">Short Description</label>
-                <textarea  id="" cols="30" rows="2" class="form-control" name="shortDescription" id="shortDescription" required></textarea>
+                <textarea  cols="30" rows="2" class="form-control" name="shortDescription" id="shortDescription" required></textarea>
                 <div class="invalid-feedback">
                   Please provide a valid Description.
                 </div>

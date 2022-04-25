@@ -100,11 +100,11 @@
                 <form action="/Info" method="post">
                   <div class="form-group">
                     <label class="form-label">Bio</label>
-                    <textarea name="bio" id="bio" class="form-control" rows="5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc arcu, dignissim sit amet sollicitudin iaculis, vehicula id urna. Sed luctus urna nunc. Donec fermentum, magna sit amet rutrum pretium, turpis dolor molestie diam, ut lacinia diam risus eleifend sapien. Curabitur ac nibh nulla. Maecenas nec augue placerat, viverra tellus non, pulvinar risus.</textarea>
+                    <textarea name="bio" id="bio" class="form-control" rows="5"><%= bio%> </textarea>
                   </div>
                   <div class="form-group">
                     <label class="form-label">Birthday</label>
-                    <input type="date" name="birthday" id="birthday" class="form-control">
+                    <input type="date" name="birthday" id="birthday" class="form-control" value=<%= birthdate%> >
                   </div>
                   <div class="form-group">
                     <label class="form-label">Country</label>
@@ -122,7 +122,7 @@
                     <h6 class="mb-4">Contacts</h6>
                     <div class="form-group">
                       <label class="form-label">Phone</label>
-                      <input type="text" name="phone" id="phone" class="form-control" placeholder="+0 (123) 456 7891">
+                      <input type="text" name="phone" id="phone" class="form-control" placeholder="+0 (123) 456 7891" value=<%= phone+%> >
                     </div>
                     <!-- <div class="form-group">
                       <label class="form-label">Website</label>

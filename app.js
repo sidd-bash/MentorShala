@@ -19,6 +19,9 @@ let lastNameLogedIn;
 let emailLogedIn;
 let imgUrlLogedIn;
 let passwordLogedIn;
+let bioLogedIn;
+let birthdateLogedIn;
+let phoneLogedIn;
 
 app.get('/', (req, res) => {
   res.render('index');
@@ -245,6 +248,9 @@ app.post('/loginToCardMentor',async (req,res)=>{
         emailLogedIn=result.email;       
         passwordLogedIn=result.password;
         imgUrlLogedIn=result.image;
+        bioLogedIn=result.shortDescription;
+        phoneLogedIn=req.body.phoneNumber;
+        birthdateLogedIn=req.body.dob;
         console.log(usernameLogedIn);
         console.log(result);
         res.redirect("card");
@@ -272,6 +278,9 @@ app.post('/loginToCardMentee',async (req,res)=>{
         emailLogedIn=result.email;
         passwordLogedIn=result.password;
         imgUrlLogedIn=result.image;
+        bioLogedIn=result.shortDescription;
+        phoneLogedIn=req.body.phoneNumber;
+        birthdateLogedIn=req.body.dob;
         console.log(usernameLogedIn);
         console.log(result);
         res.redirect("card");
