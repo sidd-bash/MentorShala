@@ -135,18 +135,19 @@ function insertion_in_personalInfoMentee(myobj) {
   });
 }
 
-function insertion_in_CommunityCollection(myobj) {
+// function insertion_in_CommunityCollection(myobj) {
   
-  MongoClient.connect(url, function (err, db) {
-    if (err) throw err;
-    var dbo = db.db("mydb");
-    dbo.collection("CommunityCollection").insertOne(myobj, function (err, res) {
-      if (err) throw err;
-      console.log("1 document inserted");
-      db.close();
-    });
-  });
-}
+//   MongoClient.connect(url, function (err, db) {
+//     if (err) throw err;
+//     var dbo = db.db("mydb");
+//     dbo.collection("CommunityCollection").insertOne(myobj, function (err, res) {
+//       if (err) throw err;
+//       console.log("1 document inserted");
+//       db.close();
+      
+//     });
+//   });
+// }
 
 function Questions_in_CommunityCollection() {
   MongoClient.connect(url, function (err, db) {
@@ -162,17 +163,39 @@ function Questions_in_CommunityCollection() {
 }
 
 app.get('/CommunityPage', (req, res) => {
-  
- Questions_in_CommunityCollection()
-  // const params={result};
-  res.status(200).render("CommunityPage");
+  MongoClient.connect(url,async function  (err, db) {
+    if (err) throw err;
+    let dbo = db.db("mydb");
+      const mentors= dbo.collection("CommunityCollection").find({}).toArray(function(err, result) {
+        if (err) throw err;
+        // console.log(result);
+        res.render('CommunityPage',{"profilepic":imgUrlLogedIn,"username":usernameLogedIn,"data":result});
+        db.close();
+      });
+  });
 })
 
 app.post('/CommunityPage', (req, res) => {
   console.log(req.body);
-  res.status(200).render("CommunityPage");
+  res.redirect('CommunityPage');
   req.body.answers=[];
-  insertion_in_CommunityCollection(req.body);
+  req.body.AskedPerson=usernameLogedIn;
+  req.body.profileAskedPerson=imgUrlLogedIn;
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    dbo.collection("CommunityCollection").insertOne(req.body, function (err, res) {
+      if (err) throw err;
+      console.log("1 document inserted");
+      db.close();
+    });
+  });
+  res.redirect('CommunityPage');
+})
+
+app.post('/answerToQuestion',(req,res)=>{
+  console.log(req.body);
+  
 })
 
 let emailGlobal;

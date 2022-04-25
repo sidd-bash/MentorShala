@@ -59,8 +59,8 @@
 
     <div class="card card-custom" id="QuestionAskWindow">
       <div class="card-header">
-        <img src="/images/photo.jpg" alt="profile picture"  width="44rem">
-          <a id="nameuser" href="#">Abhishek Singh</a>  
+        <img src=<%= profilepic%>  alt="profile picture"  width="44rem">
+          <a id="nameuser" href="#"><%= username%> </a>  
           <div id="QuestionWindowClosebtn">
             <button onclick="question_card_close()"><i class="fa-solid fa-xmark"></i></button>
           </div>
@@ -80,35 +80,38 @@
       </div>
     </div>
     
-    <div class="card card-custom" id="QuestionAskedCard">
-      <div class="card-header">
-        <img src="/images/photo.jpg" alt="profile picture"  width="44rem">
-          <a id="nameuser" href="#">Abhishek Singh</a>  
-      </div>
-      <div class="card-body">
-        <h5 class="card-title" id="QuestionAskedShow"></h5>      
-        <p class="card-text card-text-custom">
-          <h3></h3>
-        </p>
-       </div>
-      <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <button class="likebt" onclick="likepost()"><img src="/images/like2.png" alt="like" srcset="" width="20rem" style="margin: 0rem 1rem;" id="likebtn"></button>
-            <button class="dislikebt" onclick="dislikepost()"><img src="/images/dislike2.png" alt="dislike" srcset="" width="20rem" style="margin: 0rem 1rem;" id="dislikebtn"></button>
-              <form action="">
-                <div class="row">
-                  <div class="col-8">
-                    <input class="form-control me-2" id="writeAns" type="text" placeholder="Write Your Answer" aria-label="Search">
+    <% data.forEach(element=>{ %>
+      <div class="card card-custom" id="QuestionAskedCard">
+        <div class="card-header">
+          <img src=<%= element.profileAskedPerson%>   alt="profile picture"  width="44rem">
+            <a id="nameuser" href="#"><%= element.AskedPerson%></a>  
+        </div>
+        <div class="card-body">
+          <h5 class="card-title" id="QuestionAskedShow"><%= element.QuestionAsked%></h5>      
+          <p class="card-text card-text-custom">
+            <h3><%= element.answers[0]%> </h3>
+          </p>
+         </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <button class="likebt" onclick="likepost()"><img src="/images/like2.png" alt="like" srcset="" width="20rem" style="margin: 0rem 1rem;" id="likebtn"></button>
+              <button class="dislikebt" onclick="dislikepost()"><img src="/images/dislike2.png" alt="dislike" srcset="" width="20rem" style="margin: 0rem 1rem;" id="dislikebtn"></button>
+                <form action="/answerToQuestion" method="post">
+                  <div class="row">
+                    <div class="col-8">
+                      <!-- <input type="text"  name="Question" id="Question" value=<%= element.QuestionAsked%>> -->
+                      <input class="form-control me-2" name="writeAns" id="writeAns" type="text" placeholder="Write Your Answer">
+                    </div>
+                    <div class="col-4" id="sendAns2">
+                      <button type="submit"><img src="/images/send.png" alt="send" srcset="" style="border-radius: 100%;">
+                      </button>
+                    </div>
                   </div>
-                  <div class="col-4" id="sendAns2">
-                    <button  onclick="AnswerSend()"><img src="/images/send.png" alt="send" srcset="" style="border-radius: 100%;">
-                    </button>
-                  </div>
-                </div>
-              </form>
-          </li>
-      </ul>
-    </div>
+                </form>
+            </li>
+        </ul>
+      </div> 
+    <% }) %> 
 
     <div class="component"  >
       <button class="cn-button" id="cn-button" >Menu</button>

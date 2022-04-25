@@ -42,13 +42,13 @@ function AnswerSend() {
 //       });
 //     });
 // }
-function insertion_in_mongo() {
-    const ques=document.getElementById("QuestionAsked").value;
-    document.getElementById("QuestionAskWindow").style.display = "none";
-    document.getElementById("QuestionAskedCard").style.display = "block";
-    document.getElementById("QuestionAskedShow").innerHTML=ques;
-    const myobj={
-        "Question-Asked": ques,
-    }
-    console.log(myobj);
-}
+// function insertion_in_mongo() {
+//     const ques=document.getElementById("QuestionAsked").value;
+//     document.getElementById("QuestionAskWindow").style.display = "none";
+//     document.getElementById("QuestionAskedCard").style.display = "block";
+//     document.getElementById("QuestionAskedShow").innerHTML=ques;
+//     const myobj={
+//         "Question-Asked": ques,
+//     }
+//     console.log(myobj);
+// }
