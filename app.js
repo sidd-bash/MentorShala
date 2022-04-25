@@ -338,6 +338,10 @@ app.post('/settingChange',(req,res)=>{
   }
 })
 
+app.post('/Info',(req,res)=>{
+  console.log(req.body);
+})
+
 app.listen(port, '127.0.0.1', () => {
   console.log(`The application started successfully on port ${port}`);
 })
