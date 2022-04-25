@@ -27,7 +27,7 @@ hr {
 }
 
 /* Set a style for the submit/register button */
-.registerbtn {
+.cancel .registerbtn {
   background-color: #04AA6D;
   color: white;
   padding: 16px 20px;
@@ -87,6 +87,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
   padding: 10px;
   background-color: white;
 }
+.form2-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
 
 /* Full-width input fields */
 .form-container input[type=text], .form-container input[type=password] {
@@ -104,6 +109,16 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 /* Set a style for the submit/login button */
+.form2-container .btn {
+  background-color: #007bff;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
 .form-container .btn {
   background-color: #007bff;
   color: white;
@@ -116,7 +131,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 /* Add a red background color to the cancel button */
-.form-container .cancel {
+.form2-container .cancel {
   background-color: red;
 }
 
