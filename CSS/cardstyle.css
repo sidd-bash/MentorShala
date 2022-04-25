@@ -23,37 +23,6 @@ body{
   max-width: 32px;
 }
 
-.book-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  color: #fff;
-  padding: 20px;
-  font-weight: bold;
-  text-align: left;
-}
-.book-info .avatar {
-  vertical-align: middle;
-  border-radius: 50%;
-  margin-right: 10px;
-  border: 2px solid #fff;
-}
-.book-info div {
-  display: inline-block;
-  vertical-align: middle;
-  font-weight: normal;
-  font-size: 12px;
-  color: #999;
-}
-.book-info span {
-  font-size: 16px;
-  line-height: 1.6;
-  font-weight: bold;
-  display: block;
-  color: #fff;
-}
 .tinder--card::after {
   content: '';
   position: absolute;
@@ -61,7 +30,7 @@ body{
   left: 0;
   right: 0;
   min-height: 50%;
-  background: linear-gradient(0deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0) 100%);
+  
   z-index: 0;
 }
 
@@ -115,7 +84,7 @@ body{
   width: 90vw;
   max-width: 400px;
   height: 70vh;
-  background: #FFFFFF;
+  background-color: white;
   padding-bottom: 40px;
   border-radius: 8px;
   overflow: hidden;
@@ -134,25 +103,6 @@ body{
   cursor: -webkit-grabbing;
   cursor: -moz-grabbing;
   cursor: grabbing;
-}
-
-.tinder--card img {
-  max-width: 100%;
-  pointer-events: none;
-}
-
-.tinder--card h3 {
-  margin-top: 32px;
-  font-size: 32px;
-  padding: 0 16px;
-  pointer-events: none;
-}
-
-.tinder--card p {
-  margin-top: 24px;
-  font-size: 20px;
-  padding: 0 16px;
-  pointer-events: none;
 }
 
 .tinder--buttons {
