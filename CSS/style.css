@@ -67,6 +67,7 @@ h2 {
 }
 
 .tinder--cards {
+	height:649px;
 	flex-grow: 0.5;
 	padding-top: 40px;
 	display: flex;

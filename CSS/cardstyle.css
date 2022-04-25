@@ -5,9 +5,9 @@ body{
 .tinder {
   width: 72.5%;
   left:-11%;
-  bottom:-10%;
+  bottom:-2%;
   float:right;
-  height: calc(100vh - 87.75px);
+  height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -70,8 +70,8 @@ body{
 
 .tinder--cards {
   flex-grow: 1;
-  
-  padding-top: 40px;
+  height: 649px;
+  padding-top: 20px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -82,10 +82,10 @@ body{
 .tinder--card {
   display: inline-block;
   width: 90vw;
-  max-width: 400px;
-  height: 70vh;
-  background-color: white;
-  padding-bottom: 40px;
+  max-width: 360px;
+  height: 78vh;
+border:2px solid black;
+  padding-bottom: 20px;
   border-radius: 8px;
   overflow: hidden;
   position: absolute;
@@ -94,6 +94,7 @@ body{
   cursor: -webkit-grab;
   cursor: -moz-grab;
   cursor: grab;
+  border-bottom: 10px #D40000;
   background-size: cover;
 /*   border: 1px solid #333; */
 }
@@ -156,7 +157,7 @@ body{
   border-top: 1px solid #bd41bd;
 }
 
-.filter{
+/* .filter{
   transform: scale(2.6);
   top:2.5%;
   left:30%;
@@ -178,7 +179,7 @@ body{
   border-radius: 25px;
   border: 3px solid rgb(31, 31, 31);
   display: none;
-}
+} */
 
 .dropbtn {
   background-color: #3498DB;
