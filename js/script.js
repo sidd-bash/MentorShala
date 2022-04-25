@@ -84,15 +84,18 @@ function addNewCard(thisCard) {
 	setTimeout(initCards, 301);
 	setTimeout(addHammers, 301);
 }
-
+let i=0;
 function addHammers() {
 	//redefined to be able to reinitialize on new card add
 	allCards = document.querySelectorAll(".tinder--card");
-
+	
 	allCards.forEach(function (el) {
 		//initialize hammer on each card
 		var hammertime = new Hammer(el);
-
+		let array=['linear-gradient(white,red)','linear-gradient(white,green)','linear-gradient(white,blue)'];
+		
+		el.style.background=array[i];
+		i=(i+1)%3;
 		//add the moving class if the card is being panned
 		hammertime.on("pan", function (event) {
 			el.classList.add("moving");
@@ -143,7 +146,10 @@ function addHammers() {
 
 			//toggle the removed class if the keep var has not evaluated to true
 			event.target.classList.toggle("removed", !keep);
-
+			if(event.deltaX>0){
+				console.log(el);
+			}
+			
 			//if the keep value evaluates true, set transform to nothing
 			if (keep) {
 				event.target.style.transform = "";
