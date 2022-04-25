@@ -52,10 +52,15 @@
 	<div class="tinder--cards">
 		<% mentee.forEach(element=>{%>
 		<div class="tinder--card" >
-			
-				<p><%= element.firstName %></p>
-        
-				  
+     
+        <img src="<%= element.image %>" alt="profile image" id="profile">
+        <img src="<%= element.image %>" alt="cover image" id="cover">
+				<p><%= element.firstName + element.lastName %></p>
+        <p class="card-field"><%= element.educationInfo %></p>
+        <p class="card-field"><%= element.skills %></p>
+        <p class="card-field"><%= element.interest %></p>
+        <p class="card-field"><%= element.shortDescription %></p>
+  
 		  </div>
 		
 		
