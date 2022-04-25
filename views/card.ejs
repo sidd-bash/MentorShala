@@ -21,31 +21,66 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@600&display=swap" rel="stylesheet">
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption&display=swap" rel="stylesheet">
 <style>
-	p{
-		color: black;
-	}
-  #cover{
-width: 400px;
-height:120px;
-z-index: -1;
-overflow: hidden;
-display:block;
-position:relative;
-  }
+	
+ 
   #profile{
-    height: 110px;
-    width: 110px;
-    border-radius: 50%;
+    height: 180px;
+    width: 180px;
     position: absolute;
     display: block;
-    z-index: 999;
-    border: solid 2px;
-    margin-left: 145px;
     margin-top:65px;
+    margin-right: 0px;
+    margin-left:180px;
+    z-index: 999;
   }
-  #college{
-    display: inline;
+  .firstname,.lastname{
+    font-size: 55px;
+    position: absolute;
+    color:rgb(247, 178, 49);
+  }
+  .username{
+    position: absolute;
+    top:3px;
+    left:3px;
+    color:rgb(247, 178, 49);
+  }
+  .firstname{
+    left:4px;
+    z-index: 999;
+    margin-top:190px;
+  }
+  .lastname{
+    right: 0px;
+    margin-top:250px;
+  }
+  .bio{
+    position: absolute;
+    top:420px;
+   font-size: 24px;
+    
+    
+  }
+  .college{
+    position: absolute;
+    top:125px;
+    
+    left:2px;
+    width:150px;
+  }
+  .skills{
+    position: absolute;
+    top:340px;
+    font-size: 24px;
+
+  }
+  .interest{
+  position: absolute;
+    top:380px;
+    font-size: 24px;
   }
 
 </style>
@@ -78,15 +113,16 @@ position:relative;
 	<div class="tinder--cards">
 		<% mentee.forEach(element=>{%>
 		<div class="tinder--card" >
-     
+
+      <p class="username" style="font-family: 'Comfortaa', cursive;">@<%= element.userName %></p>
         <img src="<%= element.image %>" alt="profile image" id="profile">
-        <img src="<%= element.imageCover %>" alt="cover image" id="cover">
-				<%= element.firstName + element.lastName %> ,
-        
-        <p class="card-field" style="font-family: 'Comfortaa', cursive;" id="college"><%= element.college %></p>
-        <p class="card-field">Skill: <%= element.skills %></p>
-        <p class="card-field">Interests: <%= element.interest %></p>
-        <p class="card-field"> Bio: <%= element.shortDescription %></p>
+		
+        <p class="firstname" style="font-family: 'Kanit', sans-serif;"><%= element.firstName %></p>
+        <p class="lastname" style="font-family: 'Kanit', sans-serif;"><%= element.lastName %></p>
+        <p class="college" style="font-family: 'Comfortaa', cursive;"><i class='fas fa-graduation-cap' style='font-size:25px'></i> <%= element.college %></p>
+        <p class="skills" style="font-family: 'PT Sans Caption', sans-serif;">Skill: <%= element.skills %></p>
+        <p class="interest" style="font-family: 'PT Sans Caption', sans-serif;">Interests: <%= element.interest %></p>
+        <p class="bio" style="font-family: 'PT Sans Caption', sans-serif;"> <strong>Bio</strong>  <%= element.shortDescription %></p>
   
 		  </div>
 		
@@ -114,7 +150,7 @@ position:relative;
 	<div class="n"> Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
   </div>
 
-  <button class="filter" onclick="filter()"><i class="fa fa-filter" aria-hidden="true" style="color: white"></i></button>
+  <!-- <button class="filter" onclick="filter()"><i class="fa fa-filter" aria-hidden="true" style="color: white"></i></button>
   
 <div class="filters" id="filters">
 	Language:
@@ -131,7 +167,7 @@ Skills:
 <div class="skillfilter">
 <input type="text" id="skillfilter" placeholder="ex : HTML,CSS,REACT">
 </div>
-</div>
+</div> -->
 
 
 <script src="/js/polyfills.js"></script>
