@@ -247,7 +247,7 @@ app.post('/loginToCardMentor',async (req,res)=>{
         imgUrlLogedIn=result.image;
         console.log(usernameLogedIn);
         console.log(result);
-        res.render("card");
+        res.redirect("card");
       }
       db.close();
     })
