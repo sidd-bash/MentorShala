@@ -1,45 +1,46 @@
-<div class="button-form">
-    <div>
-        <button class="open-button" onmouseover="showText()" onmouseout="hideText()" onclick="openForm()">
-            <i class="bi bi-flag"></i>     
-        </button>
-        <div class="reportext">Report</div>
-    </div>
+<form action="/Report-Button" method="POST">
+    <div class="button-form">
+        <div>
+            <button class="open-button" onmouseover="showText()" onmouseout="hideText()" onclick="openForm()">
+                <i class="bi bi-flag"></i>
+            </button>
+            <div class="reportext">Report</div>
+        </div>
 
-    <div class="form-popup" id="myForm">
-        <form action="/report" method="post" class="form-container">
-            <div><input type="text" name="username" id="username" placeholder="Username">
-            </div>
-            <div><input type="text" name="description" id="description" placeholder="Description"></div>
+        <div class="form-popup" id="myForm">
+            <form action="/report" method="post" class="form-container">
+                <div><input type="text" name="username" id="username" placeholder="Username">
+                </div>
+                <div><input type="text" name="description" id="description" placeholder="Description"></div>
 
-        <button type="submit" class="btn registerbtn">Report</button>
-        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-        </form>
-    </div>
-    
+                <button type="submit" class="btn registerbtn">Report</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+        </div>
+</form>
 </div>
-    <script>
-        function showText(){
-            document.querySelector('.reportext').style.visibility = 'visible';    
-        }
-        function hideText(){
-            document.querySelector('.reportext').style.visibility='hidden';   
-        }
-        let b=0;
+<script>
+    function showText() {
+        document.querySelector('.reportext').style.visibility = 'visible';
+    }
+    function hideText() {
+        document.querySelector('.reportext').style.visibility = 'hidden';
+    }
+    let b = 0;
 
-        function openForm() {
-            if(b==0){
-                b=1;
-                document.getElementById("myForm").style.display = "block";
-            }
-            else{
-                b=0;
-                document.getElementById("myForm").style.display = "none";
-            }
-        
+    function openForm() {
+        if (b == 0) {
+            b = 1;
+            document.getElementById("myForm").style.display = "block";
         }
-      
-        function closeForm() {
+        else {
+            b = 0;
+            document.getElementById("myForm").style.display = "none";
+        }
+
+    }
+
+    function closeForm() {
         document.getElementById("myForm").style.display = "none";
-        }
-    </script>
+    }
+</script>
