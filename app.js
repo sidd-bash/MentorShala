@@ -3,7 +3,9 @@ const express = require('express');
 const app = express();
 const port = 5500; //port number 5500
 const path = require('path');
-let alert=require('alert')
+let alert=require('alert');
+const bodyparser=require('body-parser');
+const nodemailer=require('nodemailer');
 const bodyParser = require('body-parser')
 const ejs = require('ejs');
 const res = require('express/lib/response');
@@ -20,11 +22,14 @@ let lastNameLogedIn;
 let emailLogedIn;
 let imgUrlLogedIn;
 let passwordLogedIn;
+app.use(bodyparser.urlencoded({extended : false}));
+app.use(bodyparser.json());
 let bioLogedIn;
 let birthdateLogedIn;
 let phoneLogedIn;
 let imgCoverUrlLoggedIn;
 
+app.use('/public',express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.render('index');
  });
@@ -203,23 +208,60 @@ app.post('/cardMentee', (req, res) => {
   console.log(req.body);
   insertion_in_personalInfoMentee(req.body);
 })
+var otp = Math.random();
+otp = otp * 10000;
+otp = parseInt(otp);
+console.log(otp);
 
+let transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    service : 'gmail',
+    
+    auth: {
+      user: 'chaturvedi.a20@iiits.in',
+      pass: 'iiits@2020',
+    }
+    
+});
+app.post('/registrationMentor',(req,res)=>{
+  var mailOptions={
+    from:'chaturvedi.a20@iiits.in',
+    to: req.body.email,
+   subject: "Otp for registering is: ",
+   html: "<h3>OTP for account verification is </h3>"  + "<h1 style='font-weight:bold;'>" + otp +"</h1>" // html body
+ };
+ 
+ transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+        return console.log(error);
+    }
+    console.log('Message sent: %s', info.messageId);   
+    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+    if(req.body.otp==otp)
+    res.render("mentor-registration");
+    else
+    res.render("login-mentor");
+})
 app.post('/registrationMentor',(req,res)=>{
   console.log(req.body);
-  const email=req.body.email;
   emailGlobal=email;
   const password=req.body.password;
   passwordGlobal=password;
   console.log(password);
   const passwordRepeat=req.body.passwordRepeat;
   console.log(passwordRepeat);
-  if (passwordRepeat==password) {
+  if (passwordRepeat==password&&req.body.otp==otp) {
     res.render("mentor-registration");
   }
   else{
     res.redirect("index")
   }
+});
+
 })
+
 
 app.post('/registrationMentee',(req,res)=>{
   console.log(req.body);
@@ -377,6 +419,28 @@ app.post('/settingChange',(req,res)=>{
 
 app.post('/Info',(req,res)=>{
   console.log(req.body);
+  phoneLogedIn=req.body.phone;
+  birthdateLogedIn=req.body.birthdate;
+  bioLogedIn=req.body.bio;
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    var myquery = { email: emailLogedIn };
+    var newvalues = { $set: {phoneNumber:phoneLogedIn, dob:birthdateLogedIn,shortDescription:bioLogedIn}};
+    var collName;
+    if(typeLogedIn=="Mentor"){
+      collName="personalInfoMentor"
+    }
+    else{
+      collName="personalInfoMentee"
+    }
+    dbo.collection(collName).updateOne(myquery,newvalues,function (err,res){
+      if (err) throw err;
+      console.log(res);
+      db.close();
+    });
+  });
+  res.redirect('settings');
 })
 
 app.listen(port, '127.0.0.1', () => {
