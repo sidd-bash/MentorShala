@@ -92,10 +92,10 @@ function addHammers() {
 	allCards.forEach(function (el) {
 		//initialize hammer on each card
 		var hammertime = new Hammer(el);
-		let array=['linear-gradient(white,red)','linear-gradient(white,green)','linear-gradient(white,blue)'];
+		let array=['#D40000','#056551','#B399C6','#010563','#FDCACF'];
 		
 		el.style.background=array[i];
-		i=(i+1)%3;
+		i=(i+1)%5;
 		//add the moving class if the card is being panned
 		hammertime.on("pan", function (event) {
 			el.classList.add("moving");

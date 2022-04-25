@@ -229,6 +229,7 @@ app.post('/cardMentor', (req, res) => {
   req.body.imageCover = "https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
   req.body.liked=[];
   req.body.matched=[];
+  req.body.verified=false;
   console.log(req.body);
   insertion_in_personalInfoMentor(req.body);
 })
