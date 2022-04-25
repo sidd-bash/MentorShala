@@ -85,16 +85,28 @@ var url = "mongodb+srv://saurabhkumar1432001:Saurabh%40mongodb@mentorshala.3gffj
 
 
 app.get('/admin', async (req, res) => {
+  let mentee_coun
+  let mentor_coun
   MongoClient.connect(url, async function (err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
-    const mentor_coun = await dbo.collection("personalInfoMentor").find().count();
-    const mentee_coun = await dbo.collection("personalInfoMentee").find().count();
+     mentor_coun = await dbo.collection("personalInfoMentor").find().count();
+     mentee_coun = await dbo.collection("personalInfoMentee").find().count();
     console.log(mentor_coun);
     db.close();
-    res.render('admin', { "mentor_count": mentor_coun, "mentee_count": mentee_coun });
   });
 
+  let result;
+  MongoClient.connect(url, async function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    const mentor_coun = await dbo.collection("report").find().toArray((err,res)=>{
+      if(err) throw err;
+      result=res;
+    });
+    db.close();
+  });
+  res.render('admin', { "mentor_count": mentor_coun, "mentee_count": mentee_coun,"reports":result,"k":0 });
 });
 
 
@@ -434,38 +446,18 @@ app.post('/setting', multipleUpload, (req, res) => {
   });
   res.redirect('settings');
 })
-app.post('/Report-button',(req,res)=>{
+app.post('/Report-button', (req, res) => {
   console.log(req.body);
-  var report;var flag;
-    MongoClient.connect(url, function (err, db) {
-      if(typeLogedIn=="Mentor"){
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    dbo.collection("report").insertOne(req.body, function (err, res) {
       if (err) throw err;
-      var dbo = db.db("mydb");
-      dbo.collection("personalInfoMentee").findOne({ username: req.body.username}, function (err, result) {
-        if (err) throw err;
-        if (result == null) {
-          flag=-1;
-        }
-        else{
-          dbo.collection("report").insertOne(myobj, function (err, res) {
-            if (err) throw err;
-            console.log("1 document inserted");
-            db.close();
-          });
-        }
-      })
-    }
-      else{
-        if (err) throw err;
-      var dbo = db.db("mydb");
-      dbo.collection("personalInfoMentee").findOne({ username: req.body.username}, function (err, result) {
-        if (err) throw err;
-        if (result == null) {
-          flag=-1;
-        }
-      })
-  }
-  })
+      console.log("1 document inserted");
+      db.close();
+    });
+  });
+  res.redirect('card');
 })
 
 app.post('/settingChange', (req, res) => {
