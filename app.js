@@ -377,6 +377,28 @@ app.post('/settingChange',(req,res)=>{
 
 app.post('/Info',(req,res)=>{
   console.log(req.body);
+  phoneLogedIn=req.body.phone;
+  birthdateLogedIn=req.body.birthdate;
+  bioLogedIn=req.body.bio;
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    var myquery = { email: emailLogedIn };
+    var newvalues = { $set: {phoneNumber:phoneLogedIn, dob:birthdateLogedIn,shortDescription:bioLogedIn}};
+    var collName;
+    if(typeLogedIn=="Mentor"){
+      collName="personalInfoMentor"
+    }
+    else{
+      collName="personalInfoMentee"
+    }
+    dbo.collection(collName).updateOne(myquery,newvalues,function (err,res){
+      if (err) throw err;
+      console.log(res);
+      db.close();
+    });
+  });
+  res.redirect('settings');
 })
 
 app.listen(port, '127.0.0.1', () => {
