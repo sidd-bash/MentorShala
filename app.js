@@ -13,7 +13,8 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname)));
 const multer  = require('multer')
-const upload = multer({ dest: 'imgUpload/' })
+// const upload = multer({ dest: 'imgUpload/' })
+
 let usernameLogedIn;
 let typeLogedIn;
 let firstNameLogedIn;
@@ -23,6 +24,10 @@ let imgUrlLogedIn;
 let passwordLogedIn;
 app.use(bodyparser.urlencoded({extended : false}));
 app.use(bodyparser.json());
+let bioLogedIn;
+let birthdateLogedIn;
+let phoneLogedIn;
+let imgCoverUrlLoggedIn;
 
 app.use('/public',express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
@@ -45,10 +50,14 @@ app.get('/', (req, res) => {
  app.get('/settings', (req, res) => {
   const params={
     'imgURL': imgUrlLogedIn,
+      'imgCoverURL':imgCoverUrlLoggedIn,
     'userName': usernameLogedIn,
      'firstName': firstNameLogedIn,
      'lastName': lastNameLogedIn,
-     'email' : emailLogedIn
+     'email' : emailLogedIn,
+     'bio' : bioLogedIn,
+     'birthdate':birthdateLogedIn,
+     'phone':phoneLogedIn
   }
  res.render('settings',params);
  });
@@ -182,6 +191,7 @@ app.post('/cardMentor', (req, res) => {
   req.body.email=emailGlobal;
   req.body.password=passwordGlobal;
   req.body.image="https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
+  req.body.imageCover="https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
   console.log(req.body);
   insertion_in_personalInfoMentor(req.body);
 })
@@ -194,6 +204,7 @@ app.post('/cardMentee', (req, res) => {
   req.body.email=emailGlobal;
   req.body.password=passwordGlobal;
   req.body.image="https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
+  req.body.imageCover="https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
   console.log(req.body);
   insertion_in_personalInfoMentee(req.body);
 })
@@ -287,6 +298,10 @@ app.post('/loginToCardMentor',async (req,res)=>{
         emailLogedIn=result.email;       
         passwordLogedIn=result.password;
         imgUrlLogedIn=result.image;
+        imgCoverUrlLoggedIn=result.imageCover
+        bioLogedIn=result.shortDescription;
+        phoneLogedIn=req.body.phoneNumber;
+        birthdateLogedIn=req.body.dob;
         console.log(usernameLogedIn);
         console.log(result);
         res.redirect("card");
@@ -314,6 +329,10 @@ app.post('/loginToCardMentee',async (req,res)=>{
         emailLogedIn=result.email;
         passwordLogedIn=result.password;
         imgUrlLogedIn=result.image;
+        imgCoverUrlLoggedIn=result.imageCover
+        bioLogedIn=result.shortDescription;
+        phoneLogedIn=req.body.phoneNumber;
+        birthdateLogedIn=req.body.dob;
         console.log(usernameLogedIn);
         console.log(result);
         res.redirect("card");
@@ -323,18 +342,36 @@ app.post('/loginToCardMentee',async (req,res)=>{
   });
 })
 
-app.post('/setting',upload.single('imgUrl'),(req,res)=>{
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+      cb(null, 'imgUpload/');
+  },
+ 
+  filename: function(req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
+});
+ 
+var upload = multer({ storage: storage })
+
+var multipleUpload=upload.fields([{ name:"imgUrl"},{ name: "imgUrl_cover",maxCount:3}])
+
+app.post('/setting',multipleUpload,(req,res)=>{
   console.log(req.body);
-  console.log(req.file);
+  console.log(req.files);
+  // console.log(req.files.imgUrl[0].path);
+  // console.log(req.files[1].path);
   usernameLogedIn=req.body.userName;
-  imgUrlLogedIn=req.file.path;
+  imgUrlLogedIn=req.files.imgUrl[0].path;
+  imgCoverUrlLoggedIn=req.files.imgUrl_cover[0].path;
   firstNameLogedIn=req.body.fname;
   lastNameLogedIn=req.body.lname;
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
     var myquery = { email: emailLogedIn };
-    var newvalues = { $set: {userName: usernameLogedIn, firstName: firstNameLogedIn,lastName: lastNameLogedIn,image: imgUrlLogedIn}};
+    var newvalues = { $set: {userName: usernameLogedIn, firstName: firstNameLogedIn,lastName: lastNameLogedIn,image: imgUrlLogedIn,
+    imageCover: imgCoverUrlLoggedIn}};
     // const query={{"email":emailLogedIn},{"$set":{"userName":req.body.userName},{"firstName":req.body.fname},{"lastName":req.body.lname},{"image":req.body.imgUrl}}}
     var collName;
     if(typeLogedIn=="Mentor"){
@@ -382,6 +419,28 @@ app.post('/settingChange',(req,res)=>{
 
 app.post('/Info',(req,res)=>{
   console.log(req.body);
+  phoneLogedIn=req.body.phone;
+  birthdateLogedIn=req.body.birthdate;
+  bioLogedIn=req.body.bio;
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    var myquery = { email: emailLogedIn };
+    var newvalues = { $set: {phoneNumber:phoneLogedIn, dob:birthdateLogedIn,shortDescription:bioLogedIn}};
+    var collName;
+    if(typeLogedIn=="Mentor"){
+      collName="personalInfoMentor"
+    }
+    else{
+      collName="personalInfoMentee"
+    }
+    dbo.collection(collName).updateOne(myquery,newvalues,function (err,res){
+      if (err) throw err;
+      console.log(res);
+      db.close();
+    });
+  });
+  res.redirect('settings');
 })
 
 app.listen(port, '127.0.0.1', () => {
