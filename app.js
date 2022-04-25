@@ -215,6 +215,8 @@ app.post('/cardMentor', (req, res) => {
   req.body.password = passwordGlobal;
   req.body.image = "https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
   req.body.imageCover = "https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
+  req.body.liked=[];
+  req.body.matched=[];
   console.log(req.body);
   insertion_in_personalInfoMentor(req.body);
 })
@@ -228,6 +230,8 @@ app.post('/cardMentee', (req, res) => {
   req.body.password = passwordGlobal;
   req.body.image = "https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
   req.body.imageCover = "https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
+  req.body.liked=[];
+  req.body.matched=[];
   console.log(req.body);
   insertion_in_personalInfoMentee(req.body);
 })
