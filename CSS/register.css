@@ -132,7 +132,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Add a red background color to the cancel button */
 .form2-container .cancel {
-  background-color: red;
+  background-color: rgb(226, 17, 121);
 }
 
 /* Add some hover effects to buttons */

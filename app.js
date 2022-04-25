@@ -85,28 +85,31 @@ var url = "mongodb+srv://saurabhkumar1432001:Saurabh%40mongodb@mentorshala.3gffj
 
 
 app.get('/admin', async (req, res) => {
-  let mentee_coun
-  let mentor_coun
+  
   MongoClient.connect(url, async function (err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
-     mentor_coun = await dbo.collection("personalInfoMentor").find().count();
-     mentee_coun = await dbo.collection("personalInfoMentee").find().count();
-    console.log(mentor_coun);
+    const mentor_coun = await dbo.collection("personalInfoMentor").find().count();
+     const mentee_coun = await dbo.collection("personalInfoMentee").find().count();
+     const rep = dbo.collection("report").find().toArray((err,resu)=>{
+          if(err) throw err;
+           res.render('admin', { "mentor_count": mentor_coun, "mentee_count": mentee_coun,"reports":resu,"k":0});
     db.close();
+        });
+     
   });
 
-  let result;
-  MongoClient.connect(url, async function (err, db) {
-    if (err) throw err;
-    var dbo = db.db("mydb");
-    const mentor_coun = await dbo.collection("report").find().toArray((err,res)=>{
-      if(err) throw err;
-      result=res;
-    });
-    db.close();
-  });
-  res.render('admin', { "mentor_count": mentor_coun, "mentee_count": mentee_coun,"reports":result,"k":0 });
+  // let result;
+  // MongoClient.connect(url, async function (err, db) {
+  //   if (err) throw err;
+  //   var dbo = db.db("mydb");
+  //   const mentor_coun = dbo.collection("report").find().toArray((err,res)=>{
+  //     if(err) throw err;
+  //     result=res;
+  //   });
+  //   db.close();
+  // });
+  // res.render('admin', { "mentor_count": mentor_coun, "mentee_count": mentee_coun,"reports":result,"k":0 });
 });
 
 
@@ -117,7 +120,7 @@ app.get('/card', async (req, res) => {
     const mentors = dbo.collection("personalInfoMentee").find({}).toArray(function (err, result) {
       if (err) throw err;
 
-      res.render('card', { "mentee": result, "k": 0 });
+      res.render('card', { "mentee": mentors, "k": 0 });
       db.close();
     });
 
@@ -287,12 +290,12 @@ app.post('/registrationMentor', (req, res) => {
     }
     console.log('Message sent: %s', info.messageId);
     console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-  if (passwordRepeat == password) {
-    res.render("login-mentor");
-  }
-  else {
-    res.redirect("index")
-  }
+  // if (passwordRepeat == password) {
+  //   res.render("login-mentor");
+  // }
+  // else {
+  //   res.redirect("index")
+  // }
 })
 app.post('/send',(req,res)=>{
     if (req.body.otp == otp)
@@ -340,12 +343,12 @@ app.post('/registrationMentee', (req, res) => {
     }
     console.log('Message sent: %s', info.messageId);
     console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-  if (passwordRepeat == password) {
-    res.render("login-mentee");
-  }
-  else {
-    res.redirect("index")
-  }
+  // if (passwordRepeat == password) {
+  //   res.render("login-mentee");
+  // }
+  // else {
+  //   res.redirect("index")
+  // }
 })
 app.post('/send1',(req,res)=>{
   if (req.body.otp == otp)
