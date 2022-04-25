@@ -117,10 +117,10 @@ app.get('/card', async (req, res) => {
   MongoClient.connect(url, async function (err, db) {
     if (err) throw err;
     let dbo = db.db("mydb");
-    const mentors = dbo.collection("personalInfoMentee").find({}).toArray(function (err, result) {
+    dbo.collection("personalInfoMentee").find({}).toArray(function (err, result) {
       if (err) throw err;
 
-      res.render('card', { "mentee": mentors, "k": 0 });
+      res.render('card', { "mentee": result, "k": 0 });
       db.close();
     });
 
