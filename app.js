@@ -326,12 +326,32 @@ app.post('/registrationMentee', (req, res) => {
   console.log(password);
   const passwordRepeat = req.body.passwordRepeat;
   console.log(passwordRepeat);
+  var mailOptions = {
+    from: 'chaturvedi.a20@iiits.in',
+    to: emailGlobal,
+    subject: "Otp for registering is: ",
+    html: "<h3>OTP for account verification is </h3>" + "<h1 style='font-weight:bold;'>" + otp + "</h1>" // html body
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+    console.log('Message sent: %s', info.messageId);
+    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
   if (passwordRepeat == password) {
-    res.render("mentee-registration");
+    res.render("login-mentee");
   }
   else {
     res.redirect("index")
   }
+})
+app.post('/send1',(req,res)=>{
+  if (req.body.otp == otp)
+    res.render("mentee-registration");
+  else
+    res.render("login-mentee");
+})
 })
 
 app.post('/loginToCardMentor', async (req, res) => {
