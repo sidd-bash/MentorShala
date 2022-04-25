@@ -17,11 +17,37 @@
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="/CSS/cardstyle.css">
 <link rel="stylesheet" type="text/css" href="/CSS/component2.css" />
 <link rel="stylesheet" href="/CSS/Report-Button.css">
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
 <style>
 	p{
 		color: black;
 	}
+  #cover{
+width: 400px;
+height:154px;
+z-index: -1;
+overflow: hidden;
+display:block;
+position:relative;
+  }
+  #profile{
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+    position: absolute;
+    display: block;
+    z-index: 999;
+    border: solid 2px;
+    margin-left: 145px;
+    margin-top: 20px;
+  }
+  #college{
+    display: inline;
+  }
+
 </style>
 </head>
 
@@ -55,11 +81,12 @@
      
         <img src="<%= element.image %>" alt="profile image" id="profile">
         <img src="<%= element.image %>" alt="cover image" id="cover">
-				<p><%= element.firstName + element.lastName %></p>
-        <p class="card-field"><%= element.educationInfo %></p>
-        <p class="card-field"><%= element.skills %></p>
-        <p class="card-field"><%= element.interest %></p>
-        <p class="card-field"><%= element.shortDescription %></p>
+				<%= element.firstName + element.lastName %> ,
+        
+        <p class="card-field" style="font-family: 'Comfortaa', cursive;" id="college"><%= element.college %></p>
+        <p class="card-field">Skill: <%= element.skills %></p>
+        <p class="card-field">Interests: <%= element.interest %></p>
+        <p class="card-field"> Bio: <%= element.shortDescription %></p>
   
 		  </div>
 		
