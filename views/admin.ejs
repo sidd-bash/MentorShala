@@ -79,27 +79,17 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Abusive Language</td>
-                <td><div class="decidebtns"><i class="fa fa-remove btns"></i>
-                  <i class="fa fa-check" aria-hidden="true" style="color: blue"></i></div></td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Asking Money</td>
-                <td><div class="decidebtns"><i class="fa fa-remove btns"></i>
-                  <i class="fa fa-check" aria-hidden="true" style="color: blue"></i></div></td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>Not able to solve query</td>
-                <td><div class="decidebtns"><i class="fa fa-remove btns"></i>
-                  <i class="fa fa-check" aria-hidden="true" style="color: blue"></i></div></td>
-              </tr>
+              
+              <%reports.forEach((report)=>{%>
+                <tr>
+                  <th scope="row"><%=(++k)%></th>
+                  <td><%=report.username%></td>
+                  <td><%=report.description%></td>
+                  <td><div class="decidebtns"><i class="fa fa-remove btns"></i>
+                    <i class="fa fa-check" aria-hidden="true" style="color: blue"></i></div></td>
+                </tr>
+              <% })>%
+              
             </tbody>
           </table>
           
