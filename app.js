@@ -18,6 +18,7 @@ let firstNameLogedIn;
 let lastNameLogedIn;
 let emailLogedIn;
 let imgUrlLogedIn;
+let passwordLogedIn;
 
 app.get('/', (req, res) => {
   res.render('index');
@@ -241,7 +242,8 @@ app.post('/loginToCardMentor',async (req,res)=>{
         typeLogedIn="Mentor";
         firstNameLogedIn=result.firstName;
         lastNameLogedIn=result.lastName;
-        emailLogedIn=result.email;
+        emailLogedIn=result.email;       
+        passwordLogedIn=result.password;
         imgUrlLogedIn=result.image;
         console.log(usernameLogedIn);
         console.log(result);
@@ -268,10 +270,11 @@ app.post('/loginToCardMentee',async (req,res)=>{
         firstNameLogedIn=result.firstName;
         lastNameLogedIn=result.lastName;
         emailLogedIn=result.email;
+        passwordLogedIn=result.password;
         imgUrlLogedIn=result.image;
         console.log(usernameLogedIn);
         console.log(result);
-        res.render("card");
+        res.redirect("card");
       }
       db.close();
     })
@@ -305,6 +308,34 @@ app.post('/setting',upload.single('imgUrl'),(req,res)=>{
     });
   });
   res.redirect('settings');
+})
+
+app.post('/settingChange',(req,res)=>{
+  console.log(req.body);
+  if (passwordLogedIn==req.body.currentPassword) {
+    MongoClient.connect(url, function (err, db) {
+      if (err) throw err;
+      var dbo = db.db("mydb");
+      var myquery = { email: emailLogedIn };
+      var newvalues = { $set: {password: req.body.newPassword}};
+      var collName;
+      if(typeLogedIn=="Mentor"){
+        collName="personalInfoMentor"
+      }
+      else{
+        collName="personalInfoMentee"
+      }
+      dbo.collection(collName).updateOne(myquery,newvalues,function (err,res){
+        if (err) throw err;
+        console.log(res);
+        db.close();
+      });
+    });
+    res.redirect('settings');
+  }
+  else{
+    res.redirect('settings');
+  }
 })
 
 app.listen(port, '127.0.0.1', () => {
