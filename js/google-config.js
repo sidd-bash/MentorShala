@@ -8,12 +8,14 @@ function onSignIn(googleUser) {
   let gname = profile.getName();
   let gemail = profile.getEmail();
   let gimage = profile.getImageUrl();
-obj={
+ obj={
   name:gname,
   email:gemail,
   image:gimage
 }
+
 }
+console.log(obj);
 
 function signOut() {
   var auth2 = gapi.auth2.getAuthInstance();
@@ -21,4 +23,3 @@ function signOut() {
     console.log('User signed out.');
   });
 }
-module.exports =obj;

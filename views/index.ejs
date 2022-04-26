@@ -22,6 +22,9 @@
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bilbo+Swash+Caps&family=Cabin:ital@1&family=Charm:wght@700&family=Crete+Round:ital@1&family=Updock&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -56,10 +59,12 @@
   <section id="banner">
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
-          <p class="title"><strong>Mentorshala</strong>, Please click on Mentor or Learner to be a part of our
-            initiative.
-            After Clicking you will be redirected to Register Page or Login Page. Fill The details.</p>
+        <div class="col-md-6" >
+          <p class="title">
+            <strong style="color:#f64c72; font-size:130px;font-family: 'Crete Round', serif;">Mentorshala</strong>
+            <p class="text-center" style="font-style:italic; font-size:30px; margin-top:-60px; margin-right: 100px;">A new way to learn</p> 
+            <div class="tagline"></div>
+          </p>
         </div>
         <div class="col-md-6 text-center">
           <img src="images/home2.png" class="image-mentor">
@@ -79,38 +84,43 @@
   <!-- <registeration page> -->
   <section id="middle">
     <div class="container">
-      <h1 class="title text-center">Login Options</h1>
-      <div class="row">
+      <br><br>
+      <h1 class="title text-center"><a style="text-decoration: none; color:#242fa2" href="#toptions">Login Options</a></h1>
+      <div class="row text-center" style="margin-top:50px" id="toptions">
+        
         <div class="col-md-4 middle">
           <img src="images/Mentorr.jpg" class="mentor-img">
-          <h4>Mentor Register</h4>
-          <p>Click on Below Button to Register As Mentor.
-            You Can Also Sign In From There.
-            Good Luck.
-          </p>
+          <div class="logindesc" style="margin-top: 40px;">
+            <h4>Mentor Register</h4>
+            <p>Click on Below Button to Register As Mentor.
+              You Can Also Sign In From There.
+              Good Luck.
+            </p>
+          </div>
           <a href="/login-mentor">
             <button id="mentor" class="custom-btn btn-12"><span>Mentor</span><span>Mentor</span></button></a>
         </div>
         <div class="col-md-4 middle">
           <img src="images/Learnerr.jpg" class="mentor-img">
-          <h4>Learner Register</h4>
-          <p>Click on Below Button to Register As Learner.
-            You Can Also Sign In From There.
-            Good Luck.
-          </p>
+          <div class="logindesc" style="margin-top: 40px;">
+            <h4>Learner Register</h4>
+            <p>Click on Below Button to Register As Learner.
+              You Can Also Sign In From There.
+              Good Luck.
+            </p>
+          </div>
           <a href="/login-mentee">
             <button id="learner" class="custom-btn btn-12" style="margin:10px"><span>Learner</span><span>Learner</span></button>
           </a>
         </div>
         <div class="col-md-4 middle">
           <img src="images/admin.png" class="mentor-img">
-          <h4>Admin Register</h4>
-          <p>Click on Below Button to Register As Admin.
-            You Can Also Sign In From There.
-            Good Luck.
-          </p>
+          <div class="logindesc" style="margin-top: 40px;">
+            <h4>Admin Register</h4>
+            <p>Click on Below Button to Login As Admin.</p>
+          </div>
           <a href="/login-admin">
-            <button id="admin" class="custom-btn btn-12" style="margin:10px"><span>Admin</span><span>Admin</span></button>
+            <button id="admin" class="custom-btn btn-12" style="margin-top:40px"><span>Admin</span><span>Admin</span></button>
           </a>
         </div>
       </div>
@@ -118,13 +128,17 @@
     </div>
   </section>
   <!-- About  Founder-->
-  <section id="testimonial">
+  <br><br><br>
+  <section id="testimonial" style="margin-top:60px; background:#2f24a2; color:white">
     <div class="container">
-      <h1 class="title text-center">FOUNDERS</h1>
+      <br><br>
+      <h1 class="title text-center" style="font-weight:bolder;font-family:'Times New Roman', Times, serif; color:#f64c72">FOUNDERS</h1>
+      <br><br><br><br>
       <div class="row">
         <div class="col-md-5 testimonial">
-          <img src="images/photo.jpg">
-          <p class="user-detail"><b>Abhishek Singh</b><br>Co-founder At MentorShala</p>
+          <img style="margin-bottom: 30px;"src="images/photo.jpg">
+          
+          <p class="user-detail"><b style="font-size:30px">Abhishek Singh</b><br><small>Co-founder At MentorShala</small></p>
           <br>
           <p>
             Studying in Indian Institute of Information Technology, Sri
@@ -134,8 +148,8 @@
           </p>
         </div>
         <div class="col-md-5 testimonial">
-          <img src="images/user2.jpg">
-          <p class="user-detail"><b>Abhay Pratap Singh</b><br>Co-founder At MentorShala</p>
+          <img style="margin-bottom: 30px;"src="images/photo.jpg">
+          <p class="user-detail"><b style="font-size:30px">Abhay Pratap Singh</b><br><small>Co-founder At MentorShala</small></p>
           <br>
           <p>
             Studying in Indian Institute of Information Technology, Sri
@@ -145,8 +159,9 @@
           </p>
         </div>
         <div class="col-md-5 testimonial">
-          <img src="images/petergriffin.jpg">
-          <p class="user-detail"><b>Siddharth Bhardwaj</b><br>Co-founder At MentorShala</p>
+          <img style="margin-bottom: 30px;"src="images/photo.jpg">
+          
+          <p class="user-detail"><b style="font-size:30px">Siddharth Bhardwaj</b><br><small>Co-founder At MentorShala</small></p>
           <br>
           <p>Studying in Indian Institute of Information Technology, Sri
             City,Chittoor.
@@ -154,8 +169,9 @@
             Creator of Chat or message Page and Main page.</p>
         </div>
         <div class="col-md-5 testimonial">
-          <img src="images/petergriffin.jpg">
-          <p class="user-detail"><b>Anant Chaturvedi</b><br>Co-founder At MentorShala</p>
+          <img style="margin-bottom: 30px;"src="images/photo.jpg">
+          
+          <p class="user-detail"><b style="font-size:30px">Anant Chaturvedi</b><br><small>Co-founder At MentorShala</small></p>
           <br>
           <p>Studying in Indian Institute of Information Technology, Sri
             City,Chittoor.
@@ -163,8 +179,9 @@
             Creator of This page.</p>
         </div>
         <div class="col-md-5 testimonial">
-          <img src="images/petergriffin.jpg">
-          <p class="user-detail"><b>Saurabh Kumar</b><br>Co-founder At MentorShala</p>
+          <img style="margin-bottom: 30px;"src="images/photo.jpg">
+          
+          <p class="user-detail"><b style="font-size:30px">Saurabh Kumar</b><br><small>Co-founder At MentorShala</small></p>
           <br>
           <p>Studying in Indian Institute of Information Technology, Sri
             City,Chittoor.
@@ -175,24 +192,23 @@
     </div>
   </section>
   <!-- About Section -->
-  <section id="about-us">
+  <section id="about-us" style="margin-top: -150px;">
     <div class="container">
-      <h1 class="title text-center">About Us</h1>
+      <br><br>
+      <h1 class="title text-center p-3" style="font-weight:bolder;font-family:'Times New Roman', Times, serif;">About Us</h1>
       <div class="row">
         <div class="col-md-14">
-          <h2 class="about text-center" style="font-size: 2rem;font-family: 'Raleway', sans-serif;">
-            <b>
-              The scope of the project is a web based system which will provide call,
-            video call and chat facility to the users for interactive learning and
-            guidance or career counselling and it will also help mentors to earn
-            some sort of pocket money if their rating is high to a certain value and
-            thus encourage mentors to put their heart and soul into the teaching
-            process for effective results from the mentees. A lot of students from
-            college or schools want to earn some pocket money by doing some part
-            time jobs(online or offline) so Mentor Matching website is a wonderful
-            platform for them to start earning money
-            </b>
-          </h3>
+          <div class="about text-center" style="font-size: 2rem;font-family: 'cursive', sans-serif;">
+            The scope of the project is a web based system which will provide call,
+          video call and chat facility to the users for interactive learning and
+          guidance or career counselling and it will also help mentors to earn
+          some sort of pocket money if their rating is high to a certain value and
+          thus encourage mentors to put their heart and soul into the teaching
+          process for effective results from the mentees. A lot of students from
+          college or schools want to earn some pocket money by doing some part
+          time jobs(online or offline) so Mentor Matching website is a wonderful
+          platform for them to start earning money
+          </div>
         </div>
       </div>
     </div>
@@ -227,6 +243,39 @@
         document.getElementById("chatf").style.display = "block";
       }
     }
+    let i=0;
+    let txt='\n'+'Join now to get Enlightened!'
+    let speed=20;
+    function typequote(){
+        if(i<txt.length){
+            document.getElementsByClassName('tagline')[0].innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typequote,speed);
+        }
+        document.getElementsByClassName('tagline')[0].style = "color:#000; margin-top:80px; margin-left:30px;  font-size:50px;font-family: 'Cabin', sans-serif;" ;
+    }
+    setTimeout(typequote,500);
+    $(window).on('beforeunload', function(){
+        $(window).scrollTop(0);
+      });
+
+      function offsetAnchor() {
+        if (location.hash.length !== 0) {
+          window.scrollTo(window.scrollX, window.scrollY - 500);
+        }
+      }
+
+      // Captures click events of all <a> elements with href starting with #
+      $(document).on('click', 'a[href^="#toptions"]', function(event) {
+        // Click events are captured before hashchanges. Timeout
+        // causes offsetAnchor to be called after the page jump.
+        window.setTimeout(function() {
+          offsetAnchor();
+        }, 0);
+      });
+
+      // Set the offset when entering page with hash present in the url
+      window.setTimeout(offsetAnchor, 0);
   </script>
   <style>
     #chatf {
