@@ -4,8 +4,9 @@ body{
 }
 
 .ui-w-80 {
-    width: 80px !important;
+    width: 250px !important;
     height: auto;
+    border-radius: 80%;
 }
 
 .btn-default {
@@ -60,6 +61,7 @@ label.btn {
     height: 1px;
     opacity: 0;
 }
+
 .account-settings-links .list-group-item.active {
     font-weight: bold !important;
 }
