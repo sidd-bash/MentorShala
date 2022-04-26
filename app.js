@@ -547,7 +547,6 @@ app.post('/setting', upload.single('imgUrl'), (req, res) => {
     var newvalues = {
       $set: {
         userName: usernameLogedIn, firstName: firstNameLogedIn, lastName: lastNameLogedIn, image: imgUrlLogedIn,
-        imageCover: imgCoverUrlLoggedIn
       }
     };
     // const query={{"email":emailLogedIn},{"$set":{"userName":req.body.userName},{"firstName":req.body.fname},{"lastName":req.body.lname},{"image":req.body.imgUrl}}}
