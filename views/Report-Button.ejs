@@ -1,24 +1,30 @@
-<form action="/ReportButton" method="post">
-    <div class="button-form">
-        <div>
-            <button class="open-button" onmouseover="showText()" onmouseout="hideText()" onclick="openForm()">
-                <i class="bi bi-flag"></i>
-            </button>
-            <div class="reportext">Report</div>
-        </div>
 
-        <div class="form-popup" id="myForm">
-            <form action="/report" method="post" class="form-container">
-                <div><input type="text" name="userName" id="userName" placeholder="Username" required>
-                </div>
-                <div><input type="text" name="description" id="description" placeholder="Description" required></div>
+    <form action="/ReportButton" method="post">
+        <div class="button-form">
+            <div>
+                <button class="open-button" onmouseover="showText()" onmouseout="hideText()" onclick="openForm()">
+                    <i class="bi bi-flag"></i>
+                </button>
+                <div class="reportext">Report</div>
+            </div>
+    
+            <div class="form-popup" id="myForm" style="width:210px; padding:5px; height:220px; background-color:aliceblue">
+                <form action="/report" method="post" class="form-container">
+                    <div class="mb-3" style="margin: 10px 3px;">
+                        <label for="userName" style="color: black;">Username:</label>
+                        <input type="text" name="userName" id="userName" placeholder="Username" required>
+                    </div>
+                    <div class="mb-3" style="margin: 10px 3px;">
+                        <label for="description" style="color: black;">Description:</label>
+                        <input type="text" name="description" id="description" placeholder="Description" required>
+                    </div>
+    
+                    <button type="submit" class="btn registerbtn btn-primary" style="margin:20px 0px">Report</button>
+                    <button type="button" class="btn cancel btn-danger" style="margin:20px 0px" onclick="closeForm()">Close</button>
+                </form>
+            </div>
+    </form>
 
-                <button type="submit" class="btn registerbtn">Report</button>
-                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-            </form>
-        </div>
-</form>
-</div>
 <script>
     function showText() {
         document.querySelector('.reportext').style.visibility = 'visible';
