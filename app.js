@@ -93,8 +93,15 @@ app.get('/admin', async (req, res) => {
      const mentee_coun = await dbo.collection("personalInfoMentee").find().count();
      const rep = dbo.collection("report").find().toArray((err,resu)=>{
           if(err) throw err;
-           res.render('admin', { "mentor_count": mentor_coun, "mentee_count": mentee_coun,"reports":resu,"k":0});
-    db.close();
+          dbo.collection("personalInfoMentee").find({}).toArray(function (err, result) {
+            if (err) throw err;
+      
+            
+            res.render('admin', { "mentor_count": mentor_coun, "mentee_count": mentee_coun,"reports":resu,"k":0,"mentees": result});
+            db.close();
+          });
+          
+    
         });
      
   });
