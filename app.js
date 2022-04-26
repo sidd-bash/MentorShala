@@ -576,6 +576,17 @@ app.post('/Info', (req, res) => {
   res.redirect('settings');
 })
 
+app.post('/adminlogin',(req,res)=>{
+  const adminUsername=req.body.Username;
+  const adminPassword=req.body.Pass;
+  if(adminUsername=="Admin@MentorShala" && adminPassword=="Mentoradmin123"){
+    res.redirect('admin')
+  }
+  else{
+    res.redirect('login-admin');
+  }
+})
+
 app.listen(port, '127.0.0.1', () => {
   console.log(`The application started successfully on port ${port}`);
 })
