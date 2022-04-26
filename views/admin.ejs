@@ -30,6 +30,9 @@
                   <li class="nav-item">
                     <a class="nav-link" onclick="showreports()" href="#">Reports</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" onclick="showmentees()" aria-current="page" href="#">Mentees</a>
+                  </li>
                   <!-- <li class="nav-item">
                     <a class="nav-link" href="#">Statistics</a>
                   </li> -->
@@ -47,7 +50,7 @@
               </div>
               <div class="card-1">
                 <h2 style="color:aliceblue">Mentees Matched</h2>
-                <h1><strong><%= mentee_count   %></strong></h1>
+                <h1><strong>0</strong></h1>
               </div>
             </div>
           </div>
@@ -56,11 +59,11 @@
               <h1 style="color: black">LEARNERS</h1>
               <div class="card-1">
                 <h2 style="color:aliceblue">Total Registered</h2>
-                <h1><strong>1025</strong></h1>
+                <h1><strong><%= mentee_count   %></strong></h1>
               </div>
               <div class="card-1">
                 <h2 style="color:aliceblue">Mentors Matched</h2>
-                <h1><strong>896</strong></h1>
+                <h1><strong>0</strong></h1>
               </div>
             </div>
           </div>
@@ -95,16 +98,62 @@
           
         </div>
         
+        <div id="mentees">
+          <h2>Mentees</h2>
+
+
+          <table class="table table-dark">
+            <thead>
+              <tr>
+               
+                <th scope="col">first name</th>
+                <th scope="col">last name</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">College</th>
+                <th scope="col">phone no.</th>
+                <th scope="col">city</th>
+                <th scope="col">Education</th>
+                <th scope="col">skills</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%mentees.forEach((mentee)=>{%>
+                <tr>
+                  
+                  <td><%=mentee.firstName%></td>
+                  <td><%=mentee.lastName%></td>
+                  <td><%=mentee.email%></td>
+                  <td><%=mentee.college%></td>
+                  <td><%=mentee.phoneNumber%></td>
+                  <td><%=mentee.city%></td>
+                  <td><%=mentee.educationInfo%></td>
+                  <td><%=mentee.skills%></td>
+                  
+                </tr>
+              <% })%>
+           
+              
+            </tbody>
+          </table>
+          
+        </div>
         
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
       function showreports(){
         document.getElementById('reportpanel').style.display='block';
         document.querySelector('.stats').style.display='none';
+        document.getElementById('mentees').style.display='none';
       }
       function showhome(){
         document.getElementById('reportpanel').style.display='none';
         document.querySelector('.stats').style.display='flex';
+        document.getElementById('mentees').style.display='none';
+      }
+      function showmentees(){
+        document.getElementById('mentees').style.display='block';
+        document.querySelector('.stats').style.display='none';
+        document.getElementById('reportpanel').style.display='none';
       }
     </script>
 
