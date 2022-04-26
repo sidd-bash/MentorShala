@@ -41,19 +41,10 @@
                   <div class="media-body ml-4">
                     <label class="btn btn-outline-primary">
                       Upload new profile photo
-                      <input type="file" name="imgUrl" id="imgUrl"  class="account-settings-fileinput" >
+                      <input type="file" name="imgUrl" id="imgUrl"  class="account-settings-fileinput" accept="image/png" value=<%=imgURL %> >
                     </label> &nbsp;
                     <br>
-
-
-                    <img src=<%=imgCoverURL %> alt="cover Photo" class="d-block ui-w-80">
-                  <div class="media-body ml-4">
-                    <label class="btn btn-outline-primary">
-                      Upload new cover photo
-                      <input type="file" name="imgUrl_cover" id="imgUrl_cover" multiple class="account-settings-fileinput">
-                    </label>
                     
-
                     <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
                   </div>
                 </div>
