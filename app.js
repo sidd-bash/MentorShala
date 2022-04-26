@@ -12,9 +12,8 @@ const res = require('express/lib/response');
 app.set('view engine', 'ejs');
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname)));
-const multer = require('multer');
-const { redirect } = require('express/lib/response');
-// const upload = multer({ dest: 'imgUpload/' })
+const multer = require('multer')
+const upload = multer({ dest: 'imgUpload/' })
 
 let usernameLogedIn;
 let typeLogedIn;
@@ -28,7 +27,6 @@ app.use(bodyparser.json());
 let bioLogedIn;
 let birthdateLogedIn;
 let phoneLogedIn;
-let imgCoverUrlLoggedIn;
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
@@ -51,7 +49,6 @@ app.get('/chatbot', (req, res) => {
 app.get('/settings', (req, res) => {
   const params = {
     'imgURL': imgUrlLogedIn,
-    'imgCoverURL': imgCoverUrlLoggedIn,
     'userName': usernameLogedIn,
     'firstName': firstNameLogedIn,
     'lastName': lastNameLogedIn,
@@ -113,18 +110,57 @@ app.get('/admin', async (req, res) => {
      
   });
 
-  app.get('/admin/:id',(req,res)=>{
-    const id=req.params.id;
-    MongoClient.connect(url, async function (err, db) {
-      if (err) throw err;
-      var dbo = db.db("mydb");
-      // dbo.collection("report").deleteOne({username:id1});
-      dbo.collection("personalInfoMentee").deleteOne({username:id});
-     
-     
-      db.close();
+app.post('/notremove',(req, res) => {
+
+  MongoClient.connect(url, (err, db)=> {
+    if (err)
+    throw err;
+    var dbo = db.db("mydb");
+    var myquery = {userName:req.body.cross};
+  dbo.collection("report").deleteOne(myquery, function(err, obj) {
+    if (err) throw err;
+    console.log("1 document deleted");
+    db.close();
+   
   });
+  res.redirect("admin");
 });
+});
+
+app.post('/remove', async (req, res) => {
+
+  MongoClient.connect(url, async function (err, db) {
+    if (err)
+    throw err;
+    var dbo = db.db("mydb");
+    var myquery = {userName:req.body.tick};
+   dbo.collection("personalInfoMentee").deleteOne(myquery, function(err, obj) {
+    if (err) throw err;
+    dbo.collection("report").deleteOne(myquery, function(err, obj) {
+      if (err) throw err;
+      console.log("1 document deleted");
+      db.close();
+     
+    });
+
+  });
+  res.redirect("admin");
+});
+});
+
+
+//   app.get('/:id',(req,res)=>{
+//     const id=req.params.id;
+//     MongoClient.connect(url, async function (err, db) {
+//       if (err) throw err;
+//       var dbo = db.db("mydb");
+//      await dbo.collection("report").deleteOne({username:id});
+//       // dbo.collection("personalInfoMentee").deleteOne({username:id});
+//      res.redirect("admin");
+     
+//       db.close();
+//   });
+// });
 
   // let result;
   // MongoClient.connect(url, async function (err, db) {
@@ -179,6 +215,14 @@ app.get('/card', async (req, res) => {
 
 
 function insertion_in_personalInfoMentor(myobj,res) {
+  usernameLogedIn=myobj.userName;
+  typeLogedIn="Mentor";
+  firstNameLogedIn=myobj.firstName;
+  lastNameLogedIn=myobj.lastName;
+  bioLogedIn=myobj.shortDescription;
+  birthdateLogedIn=myobj.birthdate;
+  phoneLogedIn=myobj.phone;
+  console.log(usernameLogedIn);
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
@@ -192,6 +236,13 @@ function insertion_in_personalInfoMentor(myobj,res) {
 }
 
 function insertion_in_personalInfoMentee(myobj,res) {
+  usernameLogedIn=myobj.userName;
+  typeLogedIn="Mentee";
+  firstNameLogedIn=myobj.firstName;
+  lastNameLogedIn=myobj.lastName;
+  bioLogedIn=myobj.shortDescription;
+  birthdateLogedIn=myobj.birthdate;
+  phoneLogedIn=myobj.phone;
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
@@ -272,14 +323,16 @@ let passwordGlobal;
 
 app.post('/cardMentor', (req, res) => {
   console.log(req.body);
-  res.redirect('index')
+  // res.redirect('index')
   // res.redirect('/card')
   // console.log(emailGlobal);
   // console.log(passwordGlobal);
   req.body.email = emailGlobal;
   req.body.password = passwordGlobal;
+  emailLogedIn=req.body.email;
+  passwordLogedIn=req.body.password;
   req.body.image = "https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
-  req.body.imageCover = "https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
+  imgUrlLogedIn=req.body.image;
   req.body.liked=[];
   req.body.matched=[];
   req.body.verified=false;
@@ -289,13 +342,15 @@ app.post('/cardMentor', (req, res) => {
 
 app.post('/cardMentee', (req, res) => {
   console.log(req.body);
-  res.redirect('index')
+  // res.redirect('index')
   // console.log(emailGlobal);
   // console.log(passwordGlobal);
   req.body.email = emailGlobal;
+  emailLogedIn=req.body.email;
+  passwordLogedIn=req.body.password;
   req.body.password = passwordGlobal;
   req.body.image = "https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
-  req.body.imageCover = "https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
+  imgUrlLogedIn=req.body.image;
   req.body.liked=[];
   req.body.matched=[];
   console.log(req.body);
@@ -472,28 +527,17 @@ app.post('/loginToCardMentee', async (req, res) => {
   });
 })
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'imgUpload/');
-  },
 
-  filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-  }
-});
-
-var upload = multer({ storage: storage })
-
-var multipleUpload = upload.fields([{ name: "imgUrl" }, { name: "imgUrl_cover", maxCount: 3 }])
-
-app.post('/setting', multipleUpload, (req, res) => {
+app.post('/setting', upload.single('imgUrl'), (req, res) => {
   console.log(req.body);
-  console.log(req.files);
+  console.log(req.file);
   // console.log(req.files.imgUrl[0].path);
   // console.log(req.files[1].path);
   usernameLogedIn = req.body.userName;
-  imgUrlLogedIn = req.files.imgUrl[0].path;
-  imgCoverUrlLoggedIn = req.files.imgUrl_cover[0].path;
+  if(req.file!=undefined){
+    imgUrlLogedIn = req.file.path;
+  }
+  // imgCoverUrlLoggedIn = req.files.imgUrl_cover[0].path;
   firstNameLogedIn = req.body.fname;
   lastNameLogedIn = req.body.lname;
   MongoClient.connect(url, function (err, db) {
@@ -503,7 +547,6 @@ app.post('/setting', multipleUpload, (req, res) => {
     var newvalues = {
       $set: {
         userName: usernameLogedIn, firstName: firstNameLogedIn, lastName: lastNameLogedIn, image: imgUrlLogedIn,
-        imageCover: imgCoverUrlLoggedIn
       }
     };
     // const query={{"email":emailLogedIn},{"$set":{"userName":req.body.userName},{"firstName":req.body.fname},{"lastName":req.body.lname},{"image":req.body.imgUrl}}}
@@ -522,19 +565,50 @@ app.post('/setting', multipleUpload, (req, res) => {
   });
   res.redirect('settings');
 })
-app.post('/Report-button', (req, res) => {
+
+
+let flag=0;
+app.post('/ReportButton', (req, res) => {
   console.log(req.body);
-  MongoClient.connect(url, function (err, db) {
-    if (err) throw err;
-    var dbo = db.db("mydb");
-    dbo.collection("report").insertOne(req.body, function (err, res) {
+  // MongoClient.connect(url, function (err, db) {
+  //   if (err) throw err;
+  //   var dbo = db.db("mydb");
+  //   var collName;
+  //   console.log(typeLogedIn);
+  //   if(typeLogedIn=="Mentor"){
+  //     collName="personalInfoMentee"
+  //   }
+  //   else{
+  //     collName="personalInfoMentor"
+  //   }
+  //   dbo.collection(collName).findOne({ userName: req.body.username}, function (err, result) {
+  //     if (err) throw err;
+  //     if (result == null) {
+  //       flag=0;
+  //       console.log(result); 
+  //     }
+  //     else {
+  //       flag=1;
+  //       console.log(result);
+  //     }
+  //     db.close();
+  //   })
+  // });
+
+  
+    MongoClient.connect(url, function (err, db) {
       if (err) throw err;
-      console.log("1 document inserted");
-      db.close();
+      var dbo = db.db("mydb");
+      dbo.collection("report").insertOne(req.body, function (err, res) {
+        if (err) throw err;
+        console.log("1 document inserted");
+        db.close();
+      });
     });
-  });
+  
   res.redirect('card');
 })
+
 
 app.post('/settingChange', (req, res) => {
   console.log(req.body);
@@ -601,9 +675,12 @@ app.post('/adminlogin',(req,res)=>{
   }
 })
 
+
+let googleobj = require('./js/google-config.js');
+
+
+
+
 app.listen(port, '127.0.0.1', () => {
   console.log(`The application started successfully on port ${port}`);
 })
-// function searchQuestion() {
-
-// }
