@@ -1,17 +1,17 @@
-
+let obj;
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
   console.log('Name: ' + profile.getName());
   console.log('Image URL: ' + profile.getImageUrl());
   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-  let name = profile.getName();
-  let email = profile.getEmail();
-  let image = profile.getImageUrl();
-let obj={
-  name:name,
-  email:email,
-  image:image
+  let gname = profile.getName();
+  let gemail = profile.getEmail();
+  let gimage = profile.getImageUrl();
+obj={
+  name:gname,
+  email:gemail,
+  image:gimage
 }
 }
 

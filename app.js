@@ -658,7 +658,7 @@ app.post('/adminlogin',(req,res)=>{
 })
 
 
-let googleobj = require('./google-config.js');
+let googleobj = require('./js/google-config.js');
 
 
 
