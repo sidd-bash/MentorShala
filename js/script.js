@@ -95,7 +95,7 @@ function addHammers() {
 		let array=['#D40000','#056551','#B399C6','#010563','#FDCACF'];
 		
 		el.style.background=array[i];
-		i=(i+1)%5;
+		i=(i+1)%6;
 		//add the moving class if the card is being panned
 		hammertime.on("pan", function (event) {
 			el.classList.add("moving");
