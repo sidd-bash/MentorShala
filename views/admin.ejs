@@ -90,9 +90,12 @@
                   <th scope="row"><%=(++k)%></th>
                   <td><%=report.username%></td>
                   <td><%=report.description%></td>
-                  <td><div class="decidebtns"><i class="fa fa-remove btns"></i>
+                  <td><div class="decidebtns">
+                  <a href="admin/<%= report.username %> "  >
+                    <i class="fa fa-remove btns"></i>
                     <i class="fa fa-check" aria-hidden="true" style="color: blue"></i></div></td>
-                </tr>
+                  </a>
+                  </tr>
               <% })%>
            
               
