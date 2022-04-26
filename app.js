@@ -95,10 +95,16 @@ app.get('/admin', async (req, res) => {
           if(err) throw err;
           dbo.collection("personalInfoMentee").find({}).toArray(function (err, result) {
             if (err) throw err;
-      
             
-            res.render('admin', { "mentor_count": mentor_coun, "mentee_count": mentee_coun,"reports":resu,"k":0,"mentees": result});
-            db.close();
+            dbo.collection("personalInfoMentor").find({}).toArray(function (err, mento) {
+              if (err) throw err;
+        
+              
+              res.render('admin', { "mentor_count": mentor_coun, "mentee_count": mentee_coun,"reports":resu,"k":0,"mentees": result, "mentors": mento });
+              db.close();
+            });
+            
+        
           });
           
     
