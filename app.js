@@ -113,18 +113,54 @@ app.get('/admin', async (req, res) => {
      
   });
 
-  app.get('/admin/:id',(req,res)=>{
-    const id=req.params.id;
-    MongoClient.connect(url, async function (err, db) {
-      if (err) throw err;
-      var dbo = db.db("mydb");
-      // dbo.collection("report").deleteOne({username:id1});
-      dbo.collection("personalInfoMentee").deleteOne({username:id});
-     
-     
-      db.close();
+app.post('/notremove',(req, res) => {
+
+  MongoClient.connect(url, (err, db)=> {
+    if (err)
+    throw err;
+    var dbo = db.db("mydb");
+    var myquery = {username:req.body.cross};
+  dbo.collection("report").deleteOne(myquery, function(err, obj) {
+    if (err) throw err;
+    console.log("1 document deleted");
+    db.close();
+   
   });
+  res.redirect("admin");
 });
+});
+
+app.post('/remove', async (req, res) => {
+
+  MongoClient.connect(url, async function (err, db) {
+    if (err)
+    throw err;
+    var dbo = db.db("mydb");
+    var myquery = { username: req.body.tick };
+   dbo.collection("personalInfoMentee").deleteOne(myquery, function(err, obj) {
+    if (err) throw err;
+    console.log("1 document deleted");
+
+    db.close();
+
+  });
+  res.redirect("admin");
+});
+});
+
+
+//   app.get('/:id',(req,res)=>{
+//     const id=req.params.id;
+//     MongoClient.connect(url, async function (err, db) {
+//       if (err) throw err;
+//       var dbo = db.db("mydb");
+//      await dbo.collection("report").deleteOne({username:id});
+//       // dbo.collection("personalInfoMentee").deleteOne({username:id});
+//      res.redirect("admin");
+     
+//       db.close();
+//   });
+// });
 
   // let result;
   // MongoClient.connect(url, async function (err, db) {

@@ -88,14 +88,24 @@
               <%reports.forEach((report)=>{%>
                 <tr>
                   <th scope="row"><%=(++k)%></th>
-                  <td><%=report.username%></td>
+                  <td><%=report.userName%></td>
                   <td><%=report.description%></td>
-                  <td><div class="decidebtns">
-                  <a href="admin/<%= report.username %> "  >
-                    <i class="fa fa-remove btns"></i>
-                    <i class="fa fa-check" aria-hidden="true" style="color: blue"></i></div></td>
-                  </a>
-                  </tr>
+                  <td>
+                    <div class="decidebtns" style="display: flex;">
+
+                      <form action="/notremove" method="post" style="margin:0 8px 0 0;">
+                        <input type="text" style="display:none;" value="<%=report.userName%>" name="cross">
+                        <button type="submit"><i class="fa fa-remove btns" style="width: 10px;"></i></button>
+                        </form>
+                      <form action="/remove" method="post" style="margin:0 0 0 0;">
+                      <input type="text" style="display:none;" value="<%=report.userName%>" name="tick">
+                      <button type="submit"><i class="fa fa-check" aria-hidden="true" style="color: blue"></i></button>
+                      </form>
+                    </div>
+
+                  </td>
+
+                </tr>
               <% })%>
            
               
