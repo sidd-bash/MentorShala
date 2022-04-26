@@ -59,16 +59,28 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
-  background-color: #555;
-  color: white;
+  background-color: rgb(255, 255, 255);
+  height: 50px;
+  width : 160px;
+  color: rgb(0, 0, 0);
   padding: 16px 20px;
   border: none;
   cursor: pointer;
   opacity: 0.8;
-  position: fixed;
+  position: relative;
+  margin-left: 250px;
+  
+  padding-bottom: 30px;
+
   bottom: 23px;
   right: 28px;
-  width: 280px;
+ 
+  box-shadow:1px 5px 2px rgba(128, 128, 128, 0.233);
+  border-radius: 1px;
+  
+}
+.butt{
+  margin-top: -40px;
 }
 
 /* The popup form - hidden by default */
@@ -79,6 +91,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
   right: 15px;
   border: 3px solid #f1f1f1;
   z-index: 9;
+  border-radius: 40px;
+  margin-bottom: 3px;
 }
 
 /* Add styles to the form container */
@@ -86,11 +100,17 @@ body {font-family: Arial, Helvetica, sans-serif;}
   max-width: 300px;
   padding: 10px;
   background-color: white;
+  border-top-left-radius: 35px;
+  border-top-right-radius: 35px;
+  
+  
 }
 .form2-container {
   max-width: 300px;
   padding: 10px;
   background-color: white;
+  border-bottom-right-radius: 35px;
+  border-bottom-left-radius: 35px;
 }
 
 /* Full-width input fields */
@@ -138,4 +158,5 @@ body {font-family: Arial, Helvetica, sans-serif;}
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
+  
 }
