@@ -126,11 +126,27 @@ app.get('/admin', async (req, res) => {
 });
 
 
-app.get('/card', async (req, res) => {
+app.get('/card/mentor', async (req, res) => {
   MongoClient.connect(url, async function (err, db) {
     if (err) throw err;
     let dbo = db.db("mydb");
     dbo.collection("personalInfoMentee").find({}).toArray(function (err, result) {
+      if (err) throw err;
+
+      res.render('card', { "mentee": result, "k": 0 });
+      db.close();
+    });
+
+
+  });
+
+});
+
+app.get('/card/mentee', async (req, res) => {
+  MongoClient.connect(url, async function (err, db) {
+    if (err) throw err;
+    let dbo = db.db("mydb");
+    dbo.collection("personalInfoMentor").find({}).toArray(function (err, result) {
       if (err) throw err;
 
       res.render('card', { "mentee": result, "k": 0 });
@@ -236,7 +252,7 @@ let passwordGlobal;
 
 app.post('/cardMentor', (req, res) => {
   console.log(req.body);
-  res.redirect('/card')
+  res.redirect('/card/mentor')
   // console.log(emailGlobal);
   // console.log(passwordGlobal);
   req.body.email = emailGlobal;
@@ -252,7 +268,7 @@ app.post('/cardMentor', (req, res) => {
 
 app.post('/cardMentee', (req, res) => {
   console.log(req.body);
-  res.redirect('/card')
+  res.redirect('/card/mentee')
   // console.log(emailGlobal);
   // console.log(passwordGlobal);
   req.body.email = emailGlobal;
@@ -395,7 +411,7 @@ app.post('/loginToCardMentor', async (req, res) => {
         birthdateLogedIn = req.body.dob;
         console.log(usernameLogedIn);
         console.log(result);
-        res.redirect("card");
+        res.redirect("card/mentor");
       }
       db.close();
     })
@@ -426,7 +442,7 @@ app.post('/loginToCardMentee', async (req, res) => {
         birthdateLogedIn = req.body.dob;
         console.log(usernameLogedIn);
         console.log(result);
-        res.redirect("card");
+        res.redirect("card/mentee");
       }
       db.close();
     })
