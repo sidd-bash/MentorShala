@@ -52,25 +52,24 @@ left: 0;
 }
 /*comment*/
 .navbar{
-  background-image: linear-gradient(to right, #a517ba, #470468);
+  background:#2f2fa2;
   padding: 0 !important;
 }
 .navbar-nav li{
   padding: 0 10px;
 }
 #banner{
-  background-image: linear-gradient(to right, #a517ba, #470468);
+  background: #2f2fa2;
   color:white;
   padding-top: 2%;
 }
 .title{
-  font-size:40px;
-  font-weight:600;
-  margin-top:100px;
+  
+  
 }
 .col-md-6 .image-mentor{
   height: auto;
-  width: 50%;
+  width: 70%;
   float: right;
 }
 .bottom-img{
@@ -269,6 +268,7 @@ img:hover{
   margin-top: 20px;
   margin-left: 30px;
 }
+.
 .services{
   padding: 20px;
 }
@@ -279,7 +279,7 @@ img:hover{
 }
 .middle .title::before{
   content: '';
-  background: #7b1798;
+  
   height: 5px;
   width: 200px;
   margin-left: auto;
@@ -295,7 +295,7 @@ img:hover{
   padding: auto;
 }
 .testimonial{
-  border-left:4px solid #7b1798 ;
+  border-left:4px solid #f64c72 ;
   margin-top: 50px;
   margin-left: 70px;
   margin-bottom: 50px;
@@ -316,7 +316,7 @@ img:hover{
     background: #f8f9fa;
     padding-bottom: 50px;
     padding-top: auto;
-    background: linear-gradient(to right, #db94e5, #df22d5);
+    
 }
 #about-us .title{
   color:rgb(17, 17, 17);
@@ -353,3 +353,21 @@ img:hover{
   width: 100%;
 }
 
+.image-mentor{
+  animation-name: conthover;
+  animation-duration: 4s;
+  animation-iteration-count: infinite ;
+}
+
+@keyframes conthover{
+  50%{
+    transform: scale(1.15);
+  }
+  100%{
+    transform:none;
+  }
+}
+
+  #toptions{  
+    
+  }
