@@ -116,7 +116,7 @@ app.post('/notremove',(req, res) => {
     if (err)
     throw err;
     var dbo = db.db("mydb");
-    var myquery = {username:req.body.cross};
+    var myquery = {userName:req.body.cross};
   dbo.collection("report").deleteOne(myquery, function(err, obj) {
     if (err) throw err;
     console.log("1 document deleted");
@@ -133,12 +133,15 @@ app.post('/remove', async (req, res) => {
     if (err)
     throw err;
     var dbo = db.db("mydb");
-    var myquery = { username: req.body.tick };
+    var myquery = {userName:req.body.tick};
    dbo.collection("personalInfoMentee").deleteOne(myquery, function(err, obj) {
     if (err) throw err;
-    console.log("1 document deleted");
-
-    db.close();
+    dbo.collection("report").deleteOne(myquery, function(err, obj) {
+      if (err) throw err;
+      console.log("1 document deleted");
+      db.close();
+     
+    });
 
   });
   res.redirect("admin");
