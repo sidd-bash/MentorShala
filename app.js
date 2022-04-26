@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname)));
 const multer = require('multer')
-// const upload = multer({ dest: 'imgUpload/' })
+const upload = multer({ dest: 'imgUpload/' })
 
 let usernameLogedIn;
 let typeLogedIn;
@@ -27,7 +27,6 @@ app.use(bodyparser.json());
 let bioLogedIn;
 let birthdateLogedIn;
 let phoneLogedIn;
-let imgCoverUrlLoggedIn;
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
@@ -50,7 +49,6 @@ app.get('/chatbot', (req, res) => {
 app.get('/settings', (req, res) => {
   const params = {
     'imgURL': imgUrlLogedIn,
-    'imgCoverURL': imgCoverUrlLoggedIn,
     'userName': usernameLogedIn,
     'firstName': firstNameLogedIn,
     'lastName': lastNameLogedIn,
@@ -112,17 +110,6 @@ app.get('/admin', async (req, res) => {
      
   });
 
-  // let result;
-  // MongoClient.connect(url, async function (err, db) {
-  //   if (err) throw err;
-  //   var dbo = db.db("mydb");
-  //   const mentor_coun = dbo.collection("report").find().toArray((err,res)=>{
-  //     if(err) throw err;
-  //     result=res;
-  //   });
-  //   db.close();
-  // });
-  // res.render('admin', { "mentor_count": mentor_coun, "mentee_count": mentee_coun,"reports":result,"k":0 });
 });
 
 
@@ -458,28 +445,17 @@ app.post('/loginToCardMentee', async (req, res) => {
   });
 })
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'imgUpload/');
-  },
 
-  filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-  }
-});
-
-var upload = multer({ storage: storage })
-
-var multipleUpload = upload.fields([{ name: "imgUrl" }, { name: "imgUrl_cover", maxCount: 3 }])
-
-app.post('/setting', multipleUpload, (req, res) => {
+app.post('/setting', upload.single('imgUrl'), (req, res) => {
   console.log(req.body);
-  console.log(req.files);
+  console.log(req.file);
   // console.log(req.files.imgUrl[0].path);
   // console.log(req.files[1].path);
   usernameLogedIn = req.body.userName;
-  imgUrlLogedIn = req.files.imgUrl[0].path;
-  imgCoverUrlLoggedIn = req.files.imgUrl_cover[0].path;
+  if(req.file!=undefined){
+    imgUrlLogedIn = req.file.path;
+  }
+  // imgCoverUrlLoggedIn = req.files.imgUrl_cover[0].path;
   firstNameLogedIn = req.body.fname;
   lastNameLogedIn = req.body.lname;
   MongoClient.connect(url, function (err, db) {
@@ -508,19 +484,50 @@ app.post('/setting', multipleUpload, (req, res) => {
   });
   res.redirect('settings');
 })
-app.post('/Report-button', (req, res) => {
+
+
+let flag=0;
+app.post('/ReportButton', (req, res) => {
   console.log(req.body);
-  MongoClient.connect(url, function (err, db) {
-    if (err) throw err;
-    var dbo = db.db("mydb");
-    dbo.collection("report").insertOne(req.body, function (err, res) {
+  // MongoClient.connect(url, function (err, db) {
+  //   if (err) throw err;
+  //   var dbo = db.db("mydb");
+  //   var collName;
+  //   console.log(typeLogedIn);
+  //   if(typeLogedIn=="Mentor"){
+  //     collName="personalInfoMentee"
+  //   }
+  //   else{
+  //     collName="personalInfoMentor"
+  //   }
+  //   dbo.collection(collName).findOne({ userName: req.body.username}, function (err, result) {
+  //     if (err) throw err;
+  //     if (result == null) {
+  //       flag=0;
+  //       console.log(result); 
+  //     }
+  //     else {
+  //       flag=1;
+  //       console.log(result);
+  //     }
+  //     db.close();
+  //   })
+  // });
+
+  
+    MongoClient.connect(url, function (err, db) {
       if (err) throw err;
-      console.log("1 document inserted");
-      db.close();
+      var dbo = db.db("mydb");
+      dbo.collection("report").insertOne(req.body, function (err, res) {
+        if (err) throw err;
+        console.log("1 document inserted");
+        db.close();
+      });
     });
-  });
+  
   res.redirect('card');
 })
+
 
 app.post('/settingChange', (req, res) => {
   console.log(req.body);
@@ -590,6 +597,3 @@ app.post('/adminlogin',(req,res)=>{
 app.listen(port, '127.0.0.1', () => {
   console.log(`The application started successfully on port ${port}`);
 })
-// function searchQuestion() {
-
-// }
