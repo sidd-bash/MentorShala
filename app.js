@@ -126,41 +126,45 @@ app.get('/admin', async (req, res) => {
 });
 
 
-app.get('/card/mentor', async (req, res) => {
+app.get('/card', async (req, res) => {
   MongoClient.connect(url, async function (err, db) {
     if (err) throw err;
     let dbo = db.db("mydb");
-    dbo.collection("personalInfoMentee").find({}).toArray(function (err, result) {
+    var collName;
+      if (typeLogedIn == "Mentor") {
+        collName = "personalInfoMentee"
+      }
+      else {
+        collName = "personalInfoMentor"
+      }
+    dbo.collection(collName).find({}).toArray(function (err, result) {
       if (err) throw err;
 
       res.render('card', { "mentee": result, "k": 0 });
       db.close();
     });
-
-
   });
-
 });
 
-app.get('/card/mentee', async (req, res) => {
-  MongoClient.connect(url, async function (err, db) {
-    if (err) throw err;
-    let dbo = db.db("mydb");
-    dbo.collection("personalInfoMentor").find({}).toArray(function (err, result) {
-      if (err) throw err;
+// app.get('/card/mentee', async (req, res) => {
+//   MongoClient.connect(url, async function (err, db) {
+//     if (err) throw err;
+//     let dbo = db.db("mydb");
+//     dbo.collection("personalInfoMentor").find({}).toArray(function (err, result) {
+//       if (err) throw err;
 
-      res.render('card', { "mentee": result, "k": 0 });
-      db.close();
-    });
-
-
-  });
-
-});
+//       res.render('card', { "mentee": result, "k": 0 });
+//       db.close();
+//     });
 
 
+//   });
 
-function insertion_in_personalInfoMentor(myobj) {
+// });
+
+
+
+function insertion_in_personalInfoMentor(myobj,res) {
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
@@ -170,9 +174,10 @@ function insertion_in_personalInfoMentor(myobj) {
       db.close();
     });
   });
+  res.redirect('card')
 }
 
-function insertion_in_personalInfoMentee(myobj) {
+function insertion_in_personalInfoMentee(myobj,res) {
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
@@ -182,6 +187,7 @@ function insertion_in_personalInfoMentee(myobj) {
       db.close();
     });
   });
+  res.redirect('card')
 }
 
 // function insertion_in_CommunityCollection(myobj) {
@@ -226,7 +232,7 @@ app.get('/CommunityPage', (req, res) => {
 
 app.post('/CommunityPage', (req, res) => {
   console.log(req.body);
-  res.redirect('CommunityPage');
+  // res.redirect('CommunityPage');
   req.body.answers=[];
   req.body.AskedPerson=usernameLogedIn;
   req.body.profileAskedPerson=imgUrlLogedIn;
@@ -252,7 +258,8 @@ let passwordGlobal;
 
 app.post('/cardMentor', (req, res) => {
   console.log(req.body);
-  res.redirect('/card/mentor')
+  res.redirect('index')
+  // res.redirect('/card')
   // console.log(emailGlobal);
   // console.log(passwordGlobal);
   req.body.email = emailGlobal;
@@ -263,12 +270,12 @@ app.post('/cardMentor', (req, res) => {
   req.body.matched=[];
   req.body.verified=false;
   console.log(req.body);
-  insertion_in_personalInfoMentor(req.body);
+  insertion_in_personalInfoMentor(req.body,res);
 })
 
 app.post('/cardMentee', (req, res) => {
   console.log(req.body);
-  res.redirect('/card/mentee')
+  res.redirect('index')
   // console.log(emailGlobal);
   // console.log(passwordGlobal);
   req.body.email = emailGlobal;
@@ -278,7 +285,7 @@ app.post('/cardMentee', (req, res) => {
   req.body.liked=[];
   req.body.matched=[];
   console.log(req.body);
-  insertion_in_personalInfoMentee(req.body);
+  insertion_in_personalInfoMentee(req.body,res);
 })
 var otp = Math.random();
 otp = otp * 10000;
@@ -297,6 +304,8 @@ let transporter = nodemailer.createTransport({
   }
 
 });
+
+
 app.post('/registrationMentor', (req, res) => {
   console.log(req.body);
   const email = req.body.email;
@@ -411,7 +420,7 @@ app.post('/loginToCardMentor', async (req, res) => {
         birthdateLogedIn = req.body.dob;
         console.log(usernameLogedIn);
         console.log(result);
-        res.redirect("card/mentor");
+        res.redirect("card");
       }
       db.close();
     })
@@ -442,7 +451,7 @@ app.post('/loginToCardMentee', async (req, res) => {
         birthdateLogedIn = req.body.dob;
         console.log(usernameLogedIn);
         console.log(result);
-        res.redirect("card/mentee");
+        res.redirect("card");
       }
       db.close();
     })
