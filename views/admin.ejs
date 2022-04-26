@@ -33,6 +33,9 @@
                   <li class="nav-item">
                     <a class="nav-link active" onclick="showmentees()" aria-current="page" href="#">Mentees</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" onclick="showmentors()" aria-current="page" href="#">Mentors</a>
+                  </li>
                   <!-- <li class="nav-item">
                     <a class="nav-link" href="#">Statistics</a>
                   </li> -->
@@ -184,16 +187,25 @@
         document.getElementById('reportpanel').style.display='block';
         document.querySelector('.stats').style.display='none';
         document.getElementById('mentees').style.display='none';
+        document.getElementById('mentors').style.display='none';
       }
       function showhome(){
         document.getElementById('reportpanel').style.display='none';
         document.querySelector('.stats').style.display='flex';
         document.getElementById('mentees').style.display='none';
+        document.getElementById('mentors').style.display='none';
       }
       function showmentees(){
         document.getElementById('mentees').style.display='block';
         document.querySelector('.stats').style.display='none';
         document.getElementById('reportpanel').style.display='none';
+        document.getElementById('mentors').style.display='none';
+      }
+      function showmentors(){
+        document.getElementById('mentors').style.display='block';
+        document.querySelector('.stats').style.display='none';
+        document.getElementById('reportpanel').style.display='none';
+        document.getElementById('mentees').style.display='none';
       }
     </script>
 
