@@ -215,6 +215,14 @@ app.get('/card', async (req, res) => {
 
 
 function insertion_in_personalInfoMentor(myobj,res) {
+  usernameLogedIn=myobj.userName;
+  typeLogedIn="Mentor";
+  firstNameLogedIn=myobj.firstName;
+  lastNameLogedIn=myobj.lastName;
+  bioLogedIn=myobj.shortDescription;
+  birthdateLogedIn=myobj.birthdate;
+  phoneLogedIn=myobj.phone;
+  console.log(usernameLogedIn);
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
@@ -228,6 +236,13 @@ function insertion_in_personalInfoMentor(myobj,res) {
 }
 
 function insertion_in_personalInfoMentee(myobj,res) {
+  usernameLogedIn=myobj.userName;
+  typeLogedIn="Mentee";
+  firstNameLogedIn=myobj.firstName;
+  lastNameLogedIn=myobj.lastName;
+  bioLogedIn=myobj.shortDescription;
+  birthdateLogedIn=myobj.birthdate;
+  phoneLogedIn=myobj.phone;
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
@@ -308,14 +323,16 @@ let passwordGlobal;
 
 app.post('/cardMentor', (req, res) => {
   console.log(req.body);
-  res.redirect('index')
+  // res.redirect('index')
   // res.redirect('/card')
   // console.log(emailGlobal);
   // console.log(passwordGlobal);
   req.body.email = emailGlobal;
   req.body.password = passwordGlobal;
+  emailLogedIn=req.body.email;
+  passwordLogedIn=req.body.password;
   req.body.image = "https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
-  req.body.imageCover = "https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
+  imgUrlLogedIn=req.body.image;
   req.body.liked=[];
   req.body.matched=[];
   req.body.verified=false;
@@ -325,13 +342,15 @@ app.post('/cardMentor', (req, res) => {
 
 app.post('/cardMentee', (req, res) => {
   console.log(req.body);
-  res.redirect('index')
+  // res.redirect('index')
   // console.log(emailGlobal);
   // console.log(passwordGlobal);
   req.body.email = emailGlobal;
+  emailLogedIn=req.body.email;
+  passwordLogedIn=req.body.password;
   req.body.password = passwordGlobal;
   req.body.image = "https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
-  req.body.imageCover = "https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
+  imgUrlLogedIn=req.body.image;
   req.body.liked=[];
   req.body.matched=[];
   console.log(req.body);
