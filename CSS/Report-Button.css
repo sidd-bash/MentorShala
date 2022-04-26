@@ -64,4 +64,7 @@
   width: 6vh;  
   border-radius:50%;
   background-color:#999;
+  position:fixed;
+  top:2vh;
+  right:2vw;
 }
