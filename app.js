@@ -12,7 +12,8 @@ const res = require('express/lib/response');
 app.set('view engine', 'ejs');
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname)));
-const multer = require('multer')
+const multer = require('multer');
+const { redirect } = require('express/lib/response');
 // const upload = multer({ dest: 'imgUpload/' })
 
 let usernameLogedIn;
@@ -111,6 +112,19 @@ app.get('/admin', async (req, res) => {
         });
      
   });
+
+  app.get('/admin/:id',(req,res)=>{
+    const id=req.params.id;
+    MongoClient.connect(url, async function (err, db) {
+      if (err) throw err;
+      var dbo = db.db("mydb");
+      // dbo.collection("report").deleteOne({username:id1});
+      dbo.collection("personalInfoMentee").deleteOne({username:id});
+     
+     
+      db.close();
+  });
+});
 
   // let result;
   // MongoClient.connect(url, async function (err, db) {
