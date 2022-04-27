@@ -390,7 +390,6 @@ app.post('/registrationMentor', (req, res) => {
     subject: "Otp for registering is: ",
     html: "<h3>OTP for account verification is </h3>" + "<h1 style='font-weight:bold;'>" + otp + "</h1>" // html body
   };
-
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       return console.log(error);
@@ -405,10 +404,10 @@ app.post('/registrationMentor', (req, res) => {
   // }
 })
 app.post('/send',(req,res)=>{
-    if (req.body.otp == otp)
+    if (req.body.otp == otp&&req.body.password==req.body.passwordrepeat)
       res.render("mentor-registration");
     else
-      res.render("login-mentor");
+      alert("Wrong OTP or password");
   })
 })
   // app.post('/registrationMentor', (req, res) => {
