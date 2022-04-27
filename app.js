@@ -641,7 +641,7 @@ app.post('/settingChange', (req, res) => {
 app.post('/Info', (req, res) => {
   console.log(req.body);
   phoneLogedIn = req.body.phone;
-  birthdateLogedIn = req.body.birthdate;
+  birthdateLogedIn = req.body.birthday;
   bioLogedIn = req.body.bio;
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
